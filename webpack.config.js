@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const apiMocker = require('webpack-api-mocker')
 
 
 
@@ -61,10 +62,19 @@ module.exports = {
 	devServer: {
 		contentBase: './public',
 		port: '20000',
-		historyApiFallback: true
+		historyApiFallback: true,
+		before: (app) => {
+			apiMocker(app, path.resolve(__dirname, 'mock/api.js'))
+		}
 	},
 	plugins: [new HtmlWebpackPlugin({
 		template: path.resolve(__dirname, 'app/index.html'),
 		filename: 'index.html'
 	})],
+	resolve: {
+		alias: {
+			reducer: path.resolve(__dirname, 'app/reducer/'),
+			page: path.resolve(__dirname, 'app/page/')
+		}
+	}
 }
