@@ -1,0 +1,3 @@
+- react、react-dom
+- webpack、webpack-cli
+- babel-loader、.babelrc
