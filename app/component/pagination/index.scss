@@ -1,6 +1,8 @@
 @import 'aliasComponent/theme.scss';
 
 .pagination {
+  overflow: hidden;
+  
   li {
     float: left;
     margin-right: 8px;
