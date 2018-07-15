@@ -5,6 +5,7 @@ import { createStore } from 'redux'
 import Reducer from 'aliasReducer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Home, UI } from 'aliasPage'
+import './index.scss'
 
 const AppRouter = () => {
 	return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'aliasComponent'
+import { Button, Pagination } from 'aliasComponent'
 import './index.scss'
 
 export default class extends React.Component {
@@ -31,11 +31,12 @@ export default class extends React.Component {
 		})
 	}
 
-	render() {
+	renderButtons() {
 		const { size, status } = this.state
 
 		return (
-			<div>
+			<div id="button">
+				<h3>按钮</h3>
 				<p className='btn-control'>
 					<label htmlFor='btnSize-large'>
 						大
@@ -68,6 +69,38 @@ export default class extends React.Component {
 				<Button href='/' title='跳转按钮，并跳回首页' />
 				<br />
 				<Button onClick={() => alert(1)} title='点击我，有惊喜'/>
+			</div>
+		)
+	}
+
+	renderPagination() {
+		return (
+			<div id='pagination'>
+				<h3>分页器</h3>
+				<Pagination total={62} />
+			</div>
+		)
+	}
+
+	renderFloatCeilingMenu() {
+		return (
+			<ul className='ui-ceiling'>
+				<li>
+					<a href="#button" title='按钮'>Button</a>
+				</li>
+				<li>
+					<a href='#pagination' title='分页器'>Pagination</a>
+				</li>
+			</ul>
+		)
+	}
+
+	render() {
+		return (
+			<div className='ui-container'>
+				{this.renderFloatCeilingMenu()}
+				{this.renderButtons()}
+				{this.renderPagination()}
 			</div>
 		)
 	}
