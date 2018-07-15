@@ -1,0 +1,72 @@
+@import 'aliasComponent/theme.scss';
+
+.btn {
+  padding: 0 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: 0;
+  border-style: unset;
+  margin: 0 8px 12px 0;
+
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: $smoke;
+    color: $color-text9;
+    border-color: $color-border;
+  }
+
+  i {
+    margin-right: 2px;
+  }
+}
+
+.btn-default {
+  color: $color-text3;
+  border: 1px solid $color-border;
+  background-color: $white;
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.btn-primary {
+  color: $white;
+  background-color: $color-primary;
+  border: 1px solid $color-primary;
+  &:hover:not(:disabled) {
+    opacity: .8;
+  }
+}
+
+.btn-dashed {
+  @extend .btn-default;
+  border: 1px dashed $color-border;
+}
+
+.btn-danger {
+  color: $color-danger;
+  background-color: $smoke;
+  border: 1px solid $color-border;
+  &:hover:not(:disabled) {
+    background-color: $color-danger;
+    border-color: $color-danger;
+    color: $white;
+  }
+}
+
+.btn-size-default {
+  height: 32px;
+  line-height: 32px;
+}
+
+.btn-size-large {
+  height: 40px;
+  line-height: 40px;
+}
+
+.btn-size-small {
+  height: 24px;
+  line-height: 24px;
+}

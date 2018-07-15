@@ -73,8 +73,9 @@ module.exports = {
 	})],
 	resolve: {
 		alias: {
-			reducer: path.resolve(__dirname, 'app/reducer/'),
-			page: path.resolve(__dirname, 'app/page/')
+			aliasReducer: path.resolve(__dirname, 'app/reducer/'),
+			aliasPage: path.resolve(__dirname, 'app/page/'),
+			aliasComponent: path.resolve(__dirname, 'app/component/'),
 		}
 	}
 }

@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import Index from './'
 
 const mapStateToProps = state => {
-	console.log(state)
 	return {
 		todo: state.todoReducer
 	}

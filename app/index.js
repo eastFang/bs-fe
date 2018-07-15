@@ -2,17 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import Reducer from 'reducer'
+import Reducer from 'aliasReducer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Home from './page/home/connect'
-import Test from './page/test'
+import { Home, UI } from 'aliasPage'
 
 const AppRouter = () => {
 	return (
 		<Router>
 			<div>
 				<Route exact path='/' component={Home}></Route>
-				<Route exact path='/test' component={Test}></Route>
+				<Route exact path='/ui' component={UI}></Route>
 			</div>
 		</Router>
 	)
