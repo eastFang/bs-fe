@@ -1,10 +1,6 @@
-const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const apiMocker = require('webpack-api-mocker')
-
-
-
 
 /*
  * SplitChunksPlugin is enabled by default and replaced
@@ -26,11 +22,6 @@ const apiMocker = require('webpack-api-mocker')
  * https://github.com/webpack-contrib/uglifyjs-webpack-plugin
  *
  */
-
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-
-
-
 
 module.exports = {
 	module: {
