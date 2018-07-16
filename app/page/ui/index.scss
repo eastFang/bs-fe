@@ -2,7 +2,11 @@
 
 .comp-control {
   label {
-    margin-right: 8px;
+    margin-right: 15px;
+    font-size: 14px;
+    input {
+      margin-left: 8px;
+    }
   }
 }
 

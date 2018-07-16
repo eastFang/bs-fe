@@ -7,9 +7,10 @@ const mapStateToProps = state => {
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
 	return {
-		showTodo: () => dispatch({ type: 'todoAdd' })
+		showTodo: () => dispatch({ type: 'todoAdd' }),
+		...props
 	}
 }
 

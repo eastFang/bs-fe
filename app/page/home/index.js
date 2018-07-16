@@ -21,12 +21,9 @@ export default class extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<p>首页{this.props.todo}</p>
-				<button onClick={this._onClick.bind(this)}>TODO+2</button>
-				<button onClick={this._onFetch.bind(this)}>获取国家列表</button>
+			<React.Fragment>
 				<Link to='/ui'>UI</Link>
-			</div>
+			</React.Fragment>
 		)
 	}
 }
