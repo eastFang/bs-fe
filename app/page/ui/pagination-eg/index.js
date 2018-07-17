@@ -6,7 +6,7 @@ export default class extends React.Component {
 		return (
 			<React.Fragment>
 				<h3>分页器</h3>
-				<Pagination total={71} />
+				<Pagination total={179} />
 			</React.Fragment>
 		)
 	}

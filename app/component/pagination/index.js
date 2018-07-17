@@ -80,24 +80,32 @@ class Pagination extends React.Component {
 		this._onChange(this.state.currentPageNo + 1)
 	}
 
-	render() {
+	getPageNoList() {
 		const {
 			total,
 			pageSize = this.initParams.pageSize,
 		} = this.props
-		if (!total) return null
+		const { currentPageNo } = this.state
 		const pageCount = Math.ceil(total / pageSize)
+		const pageNoList = []
+		for(let index = 0; index < pageCount; index++) {
+			const itemPageNo = index + 1
+			const isCurrent = itemPageNo === currentPageNo
+			if (currentPageNo - 2 >= 3 && isCurrent) {
+				pageNoList.splice(1, 0, <li key='elliPre'>,,,</li>)
+			}
+			pageNoList.push(<li className={this.getPageNoItemClass(isCurrent)} key={index} onClick={() => this._onChange(itemPageNo)}>{itemPageNo}</li>)
+		}
+		return pageNoList
+	}
+
+	render() {
+		if (!this.props.total) return null
 
 		return (
 			<ul className='bs-pagination'>
 				<li className={this.getPreOrNextPageNoClass('pre')} onClick={this._prePage}>上一页</li>
-				{
-					_.times(pageCount, (index) => {
-						const itemPageNo = index + 1
-						const isCurrent = itemPageNo === this.state.currentPageNo
-						return <li className={this.getPageNoItemClass(isCurrent)} key={index} onClick={() => this._onChange(itemPageNo)}>{itemPageNo}</li>
-					})
-				}
+				{this.getPageNoList()}
 				<li className={this.getPreOrNextPageNoClass('next')} onClick={this._nextPage}>下一页</li>
 			</ul>
 		)
