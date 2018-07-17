@@ -1,0 +1,21 @@
+@import 'aliasComponent/theme.scss';
+
+.ui-ceiling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0 5px 5px $smoke;
+
+  li {
+    float: left;
+    
+    a {
+      display: inline-block;
+      height: 32px;
+      line-height: 32px;
+      padding: 0 15px;
+    }
+  }
+}

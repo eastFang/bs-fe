@@ -2,6 +2,7 @@ import React, {
 	Component
 } from 'react'
 import CeilingData from './data'
+import './index.scss'
 
 export default class extends Component {
 	render() {

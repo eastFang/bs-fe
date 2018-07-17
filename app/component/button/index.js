@@ -1,25 +1,26 @@
 import React from 'react'
 import classnames from 'classnames'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './index.scss'
 
 /** 
  * 按钮
  */
-export default class extends React.Component {
+class Button extends React.Component {
 	getBtnClass(type, size) {
 		return classnames(
-			'btn',
-			`btn-${type}`,
-			`btn-size-${size}`
+			'bs-btn',
+			`bs-btn-${type}`,
+			`bs-btn-size-${size}`
 		)
 	}
 
 	render() {
 		const {
-			type = 'default',
-			title = 'default',
-			size = 'default',
+			type,
+			title,
+			size,
 			href,
 			...others
 		} = this.props
@@ -32,3 +33,18 @@ export default class extends React.Component {
 		return <Link to={href}>{PureBtn}</Link>
 	}
 }
+
+Button.propTypes = {
+	type: PropTypes.oneOf(['default', 'primary', 'dashed', 'danger']),
+	title: PropTypes.string,
+	size: PropTypes.oneOf(['default', 'large', 'small']),
+	href: PropTypes.string,
+}
+
+Button.defaultProps = {
+	type: 'default',
+	title: 'default',
+	size: 'default'
+}
+
+export default Button

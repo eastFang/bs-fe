@@ -65,9 +65,9 @@ export default class extends React.Component {
 				<Button type='dashed' title='dashed' size={btnSize} disabled={btnStatus === 'disabled'}/>
 				<Button type='danger' title='danger' size={btnSize} disabled={btnStatus === 'disabled'}/>
 				<br />
-				<Button href='/' title='跳转按钮，并跳回首页' />
+				<Button href='/' size={btnSize} title='跳转按钮，并跳回首页' disabled={btnStatus === 'disabled'}/>
 				<br />
-				<Button onClick={() => alert(1)} title='点击我，有惊喜'/>
+				<Button onClick={() => alert(1)} size={btnSize} title='点击我，有惊喜' disabled={btnStatus === 'disabled'}/>
 			</React.Fragment>
 		)
 	}

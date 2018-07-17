@@ -1,19 +1,20 @@
 import React from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import './index.scss'
 
 /**
  * 分页控制器
  */
-export default class extends React.Component {
+class Pagination extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			currentPageNo: 1
 		}
 		this.initParams = {
-			pageSize: 10
+			pageSize: props.pageSize
 		}
 		this._prePage = this._prePage.bind(this)
 		this._nextPage = this._nextPage.bind(this)
@@ -32,16 +33,16 @@ export default class extends React.Component {
 		return true
 	}
 
-	getJumpPageNoClass(isActive) {
+	getPageNoItemClass(isCurrent) {
 		return classNames(
 			'pageno-item',
 			{
-				active: isActive
+				active: isCurrent
 			}
 		)
 	}
 
-	getSiblingPageNoClass(type) {
+	getPreOrNextPageNoClass(type) {
 		const { currentPageNo } = this.state
 		const { total } = this.props
 		if ((type === 'pre' && currentPageNo === 1)
@@ -65,7 +66,8 @@ export default class extends React.Component {
 	 * 上一页
 	 */
 	_prePage() {
-		if (!this.checkShouldChangePageNo('pre')) return
+		const type = 'pre'
+		if (!this.checkShouldChangePageNo(type)) return
 		this._onChange(this.state.currentPageNo - 1)
 	}
 
@@ -73,7 +75,8 @@ export default class extends React.Component {
 	 * 下一页
 	 */
 	_nextPage() {
-		if (!this.checkShouldChangePageNo('next')) return
+		const type = 'next'
+		if (!this.checkShouldChangePageNo(type)) return
 		this._onChange(this.state.currentPageNo + 1)
 	}
 
@@ -82,20 +85,32 @@ export default class extends React.Component {
 			total,
 			pageSize = this.initParams.pageSize,
 		} = this.props
-
 		if (!total) return null
+		const pageCount = Math.ceil(total / pageSize)
+
 		return (
-			<ul className='pagination'>
-				<li className={this.getSiblingPageNoClass('pre')} onClick={this._prePage}>上一页</li>
+			<ul className='bs-pagination'>
+				<li className={this.getPreOrNextPageNoClass('pre')} onClick={this._prePage}>上一页</li>
 				{
-					_.times(Math.ceil(total / pageSize), (index) => {
+					_.times(pageCount, (index) => {
 						const itemPageNo = index + 1
-						const isActive = itemPageNo === this.state.currentPageNo
-						return <li className={this.getJumpPageNoClass(isActive)} key={index} onClick={() => this._onChange(itemPageNo)}>{itemPageNo}</li>
+						const isCurrent = itemPageNo === this.state.currentPageNo
+						return <li className={this.getPageNoItemClass(isCurrent)} key={index} onClick={() => this._onChange(itemPageNo)}>{itemPageNo}</li>
 					})
 				}
-				<li className={this.getSiblingPageNoClass('next')} onClick={this._nextPage}>下一页</li>
+				<li className={this.getPreOrNextPageNoClass('next')} onClick={this._nextPage}>下一页</li>
 			</ul>
 		)
 	}
 }
+
+Pagination.propTypes = {
+	total: PropTypes.number,
+	pageSize: PropTypes.number,
+}
+
+Pagination.defaultProps = {
+	pageSize: 10,
+}
+
+export default Pagination

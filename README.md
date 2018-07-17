@@ -9,3 +9,4 @@
 - react-router
 - redux、react-redux
 - flyio、webpack-api-mocker
+- prop-types

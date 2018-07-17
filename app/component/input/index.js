@@ -1,19 +1,30 @@
 import React from 'react'
 import classnames from 'classnames'
+import PropTypes from 'prop-types'
 import './index.scss'
 
-export default class extends React.Component {
+class Input extends React.Component {
 
 	getInputClass(size) {
 		return classnames(
-			'input',
-			`input-${size}`
+			'bs-input',
+			`bs-input-${size}`
 		)
 	}
 
 	render() {
-		const { size = 'default', ...others } = this.props
+		const { size, ...others } = this.props
 
 		return <input className={this.getInputClass(size)} {...others}/>
 	}
 }
+
+Input.propTypes = {
+	size: PropTypes.oneOf(['default', 'large', 'small'])
+}
+
+Input.defaultProps = {
+	size: 'default'
+}
+
+export default Input

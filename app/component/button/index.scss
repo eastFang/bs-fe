@@ -1,6 +1,6 @@
 @import 'aliasComponent/theme.scss';
 
-.btn {
+.bs-btn {
   padding: 0 15px;
   cursor: pointer;
   border-radius: 4px;
@@ -21,7 +21,7 @@
   }
 }
 
-.btn-default {
+.bs-btn-default {
   color: $color-text3;
   border: 1px solid $color-border;
   background-color: $white;
@@ -31,7 +31,7 @@
   }
 }
 
-.btn-primary {
+.bs-btn-primary {
   color: $white;
   background-color: $color-primary;
   border: 1px solid $color-primary;
@@ -40,12 +40,12 @@
   }
 }
 
-.btn-dashed {
-  @extend .btn-default;
+.bs-btn-dashed {
+  @extend .bs-btn-default;
   border: 1px dashed $color-border;
 }
 
-.btn-danger {
+.bs-btn-danger {
   color: $color-danger;
   background-color: $smoke;
   border: 1px solid $color-border;
@@ -56,17 +56,17 @@
   }
 }
 
-.btn-size-default {
+.bs-btn-size-default {
   height: 32px;
   line-height: 32px;
 }
 
-.btn-size-large {
+.bs-btn-size-large {
   height: 40px;
   line-height: 40px;
 }
 
-.btn-size-small {
+.bs-btn-size-small {
   height: 24px;
   line-height: 24px;
 }
