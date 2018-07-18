@@ -53,10 +53,11 @@ module.exports = {
 	devServer: {
 		contentBase: './public',
 		port: '20000',
+		hot: false,
 		historyApiFallback: true,
 		before: (app) => {
 			apiMocker(app, path.resolve(__dirname, 'mock/api.js'))
-		}
+		},
 	},
 	plugins: [new HtmlWebpackPlugin({
 		template: path.resolve(__dirname, 'app/index.html'),
