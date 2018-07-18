@@ -114,21 +114,28 @@ class Pagination extends React.Component {
 		const pageCount = Math.ceil(total / pageSize)
 		const pageNoList = []
 		const displayLength = Math.min(maxDisplayLength, pageCount)
+		// 当前页往前推一半，推导起始页码(非序号)
 		let start = currentPageNo - Math.floor((displayLength - 2) / 2)
+		// 第一页一定有
 		pageNoList.push(this.getItemPageNoDom(1))
+		// 如果起始页大于2且总页数大于最大展示页码，将elliPre推进去
 		if (start > 2 && pageCount > displayLength) {
 			pageNoList.push(this.getElliItemPageNoDom('pre'))
 		} else {
 			start = 2
 		}
+		// 结束页往后推
 		const end = start + displayLength - 2
+		// 如果结束页超出最大页码，start则往前再推
 		end > pageCount ? start -= (end - pageCount) : null
 		for (let index = start; index < Math.min(end, pageCount); index ++) {
 			pageNoList.push(this.getItemPageNoDom(index))
 		}
+		// 如果结束页码小于最大页码，将elliNext推进去
 		if (end < pageCount) {
 			pageNoList.push(this.getElliItemPageNoDom('next'))
 		}
+		// 页码大于一，将最后一个页码推进去
 		if (pageCount > 1) {
 			pageNoList.push(this.getItemPageNoDom(pageCount))
 		}
