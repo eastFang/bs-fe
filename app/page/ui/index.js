@@ -4,6 +4,7 @@ import {
 	EgPagination,
 	EgInput,
 	EgCeiling,
+	EgDatePicker,
 } from './egs'
 import './index.scss'
 
@@ -16,6 +17,7 @@ export default class extends React.Component {
 				<div id='button'><EgButton /></div>
 				<div id='pagination'><EgPagination /></div>
 				<div id='input'><EgInput /></div>
+				<div id='datepicker'><EgDatePicker /></div>
 			</div>
 		)
 	}

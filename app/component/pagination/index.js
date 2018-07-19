@@ -34,11 +34,14 @@ class Pagination extends React.Component {
 		return true
 	}
 
-	getPageNoItemClass(isCurrent) {
+	getPageNoItemClass({ isCurrent, preOrNext }) {
 		return classNames(
 			'pageno-item',
 			{
-				active: isCurrent
+				active: isCurrent,
+				pre: preOrNext === 'pre',
+				next: preOrNext === 'next',
+				'elli-pageno': !!preOrNext
 			}
 		)
 	}
@@ -61,6 +64,7 @@ class Pagination extends React.Component {
 			currentPageNo: pageNo
 		})
 		this.props.onChange && this.props.onChange(pageNo)
+		return false
 	}
 
 	_onElliChange(type) {
@@ -97,11 +101,12 @@ class Pagination extends React.Component {
 	}
 
 	getItemPageNoDom(itemPageNo) {
-		return <li className={this.getPageNoItemClass(itemPageNo === this.state.currentPageNo)} key={itemPageNo} onClick={() => this._onChange(itemPageNo)}>{itemPageNo}</li>
+		const isCurrent = itemPageNo === this.state.currentPageNo
+		return <li className={this.getPageNoItemClass({ isCurrent })} key={itemPageNo} onClick={() => this._onChange(itemPageNo)}>{itemPageNo}</li>
 	}
 
 	getElliItemPageNoDom(preOrNext) {
-		return <li className={this.getPageNoItemClass()} key={preOrNext} onClick={() => this._onElliChange(preOrNext)}>{preOrNext}</li>
+		return <li className={this.getPageNoItemClass({ preOrNext })} key={preOrNext} onClick={() => this._onElliChange(preOrNext)}></li>
 	}
 
 	getPageNoList() {

@@ -13,6 +13,11 @@ const data = [
 		id: 'input',
 		title: '输入框',
 		text: 'Input'
+	},
+	{
+		id: 'datepicker',
+		title: '日期选择器',
+		text: 'DatePicker'
 	}
 ]
 

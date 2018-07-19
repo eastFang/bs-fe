@@ -1,0 +1,36 @@
+@import 'aliasComponent/theme.scss';
+
+.bs-datepicker {
+  width: 280px;
+  .header {
+    text-align: center;
+  }
+
+  .content {
+    table {
+      table-layout: fixed;
+      width: 100%;
+      border-spacing: 0;
+
+      th,
+      td {
+        text-align: center;
+      }
+
+      .bs-datepicker-td {
+        cursor: pointer;
+        line-height: 24px;
+        user-select: none;
+        width: 24px;
+        margin: 3px auto;
+        &.not-current {
+          color: $color-text9;
+        }
+        &.active {
+          background-color: $color-primary;
+          color: $white;
+        }
+      }
+    }
+  }
+}
