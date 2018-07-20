@@ -1,6 +1,5 @@
 import React from 'react'
-import { Input, Button, Space } from 'aliasComponent'
-import './index.scss'
+import { Input, Button, Space, PageCommon } from 'aliasComponent'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -15,19 +14,16 @@ export default class extends React.Component {
 
 	render() {
 		return (
-			<div className='page-login'>
-				<div className='login-box'>
-					<form onSubmit={this._onSubmit}>
-						<header>账号登录</header>
-						<Space height={24}/>
-						<Input name='username' placeholder='用户名' size='large'/>
-						<Space height={24}/>
-						<Input name='password' placeholder='密码' size='large' type='password'/>
-						<Space height={24}/>
-						<Button type='primary' title='登录' style={{ width: '100%', height: '48px', lineHeight: '48px'}}/>
-					</form>
-				</div>
-			</div>
+			<PageCommon.Passport passportBoxTitle='账号登录'>
+				<form onSubmit={this._onSubmit}>
+					<Space height={24}/>
+					<Input name='username' placeholder='用户名' size='large'/>
+					<Space height={24}/>
+					<Input name='password' placeholder='密码' size='large' type='password'/>
+					<Space height={24}/>
+					<Button type='primary' title='登录' style={{ width: '100%', height: '48px', lineHeight: '48px'}}/>
+				</form>
+			</PageCommon.Passport>
 		)
 	}
 }

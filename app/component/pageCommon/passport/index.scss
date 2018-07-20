@@ -1,9 +1,9 @@
 @import 'aliasComponent/theme.scss';
 
-$color-background-login: #3c92e8;
+$color-background-passport: #3c92e8;
 
-.page-login {
-  background-color: $color-background-login;
+.page-passport {
+  background-color: $color-background-passport;
   height: 100vh;
   position: relative;
 
@@ -13,7 +13,7 @@ $color-background-login: #3c92e8;
     font-size: 24px;
   }
 
-  .login-box {
+  .passport-box {
     position: absolute;
     top: 50%;
     left: 50%;
