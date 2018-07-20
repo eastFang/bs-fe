@@ -1,10 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default class extends React.Component {
+class Space extends React.Component {
 	render() {
-		const { backgroundColor = 'transparent' } = this.props
+		const { backgroundColor } = this.props
 		return (
 			<div style={{ height: `${this.props.height}px`, backgroundColor }}></div>
 		)
 	}
 }
+
+Space.propTypes = {
+	backgroundColor: PropTypes.string,
+	height: PropTypes.number,
+}
+
+Space.defaultProps = {
+	backgroundColor: 'transparent'
+}
+
+export default Space
+
