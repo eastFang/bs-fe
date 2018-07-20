@@ -22,7 +22,8 @@ export default class extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Link to='/ui'>UI</Link>
+				<Link to='/ui'>UI</Link><br />
+				<Link to='/login'>Login</Link><br />
 			</React.Fragment>
 		)
 	}

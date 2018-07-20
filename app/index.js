@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import Reducer from 'aliasReducer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { Home, UI } from 'aliasPage'
+import { Home, UI, Login } from 'aliasPage'
 import './index.scss'
 
 const AppRouter = () => {
@@ -12,7 +12,8 @@ const AppRouter = () => {
 		<Router>
 			<div>
 				<Route exact path='/' component={Home}></Route>
-				<Route exact path='/ui' component={UI}></Route>
+				<Route path='/ui' component={UI}></Route>
+				<Route path='/login' component={Login}></Route>
 			</div>
 		</Router>
 	)

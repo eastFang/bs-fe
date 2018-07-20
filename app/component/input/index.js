@@ -15,7 +15,7 @@ class Input extends React.Component {
 	render() {
 		const { size, ...others } = this.props
 
-		return <input className={this.getInputClass(size)} {...others}/>
+		return <input className={this.getInputClass(size)} {...others} />
 	}
 }
 

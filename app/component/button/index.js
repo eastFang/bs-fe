@@ -12,7 +12,7 @@ class Button extends React.Component {
 		return classnames(
 			'bs-btn',
 			`bs-btn-${type}`,
-			`bs-btn-size-${size}`
+			`bs-btn-size-${size}`, 
 		)
 	}
 

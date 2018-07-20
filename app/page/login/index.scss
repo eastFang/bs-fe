@@ -1,0 +1,28 @@
+@import 'aliasComponent/theme.scss';
+
+$color-background-login: #3c92e8;
+
+.page-login {
+  background-color: $color-background-login;
+  height: 100vh;
+  position: relative;
+
+  header {
+    text-align: center;
+    color: $color-text3;
+    font-size: 24px;
+  }
+
+  .login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    width: 460px;
+    padding: 40px 60px;
+    box-shadow: 0 0 0 1px $color-border;
+    box-sizing: border-box;
+  }
+}
