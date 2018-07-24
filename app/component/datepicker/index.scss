@@ -2,11 +2,39 @@
 
 .bs-datepicker {
   width: 280px;
+  border: 1px solid $color-border;
+  box-shadow: 0px 0px 5px 2px $color-border;
+
   .header {
     text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid $color-border;
+
+    .left-area {
+      float: left;
+      position: relative;
+      left: 10px;
+      cursor: pointer;
+    }
+
+    .right-area {
+      float: right;
+      position: relative;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    i {
+      display: inline-block;
+      line-height: 40px;
+      color: $color-text6;
+      padding: 0 5px;
+    }
   }
 
   .content {
+    padding: 8px 12px;
+
     table {
       table-layout: fixed;
       width: 100%;
@@ -23,6 +51,7 @@
         user-select: none;
         width: 24px;
         margin: 3px auto;
+        border-radius: 2px;
         &.not-current {
           color: $color-text9;
         }
@@ -32,5 +61,13 @@
         }
       }
     }
+  }
+
+  .footer {
+    text-align: center;
+    color: $color-primary;
+    cursor: pointer;
+    line-height: 40px;
+    border-top: 1px solid $color-border;
   }
 }

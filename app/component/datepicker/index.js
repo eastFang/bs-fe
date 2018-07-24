@@ -12,13 +12,68 @@ export default class extends Component {
 		const date = todayDate.getDate()
 		const day = todayDate.getDay()
 		this.initParams = {
-			day
+			day,
+			year,
+			month,
+			date
 		}
 		this.state = {
 			year,
 			month,
 			date,
 		}
+		this._onSelectToday = this._onSelectToday.bind(this)
+	}
+
+	/**
+	 * 
+	 * @param { year, month, date } dateObj 
+	 */
+	_onChangeDate(dateObj) {
+		this.setState({
+			...this.state,
+			...dateObj
+		})
+	}
+
+	/**
+	 * 今天
+	 */
+	_onSelectToday() {
+		const { year, month, date } = this.initParams
+		const todayObj = {
+			year,
+			month,
+			date
+		}
+		this._onChangeDate(todayObj)
+	}
+
+	/**
+	 * 
+	 * @param {enum} type 
+	 */
+	_onSelectWillDate(type) {
+		const { year, month, date } = this.state
+		const currentDate = new Date(`${year}-${month}-${date}`)
+		switch(type) {
+		case 'preYear':
+			currentDate.setFullYear(year - 1)
+			break
+		case 'preMonth':
+			month === 1 ? currentDate.setFullYear(year - 1) : currentDate.setMonth(month - 2)
+			break
+		case 'nextMonth':
+			month === 12 ? currentDate.setFullYear(year + 1) : currentDate.setMonth(month)
+			break
+		case 'nextYear':
+			currentDate.setFullYear(year + 1)
+			break
+		}
+		const willYear = currentDate.getFullYear()
+		const willMonth = currentDate.getMonth() + 1
+		const willDate = currentDate.getDate()
+		this._onChangeDate({ year: willYear, month: willMonth, date: willDate })
 	}
 
 	getDateList() {
@@ -54,7 +109,19 @@ export default class extends Component {
 		const weekdayList = ['一', '二', '三', '四', '五', '六', '日']
 		return (
 			<div className='bs-datepicker'>
-				<div className='header'>{`${year}年${month}月`}</div>
+				<div className='header'>
+					<a className='left-area'>
+						<i className='iconfont icon-double-left' onClick={() => this._onSelectWillDate('preYear')}></i>
+						<i className='iconfont icon-left' onClick={() => this._onSelectWillDate('preMonth')}></i>
+					</a>
+					
+					{`${year}年${month}月`}
+
+					<a className='right-area'>
+						<i className='iconfont icon-right' onClick={() => this._onSelectWillDate('nextMonth')}></i>
+						<i className='iconfont icon-double-right' onClick={() => this._onSelectWillDate('nextYear')}></i>
+					</a>
+				</div>
 				<div className='content'>
 					<table>
 						<thead>
@@ -75,9 +142,9 @@ export default class extends Component {
 												item.map((innerItem, innerIndex) => {
 													const { isPreMonth, isNextMonth, date: itemDate, month: itemMonth, year: itemYear } = innerItem
 													const isPreOrNextMonth = isPreMonth || isNextMonth
-													console.log(`${itemYear}-${itemMonth}-${itemDate}`)
-													const isActive = `${year}-${month}-${date}` === `${itemYear}-${itemMonth}-${itemDate}`
-													return <td key={innerIndex}><div className={this.getTdClassName({ isPreOrNextMonth, isActive })}>{itemDate}</div></td>
+													const cellDateObj = { year: itemYear, month: itemMonth, date: itemDate }
+													const isActive = `${year}-${month}-${date}` === Object.values(cellDateObj).join('-')
+													return <td key={innerIndex} onClick={() => this._onChangeDate(cellDateObj)}><div className={this.getTdClassName({ isPreOrNextMonth, isActive })}>{itemDate}</div></td>
 												})
 											}
 										</tr>
@@ -87,7 +154,7 @@ export default class extends Component {
 						</tbody>
 					</table>
 				</div>
-				<div className='footer'></div>
+				<div className='footer' onClick={this._onSelectToday}>今天</div>
 			</div>
 		)
 	}
