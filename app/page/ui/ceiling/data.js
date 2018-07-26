@@ -18,6 +18,11 @@ const data = [
 		id: 'datepicker',
 		title: '日期选择器',
 		text: 'DatePicker'
+	},
+	{
+		id: 'modal',
+		title: '弹框',
+		text: 'Modal'
 	}
 ]
 
