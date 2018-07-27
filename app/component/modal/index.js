@@ -31,7 +31,6 @@ class Modal extends React.Component {
 			<div className={this.getClass()}>
 				<div className='mask'></div>
 				<div className='wrap'>
-          111111
 				</div>
 			</div>
 		)
