@@ -23,19 +23,23 @@ export default class extends Component {
 				month,
 				date,
 			},
-			showDateListBox: false
+			showDateListBox: false,
+			inputShowTime: null,
 		}
 		this._onSelectToday = this._onSelectToday.bind(this)
 	}
 
 	/**
 	 * 
-	 * @param { year, month, date } dateObj 
+	 * @param { time: { year, month, date } } dateObj 
 	 */
 	_onChangeDate(dateObj) {
+		const { time: { year, month, date } } = dateObj
 		this.setState({
 			...this.state,
-			...dateObj
+			...dateObj,
+			inputShowTime: `${year}-${month}-${date}`,
+			showDateListBox: false,
 		})
 	}
 
@@ -120,7 +124,7 @@ export default class extends Component {
 	renderTimeDisplay() {
 		return (
 			<span className='bs-datepicker-input-wrapper' onClick={() => this.toggleDateListBox('show')}>
-				<input className='bs-datepicker-input' placeholder='请选择时间' readOnly/>
+				<input className='bs-datepicker-input' placeholder='请选择时间' value={this.state.inputShowTime} readOnly/>
 				<i className='iconfont icon-calendar'></i>
 			</span>
 		)
