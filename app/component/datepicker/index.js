@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import classnames from 'classnames'
 import { convert2ElemArray, getOffsetDateFullInfo } from 'aliasUtil'
 import './index.scss'
@@ -18,9 +18,12 @@ export default class extends Component {
 			date
 		}
 		this.state = {
-			year,
-			month,
-			date,
+			time: {
+				year,
+				month,
+				date,
+			},
+			showDateListBox: false
 		}
 		this._onSelectToday = this._onSelectToday.bind(this)
 	}
@@ -46,7 +49,7 @@ export default class extends Component {
 			month,
 			date
 		}
-		this._onChangeDate(todayObj)
+		this._onChangeDate({ time: todayObj })
 	}
 
 	/**
@@ -54,7 +57,7 @@ export default class extends Component {
 	 * @param {enum} type 
 	 */
 	_onSelectWillDate(type) {
-		const { year, month, date } = this.state
+		const { time: { year, month, date } } = this.state
 		const currentDate = new Date(`${year}-${month}-${date}`)
 		switch(type) {
 		case 'preYear':
@@ -73,11 +76,11 @@ export default class extends Component {
 		const willYear = currentDate.getFullYear()
 		const willMonth = currentDate.getMonth() + 1
 		const willDate = currentDate.getDate()
-		this._onChangeDate({ year: willYear, month: willMonth, date: willDate })
+		this._onChangeDate({ time: { year: willYear, month: willMonth, date: willDate } })
 	}
 
 	getDateList() {
-		const { year, month } = this.state
+		const { time: { year, month } } = this.state
 		const dateList = []
 		const firstDay = new Date(year, month - 1, 1).getDay() || 7
 		for(let i = 0,j = 0; i < firstDay - 1; i ++, j--) {
@@ -103,8 +106,28 @@ export default class extends Component {
 		)
 	}
 
-	render() {
-		const { year, month, date } = this.state
+	/**
+	 * show: 显示, hide: 隐藏
+	 * @param {enum} type 
+	 */
+	toggleDateListBox(type) {
+		this.setState({
+			...this.state,
+			showDateListBox: type === 'show'
+		})
+	}
+
+	renderTimeDisplay() {
+		return (
+			<span className='bs-datepicker-input-wrapper' onClick={() => this.toggleDateListBox('show')}>
+				<input className='bs-datepicker-input' placeholder='请选择时间' readOnly/>
+				<i className='iconfont icon-calendar'></i>
+			</span>
+		)
+	}
+
+	renderDateList() {
+		const { time: { year, month, date } } = this.state
 		const dataList = this.getDateList()
 		const weekdayList = ['一', '二', '三', '四', '五', '六', '日']
 		return (
@@ -114,9 +137,7 @@ export default class extends Component {
 						<i className='iconfont icon-double-left' onClick={() => this._onSelectWillDate('preYear')}></i>
 						<i className='iconfont icon-left' onClick={() => this._onSelectWillDate('preMonth')}></i>
 					</a>
-					
 					{`${year}年${month}月`}
-
 					<a className='right-area'>
 						<i className='iconfont icon-right' onClick={() => this._onSelectWillDate('nextMonth')}></i>
 						<i className='iconfont icon-double-right' onClick={() => this._onSelectWillDate('nextYear')}></i>
@@ -144,7 +165,7 @@ export default class extends Component {
 													const isPreOrNextMonth = isPreMonth || isNextMonth
 													const cellDateObj = { year: itemYear, month: itemMonth, date: itemDate }
 													const isActive = `${year}-${month}-${date}` === Object.values(cellDateObj).join('-')
-													return <td key={innerIndex} onClick={() => this._onChangeDate(cellDateObj)}><div className={this.getTdClassName({ isPreOrNextMonth, isActive })}>{itemDate}</div></td>
+													return <td key={innerIndex} onClick={() => this._onChangeDate({ time: cellDateObj })}><div className={this.getTdClassName({ isPreOrNextMonth, isActive })}>{itemDate}</div></td>
 												})
 											}
 										</tr>
@@ -157,5 +178,9 @@ export default class extends Component {
 				<div className='footer' onClick={this._onSelectToday}>今天</div>
 			</div>
 		)
+	}
+
+	render() {
+		return this.state.showDateListBox ? this.renderDateList() : this.renderTimeDisplay()
 	}
 }

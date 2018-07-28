@@ -71,3 +71,29 @@
     border-top: 1px solid $color-border;
   }
 }
+
+.bs-datepicker-input-wrapper {
+  position: relative;
+
+  .bs-datepicker-input {
+    border: 1px solid $color-border;
+    width: 180px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: 0;
+    padding: 0 8px;
+    height: 32px;
+    cursor: pointer;
+  
+    // &:focus {
+    //   border-color: $color-primary;
+    //   box-shadow: 0px 0px 0px 2px $color-primary-light4;
+    // }
+  }
+
+  i {
+    position: absolute;
+    right: 10px;
+    line-height: 32px;
+  }
+}

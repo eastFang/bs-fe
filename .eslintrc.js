@@ -34,7 +34,7 @@ module.exports = {
     ],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "linebreak-style": ["error", "windows"],
+    // "linebreak-style": ["error", "windows"],
   },
   globals: {
     __dirname: true
