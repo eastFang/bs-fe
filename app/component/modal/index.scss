@@ -1,17 +1,45 @@
 @import "aliasComponent/theme.scss";
 
 .bs-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-mask;
 
-  &.hide {
-    display: none;
-  }
-  
-  .mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $color-mask;
+  .wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 520px;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    border-radius: 4px;
+
+    .bs-modal-header {
+      line-height: 55px;
+      border-bottom: 1px solid $color-border;
+
+      .title {
+        font-weight: 500;
+        padding-left: 20px;
+      }
+
+      .close {
+        float: right;
+        padding: 0 20px;
+      }
+    }
+
+    .bs-modal-body {
+      padding: 20px;
+    }
+
+    .bs-modal-footer {
+      border-top: 1px solid $color-border;
+      padding: 10px 20px;
+      text-align: center;
+    }
   }
 }

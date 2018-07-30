@@ -24,7 +24,7 @@ export default class extends Component {
 				date,
 			},
 			showDateListBox: false,
-			inputShowTime: null,
+			inputShowTime: '',
 		}
 		this._onSelectToday = this._onSelectToday.bind(this)
 	}

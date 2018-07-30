@@ -1,10 +1,19 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { Modal, Button } from 'aliasComponent'
 
 export default class extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			visible: false,
+		}
+	}
 
 	_onClick() {
-		this.refs.modal.show()
+		this.setState({
+			visible: true
+		})
 	}
 
 	render() {
@@ -12,7 +21,10 @@ export default class extends React.Component {
 			<React.Fragment>
 				<h3>弹框</h3>
 				<Button title='弹框' onClick={() => this._onClick()}/>
-				<Modal ref='modal' />
+				<Modal visible={this.state.visible}>
+					<div>1111</div>
+					<div>222</div>
+				</Modal>
 			</React.Fragment>
 		)
 	}
