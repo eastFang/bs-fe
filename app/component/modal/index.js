@@ -11,12 +11,12 @@ class Modal extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			visible: props.visible,
+			visible: props.defaultVisible || false,
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.visible) {
+		if (nextProps.visible && !this.state.visible) {
 			this.show()
 		}
 	}
@@ -41,12 +41,21 @@ class Modal extends React.Component {
 		)
 	}
 
+	onOK() {
+		this.props.onOK && this.props.onOK()
+	}
+
 	renderModal() {
+		const {
+			title,
+			onOK,
+		} = this.props
+		
 		return (
 			<div className={this.getClass()}>
 				<div className='wrap'>
 					<div className='bs-modal-header'>
-						<span className='title'>弹框标题</span>
+						<span className='title'>{title}</span>
 						<a className='close' onClick={this.close.bind(this)}>X</a>
 					</div>
 					<div className='bs-modal-body'>
@@ -54,6 +63,11 @@ class Modal extends React.Component {
 					</div>
 					<div className='bs-modal-footer'>
 						<Button title='关闭' onClick={this.close.bind(this)}/>
+						{
+							onOK
+								? <Button title='确定' type='primary' onClick={this.onOK.bind(this)} />
+								: null
+						}
 					</div>
 				</div>
 			</div>
@@ -70,8 +84,13 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-	visible: PropTypes.bool,
-	children: PropTypes.element
+	defaultVisible: PropTypes.bool,
+	title: PropTypes.string,
+	onOK: PropTypes.func,
+}
+
+Modal.defaultProps = {
+	title: '弹框标题',
 }
 
 export default Modal

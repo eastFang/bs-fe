@@ -1,3 +1,5 @@
+@import "aliasComponent/theme.scss";
+
 ul,
 body,
 input {
@@ -13,4 +15,16 @@ ul {
 
 a {
   cursor: pointer;
+  color: $color-text6;
+
+  &[href] {
+    text-decoration: underline;
+    &:hover {
+      color: $color-link;
+    }
+  }
+
+  &:hover {
+    color: $color-text3;
+  }
 }
