@@ -4,6 +4,7 @@ import EgInput from './input-eg'
 import EgDatePicker from './datepicker-eg'
 import EgCeiling from './ceiling'
 import EgModal from './modal-eg'
+import EgMessage from './message-eg'
 
 module.exports = {
 	EgButton,
@@ -12,4 +13,5 @@ module.exports = {
 	EgCeiling,
 	EgDatePicker,
 	EgModal,
+	EgMessage,
 }

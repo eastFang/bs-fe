@@ -6,6 +6,7 @@ import {
 	EgCeiling,
 	EgDatePicker,
 	EgModal,
+	EgMessage,
 } from './egs'
 import './index.scss'
 
@@ -20,6 +21,7 @@ export default class extends React.Component {
 				<div id='input'><EgInput /></div>
 				<div id='datepicker'><EgDatePicker /></div>
 				<div id='modal'><EgModal /></div>
+				<div id='message'><EgMessage /></div>
 			</div>
 		)
 	}

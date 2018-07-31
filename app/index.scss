@@ -1,3 +1,5 @@
+@import "aliasComponent/theme.scss";
+
 ul,
 body,
 input {
@@ -8,5 +10,21 @@ input {
 ul {
   li {
     list-style-type: none;
+  }
+}
+
+a {
+  cursor: pointer;
+  color: $color-text6;
+
+  &[href] {
+    text-decoration: underline;
+    &:hover {
+      color: $color-link;
+    }
+  }
+
+  &:hover {
+    color: $color-text3;
   }
 }
