@@ -24,11 +24,21 @@ export default class extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Link to='/ui'>UI</Link><br />
-				<Link to='/login'>Login</Link><br />
-				<Link to='/register'>Register</Link><br />
-				<p onClick={this._onFetch}>fetch</p>
-				<code>{this.state.data}</code>
+				<ul className='page-home'>
+					<li>
+						<Link to='/ui'>UI</Link><br />
+					</li>
+					<li>
+						<Link to='/login'>Login</Link><br />
+					</li>
+					<li>
+						<Link to='/register'>Register</Link><br />
+					</li>
+					<li>
+						<p onClick={this._onFetch}>fetch</p>
+						<code>{this.state.data}</code>
+					</li>
+				</ul>
 			</React.Fragment>
 		)
 	}
