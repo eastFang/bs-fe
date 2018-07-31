@@ -23,6 +23,11 @@ const data = [
 		id: 'modal',
 		title: '弹框',
 		text: 'Modal'
+	},
+	{
+		id: 'message',
+		title: '消息',
+		text: 'Message'
 	}
 ]
 

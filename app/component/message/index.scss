@@ -1,0 +1,47 @@
+@import "aliasComponent/theme.scss";
+
+$color-warning: #faad14;
+$color-info: #1890ff;
+$color-success: #52c41a;
+$color-error: #f5222d;
+
+.bs-message {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $white;
+  box-shadow: 0 0 2px 2px $color-border;
+  padding: 5px 10px;
+  color: $color-text3;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: all ease .2s;
+
+  i {
+    vertical-align: top;
+    margin-right: 8px;
+
+    &.icon-success {
+      color: $color-success;
+    }
+
+    &.icon-error {
+      color: $color-error;
+    }
+
+    &.icon-warning {
+      color: $color-warning;
+    }
+
+    &.icon-info {
+      color: $color-info;
+    }
+  }
+
+  .content {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 150px;
+  }
+}

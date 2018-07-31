@@ -5,6 +5,7 @@ import DatePicker from './datepicker'
 import Space from './space'
 import PageCommonPassport from './pageCommon/passport'
 import Modal from './modal'
+import Message from './message'
 
 module.exports = {
 	Button,
@@ -16,4 +17,5 @@ module.exports = {
 		Passport: PageCommonPassport,
 	},
 	Modal,
+	Message,
 }

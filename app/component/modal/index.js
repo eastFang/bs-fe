@@ -13,6 +13,7 @@ class Modal extends React.Component {
 		this.state = {
 			visible: props.defaultVisible || false,
 		}
+		this.close = this.close.bind(this)
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -52,17 +53,17 @@ class Modal extends React.Component {
 		} = this.props
 		
 		return (
-			<div className={this.getClass()}>
-				<div className='wrap'>
+			<div className={this.getClass()} onClick={this.close}>
+				<div className='wrap' onClick={evt => evt.stopPropagation()}>
 					<div className='bs-modal-header'>
 						<span className='title'>{title}</span>
-						<a className='close' onClick={this.close.bind(this)}>X</a>
+						<a className='close' onClick={this.close}>X</a>
 					</div>
 					<div className='bs-modal-body'>
 						{this.props.children}
 					</div>
 					<div className='bs-modal-footer'>
-						<Button title='关闭' onClick={this.close.bind(this)}/>
+						<Button title='关闭' onClick={this.close}/>
 						{
 							onOK
 								? <Button title='确定' type='primary' onClick={this.onOK.bind(this)} />
