@@ -32,7 +32,7 @@ export default class extends React.Component {
 					<Space height={24}/>
 					<Input name='password' ref='password' placeholder='密码' size='large' type='password'/>
 					<Space height={24}/>
-					<Button type='primary' title='登录' style={{ width: '100%', height: '48px', lineHeight: '48px'}}/>
+					<Button type='primary' title='登录' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
 				</form>
 			</PageCommon.Passport>
 		)
