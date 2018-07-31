@@ -1,5 +1,6 @@
 import React from 'react'
 import { Input, Button, Space, PageCommon } from 'aliasComponent'
+import fly from 'flyio'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -9,7 +10,17 @@ export default class extends React.Component {
 
 	_onSubmit(evt) {
 		evt.preventDefault()
-		this.props.history.push('/ui')
+		const { username, password } = this.refs
+		fly.post('/api/login', {
+			username: username.state.value,
+			password: password.state.value
+		}).then((res) => {
+			if (res.data.status === 'ok') {
+				if (confirm('登陆成功，前往首页吗？')) {
+					this.props.history.push('/')
+				}
+			}
+		})
 	}
 
 	render() {
@@ -17,9 +28,9 @@ export default class extends React.Component {
 			<PageCommon.Passport passportBoxTitle='账号登录'>
 				<form onSubmit={this._onSubmit}>
 					<Space height={24}/>
-					<Input name='username' placeholder='用户名' size='large'/>
+					<Input name='username' ref='username' placeholder='用户名' size='large'/>
 					<Space height={24}/>
-					<Input name='password' placeholder='密码' size='large' type='password'/>
+					<Input name='password' ref='password' placeholder='密码' size='large' type='password'/>
 					<Space height={24}/>
 					<Button type='primary' title='登录' style={{ width: '100%', height: '48px', lineHeight: '48px'}}/>
 				</form>

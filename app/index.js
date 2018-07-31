@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import Reducer from 'aliasReducer'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Home, UI, Login, Register } from 'aliasPage'
 import './index.scss'
 
 const AppRouter = () => {
 	return (
 		<Router>
-			<div>
+			<Switch>
 				<Route exact path='/' component={Home}></Route>
 				<Route path='/ui' component={UI}></Route>
 				<Route path='/login' component={Login}></Route>
 				<Route path='/register' component={Register}></Route>
-			</div>
+			</Switch>
 		</Router>
 	)
 }
