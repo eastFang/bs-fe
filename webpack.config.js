@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const apiMocker = require('webpack-api-mocker')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
 	module: {
@@ -38,10 +39,19 @@ module.exports = {
 			apiMocker(app, path.resolve(__dirname, 'mock/api.js'))
 		},
 	},
-	plugins: [new HtmlWebpackPlugin({
-		template: path.resolve(__dirname, 'app/index.html'),
-		filename: 'index.html'
-	})],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, 'app/index.html'),
+			filename: 'index.html'
+		}),
+		new BundleAnalyzerPlugin({
+			analyzerMode: 'server',
+			analyzerHost: '127.0.0.1',
+			analyzerPort: '20001',
+			reportFilename: 'report.html',
+			openAnalyzer: true
+		})
+	],
 	resolve: {
 		alias: {
 			aliasReducer: path.resolve(__dirname, 'app/reducer/'),
