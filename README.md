@@ -13,5 +13,6 @@
 # 优化
 
 - 拆包
-  每个页面加载所需要的js
   https://zhuanlan.zhihu.com/p/26710831
+  1、将业务代码依赖的公共库代码抽离成 vendor.js(如react react-dom 等)
+  2、用react-loadable结合webpack，支持import动态加载语法，实现按需加载
