@@ -42,7 +42,7 @@ module.exports = {
 			cacheGroups: {
 				commons: {
 					name: 'vendor',
-					chunks: 'initial',
+					chunks: 'all',
 					minChunks: 2,
 				}
 			}
