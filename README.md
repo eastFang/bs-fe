@@ -13,4 +13,5 @@
 # 优化
 
 - 拆包
-  参考： https://blog.csdn.net/qq_16559905/article/details/78551719
+  每个页面加载所需要的js
+  https://zhuanlan.zhihu.com/p/26710831

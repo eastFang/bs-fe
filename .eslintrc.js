@@ -5,15 +5,17 @@ module.exports = {
     "es6": true
   },
   "extends": "eslint:recommended",
+  parser: 'babel-eslint',
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    allowImportExportEverywhere: true,
   },
   "plugins": [
-    "react"
+    "react",
   ],
   "rules": {
     "indent": [
@@ -34,9 +36,10 @@ module.exports = {
     ],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "linebreak-style": ["error", "windows"],
+    // "linebreak-style": ["error", "windows"],
+    "dynamic": true
   },
   globals: {
     __dirname: true
-  }
+  },
 };

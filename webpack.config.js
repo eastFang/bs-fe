@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const apiMocker = require('webpack-api-mocker')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const webpack = require('webpack')
 
 module.exports = {
 	module: {
@@ -24,9 +25,12 @@ module.exports = {
 			loader: 'html-loader'
 		}]
 	},
-	entry: './app/index',
+	entry: {
+		app: './app/index',
+		vendor: ['react', 'flyio', 'react-dom', 'react-router-dom']
+	},
 	output: {
-		filename: 'main.js',
+		chunkFilename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'public')
 	},
 	mode: 'development',
@@ -50,8 +54,19 @@ module.exports = {
 			analyzerPort: '20001',
 			reportFilename: 'report.html',
 			openAnalyzer: true
-		})
+		}),
 	],
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					name: 'vendor',
+					chunks: 'initial',
+					minChunks: 2,
+				}
+			}
+		}
+	},
 	resolve: {
 		alias: {
 			aliasReducer: path.resolve(__dirname, 'app/reducer/'),
