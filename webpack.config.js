@@ -13,6 +13,12 @@ module.exports = {
 		before: (app) => {
 			apiMocker(app, path.resolve(__dirname, 'mock/api.js'))
 		},
+		proxy: {
+			'/api/*': {
+				target: 'http://dev-api.yingchengpeng.com',
+				changeOrigin: true,
+			}
+		}
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

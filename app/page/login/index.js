@@ -11,11 +11,8 @@ export default class extends React.Component {
 	_onSubmit(evt) {
 		evt.preventDefault()
 		const { username, password } = this.refs
-		fly.post('/api/login', {
-			username: username.state.value,
-			password: password.state.value
-		}).then((res) => {
-			if (res.data.status === 'ok') {
+		fly.post(`/api/user/login?name=${username.state.value}&password=${password.state.value}`).then((res) => {
+			if (res.status === 200) {
 				if (confirm('登陆成功，前往首页吗？')) {
 					this.props.history.push('/')
 				}
