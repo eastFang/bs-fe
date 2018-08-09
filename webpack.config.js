@@ -20,7 +20,6 @@ module.exports = {
 			}
 		},
 		disableHostCheck: true,
-		host: '0.0.0.0',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

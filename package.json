@@ -9,7 +9,7 @@
     "compile": "rm -rf public && webpack --watch --config webpack.compile.js",
     "window-compile": "del public && webpack --watch",
     "start": "webpack-dev-server --open",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --host 45.125.17.44"
   },
   "dependencies": {
     "classnames": "^2.2.6",
