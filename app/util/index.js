@@ -1,3 +1,5 @@
+import fly from 'flyio'
+
 /**
  * 
  * @param {一维数组} originArray 
@@ -37,7 +39,21 @@ const getOffsetDateFullInfo = (year, month, offsetDate) => {
 	return { date, year: fullYear, month: fullMonth + 1 }
 }
 
+const flyUtil = ({ url, params, method }) => {
+
+	return fly.request(url, params, {
+		method: (method || 'get').toLowerCase(),
+	}).then((res) => {
+		if (res.status === 200) {
+			return res.data
+		}
+	}).catch((error) => {
+		return Promise.reject(error.response.data)
+	})
+}
+
 export {
 	convert2ElemArray,
 	getOffsetDateFullInfo,
+	flyUtil
 }

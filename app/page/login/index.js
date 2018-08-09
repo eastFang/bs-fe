@@ -1,6 +1,6 @@
 import React from 'react'
-import { Input, Button, Space, PageCommon } from 'aliasComponent'
-import fly from 'flyio'
+import { Input, Button, Space, PageCommon, Message } from 'aliasComponent'
+import { flyUtil } from 'aliasUtil'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -10,13 +10,15 @@ export default class extends React.Component {
 
 	_onSubmit(evt) {
 		evt.preventDefault()
-		const { username, password } = this.refs
-		fly.post(`/api/user/login?name=${username.state.value}&password=${password.state.value}`).then((res) => {
-			if (res.status === 200) {
-				if (confirm('登陆成功，前往首页吗？')) {
-					this.props.history.push('/')
-				}
-			}
+		const { username: { state: { value: name }  }, password: { state: { value: password }} } = this.refs
+		flyUtil({
+			url: `/api/user/login?name=${name}&password=${password}`,
+			params: {},
+			method: 'post'
+		}).then(() => {
+			this.props.history.push('/')
+		}).catch((error) => {
+			Message.error(error.message)
 		})
 	}
 

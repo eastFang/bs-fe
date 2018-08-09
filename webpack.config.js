@@ -18,7 +18,8 @@ module.exports = {
 				target: 'http://dev-api.yingchengpeng.com',
 				changeOrigin: true,
 			}
-		}
+		},
+		disableHostCheck: true
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
