@@ -31,6 +31,10 @@ const AsyncEntrance = Loadable({
 	loader: () => import(/* webpackChunkName: "entrance" */ './entrance/connect'),
 	loading: MyLoadingComponent
 })
+const AsyncUserCenter = Loadable({
+	loader: () => import(/* webpackChunkName: "userCenter" */ './userCenter'),
+	loading: MyLoadingComponent
+})
 
 module.exports = {
 	Home: AsyncHome,
@@ -38,4 +42,5 @@ module.exports = {
 	Login: AsyncLogin,
 	Register: AsyncRegister,
 	Entrance: AsyncEntrance,
+	UserCenter: AsyncUserCenter,
 }

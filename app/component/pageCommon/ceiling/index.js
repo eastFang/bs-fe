@@ -42,7 +42,8 @@ export default class extends React.Component {
 	renderSystemUserOperation() {
 		return (
 			<React.Fragment>
-				<a>退出登录</a>
+				<Link to='/userCenter'>个人中心</Link>
+				<a>退出</a>
 				<Link to='/ui'>组件库</Link>
 			</React.Fragment>
 		)
