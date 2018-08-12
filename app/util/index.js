@@ -39,8 +39,15 @@ const getOffsetDateFullInfo = (year, month, offsetDate) => {
 	return { date, year: fullYear, month: fullMonth + 1 }
 }
 
-const flyUtil = ({ url, params, method }) => {
+// const isJSON = (str) => {
+// 	if (typeof str !== 'string') return false
+// 	return str.match(/({)(.*)(:)/) && typeof JSON.parse(str) === 'object'
+// }
 
+const flyUtil = ({ url, params, method }) => {
+	const opts = {
+		method: (method || 'get').toLowerCase(),
+	}
 	return fly.request(url, params, {
 		method: (method || 'get').toLowerCase(),
 	}).then((res) => {
