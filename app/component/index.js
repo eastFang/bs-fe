@@ -4,6 +4,7 @@ import Input from './input'
 import DatePicker from './datepicker'
 import Space from './space'
 import PageCommonPassport from './pageCommon/passport'
+import PageCommonCeiling from './pageCommon/ceiling'
 import Modal from './modal'
 import Message from './message'
 
@@ -15,6 +16,7 @@ module.exports = {
 	Space,
 	PageCommon: {
 		Passport: PageCommonPassport,
+		Ceiling: PageCommonCeiling,
 	},
 	Modal,
 	Message,
