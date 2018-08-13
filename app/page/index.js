@@ -35,6 +35,10 @@ const AsyncUserCenter = Loadable({
 	loader: () => import(/* webpackChunkName: "userCenter" */ './userCenter'),
 	loading: MyLoadingComponent
 })
+const AsyncWrapForm = Loadable({
+	loader: () => import(/* webpackChunkName: "wrapForm" */ './wrapForm'),
+	loading: MyLoadingComponent
+})
 
 module.exports = {
 	Home: AsyncHome,
@@ -43,4 +47,5 @@ module.exports = {
 	Register: AsyncRegister,
 	Entrance: AsyncEntrance,
 	UserCenter: AsyncUserCenter,
+	WrapForm: AsyncWrapForm,
 }
