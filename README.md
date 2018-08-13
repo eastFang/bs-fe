@@ -18,4 +18,5 @@ https://zhuanlan.zhihu.com/p/26710831<br>
 2、用react-loadable结合webpack，支持import动态加载语法，实现按需加载
 
 # 启动
+- npm i
 - npm run start（如果无法启动成功，恭喜你，你入坑了，请找eastFang）
