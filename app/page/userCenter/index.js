@@ -1,6 +1,6 @@
 import React from 'react'
 import { flyUtil } from 'aliasUtil'
-import { PageCommon } from 'aliasComponent'
+import { PageCommon, Modal } from 'aliasComponent'
 import './index.scss'
 
 export default class extends React.Component {
@@ -9,6 +9,7 @@ export default class extends React.Component {
 		this.state = {
 			userFullInfo: ''
 		}
+		this._onEditInfo = this._onEditInfo.bind(this)
 	}
   
 	fetchUserFullInfo() {
@@ -24,6 +25,10 @@ export default class extends React.Component {
 		this.fetchUserFullInfo()
 	}
 
+	_onEditInfo() {
+		this.refs.editModal.show()
+	}
+
 	renderUserFullInfoDetail() {
 		const {
 			name, mobile, email,
@@ -33,7 +38,10 @@ export default class extends React.Component {
 		} = this.state.userFullInfo
 		return (
 			<div className='detail'>
-				<p>我的信息</p>
+				<p>
+					<span>我的信息</span>
+					<a className='edit-a' onClick={this._onEditInfo}>编辑</a>
+				</p>
 				<ul className='ul'>
 					<li><span className='label-span'>用户名: </span>{name}</li>
 					<li><span className='label-span'>手机号: </span>{mobile}</li>
@@ -49,6 +57,13 @@ export default class extends React.Component {
 		)
 	}
 
+	renderUserEditModal() {
+		return (
+			<Modal title='编辑信息' ref='editModal'>
+			</Modal>
+		)
+	}
+
 	render() {
 		if (!this.state.userFullInfo) {
 			return null
@@ -58,6 +73,7 @@ export default class extends React.Component {
 			<div className='center-wrap'>
 				<PageCommon.Ceiling />
 				{this.renderUserFullInfoDetail()}
+				{this.renderUserEditModal()}
 			</div>
 		)
 	}
