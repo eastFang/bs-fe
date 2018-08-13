@@ -9,6 +9,7 @@
 - redux、react-redux
 - flyio、webpack-api-mocker
 - prop-types
+- file-loader
 
 # 优化
 

@@ -35,24 +35,33 @@ module.exports = {
 		}),
 	],
 	module: {
-		rules: [{
-			test: /\.(js|jsx|es6)$/,
-			include: [path.resolve(__dirname, 'app')],
-			exclude: /node_modules/,
-			loader: 'babel-loader',
-		}, {
-			test: /\.(scss|css)$/,
-			use: [{
-				loader: 'style-loader'
-			}, {
-				loader: 'css-loader'
-			}, {
-				loader: 'sass-loader'
-			}]
-		}, {
-			test: /\.(html)$/,
-			loader: 'html-loader'
-		}]
+		rules:
+		[
+			{
+				test: /\.(js|jsx|es6)$/,
+				include: [path.resolve(__dirname, 'app')],
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+			},
+			{
+				test: /\.(scss|css)$/,
+				use: [{
+					loader: 'style-loader'
+				}, {
+					loader: 'css-loader'
+				}, {
+					loader: 'sass-loader'
+				}]
+			},
+			{
+				test: /\.(html)$/,
+				loader: 'html-loader'
+			},
+			{
+				test: /\.(png|jpg)$/,
+				loader: 'file-loader'
+			}
+		]
 	},
 	entry: {
 		app: './app/index',
