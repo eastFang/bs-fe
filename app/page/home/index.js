@@ -14,7 +14,7 @@ export default class extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<PageCommon.Ceiling history={this.props.history} />
+				<PageCommon.Ceiling />
 			</React.Fragment>
 		)
 	}

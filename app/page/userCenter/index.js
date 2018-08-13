@@ -56,7 +56,7 @@ export default class extends React.Component {
 
 		return (
 			<div className='center-wrap'>
-				<PageCommon.Ceiling history={this.props.history} />
+				<PageCommon.Ceiling />
 				{this.renderUserFullInfoDetail()}
 			</div>
 		)

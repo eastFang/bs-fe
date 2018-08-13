@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { flyUtil } from 'aliasUtil'
 import './index.scss'
 
-export default class extends React.Component {
+class Ceiling extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -70,3 +70,5 @@ export default class extends React.Component {
 		)
 	}
 }
+
+export default withRouter(Ceiling)
