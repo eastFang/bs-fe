@@ -19,6 +19,12 @@ class Input extends React.Component {
 		this.props.onChange && this.props.onChange()
 	}
 
+	componentDidMount() {
+		if (this.props.name) {
+			this.context.formList[this.props.name] = this
+		}
+	}
+	
 	getInputClass(size) {
 		return classnames(
 			'bs-input',
@@ -39,6 +45,10 @@ Input.propTypes = {
 
 Input.defaultProps = {
 	size: 'default'
+}
+
+Input.contextTypes = {
+	formList: PropTypes.object
 }
 
 export default Input
