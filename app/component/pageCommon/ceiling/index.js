@@ -9,6 +9,7 @@ export default class extends React.Component {
 		this.state = {
 			userInfo: null,
 		}
+		this._onLogout = this._onLogout.bind(this)
 	}
 
 	fetchUserInfo() {
@@ -22,6 +23,13 @@ export default class extends React.Component {
 
 	componentDidMount() {
 		this.fetchUserInfo()
+	}
+
+	_onLogout() {
+		flyUtil({ url: '/api/user/logout', method: 'post' })
+			.then(() => {
+				this.props.history.push('/')
+			})
 	}
 
 	/**
@@ -43,7 +51,7 @@ export default class extends React.Component {
 		return (
 			<React.Fragment>
 				<Link to='/userCenter'>个人中心</Link>
-				<a>退出</a>
+				<a onClick={this._onLogout}>退出</a>
 				<Link to='/ui'>组件库</Link>
 			</React.Fragment>
 		)
