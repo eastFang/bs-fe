@@ -12,6 +12,7 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
+    "braft-editor": "^1.9.8",
     "classnames": "^2.2.6",
     "flyio": "^0.5.9",
     "lodash": "^4.17.10",

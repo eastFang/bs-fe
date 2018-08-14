@@ -6,6 +6,7 @@ import EgCeiling from './ceiling'
 import EgModal from './modal-eg'
 import EgMessage from './message-eg'
 import EgUpload from './upload-eg'
+import EgEditor from './editor-eg'
 
 module.exports = {
 	EgButton,
@@ -16,4 +17,5 @@ module.exports = {
 	EgModal,
 	EgMessage,
 	EgUpload,
+	EgEditor,
 }

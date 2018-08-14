@@ -33,6 +33,11 @@ const data = [
 		id: 'upload',
 		title: '文件上传',
 		text: 'Upload'
+	},
+	{
+		id: 'editor',
+		title: '编辑器',
+		text: 'Editor'
 	}
 ]
 

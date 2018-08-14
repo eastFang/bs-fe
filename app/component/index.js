@@ -9,6 +9,7 @@ import Modal from './modal'
 import Message from './message'
 import Form from './form'
 import Upload from './upload'
+import Editor from './eidtor'
 
 module.exports = {
 	Button,
@@ -24,4 +25,5 @@ module.exports = {
 	Message,
 	Form,
 	Upload,
+	Editor,
 }

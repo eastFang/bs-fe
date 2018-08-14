@@ -10,6 +10,7 @@
 - flyio、webpack-api-mocker
 - prop-types
 - file-loader
+- braft-editor
 
 # 优化
 
