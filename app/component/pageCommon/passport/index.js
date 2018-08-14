@@ -23,6 +23,3 @@ Passport.propTypes = {
 }
 
 export default Passport
-
-
-

@@ -8,6 +8,7 @@ import PageCommonCeiling from './pageCommon/ceiling'
 import Modal from './modal'
 import Message from './message'
 import Form from './form'
+import Upload from './upload'
 
 module.exports = {
 	Button,
@@ -22,4 +23,5 @@ module.exports = {
 	Modal,
 	Message,
 	Form,
+	Upload,
 }

@@ -28,6 +28,11 @@ const data = [
 		id: 'message',
 		title: '消息',
 		text: 'Message'
+	},
+	{
+		id: 'upload',
+		title: '文件上传',
+		text: 'Upload'
 	}
 ]
 

@@ -20,7 +20,7 @@ class Input extends React.Component {
 	}
 
 	componentDidMount() {
-		if (this.props.name) {
+		if (this.props.name && this.context.formList) {
 			this.context.formList[this.props.name] = this
 		}
 	}

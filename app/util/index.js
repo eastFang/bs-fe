@@ -44,13 +44,12 @@ const getOffsetDateFullInfo = (year, month, offsetDate) => {
 // 	return str.match(/({)(.*)(:)/) && typeof JSON.parse(str) === 'object'
 // }
 
-const flyUtil = ({ url, params, method }) => {
+const flyUtil = ({ url, params, method, ...others }) => {
 	const opts = {
 		method: (method || 'get').toLowerCase(),
+		...others
 	}
-	return fly.request(url, params, {
-		method: (method || 'get').toLowerCase(),
-	}).then((res) => {
+	return fly.request(url, params, opts).then((res) => {
 		if (res.status === 200) {
 			return res.data
 		}
