@@ -24,6 +24,7 @@ class Field extends React.Component {
 	getClassName() {
 		return classnames(
 			'field',
+			this.props.className
 		)
 	}
   
