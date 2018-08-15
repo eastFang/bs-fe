@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Button, Space, PageCommon, Message } from 'aliasComponent'
+import { Input, Button, Space, PageCommon, Message, Form } from 'aliasComponent'
 import { flyUtil } from 'aliasUtil'
 
 export default class extends React.Component {
@@ -8,9 +8,9 @@ export default class extends React.Component {
 		this._onSubmit = this._onSubmit.bind(this)
 	}
 
-	_onSubmit(evt) {
+	_onSubmit(evt, data) {
 		evt.preventDefault()
-		const { username: { state: { value: name }  }, password: { state: { value: password }} } = this.refs
+		const { name, password } = data 
 		flyUtil({
 			url: `/api/user/login?name=${name}&password=${password}`,
 			params: {},
@@ -25,14 +25,24 @@ export default class extends React.Component {
 	render() {
 		return (
 			<PageCommon.Passport passportBoxTitle='账号登录'>
-				<form onSubmit={this._onSubmit}>
+				<Form onSubmit={this._onSubmit}>
 					<Space height={24}/>
-					<Input name='username' ref='username' placeholder='用户名' size='large'/>
+					<Form.Field
+						name='name'
+						empty='请输入用户名'
+						required>
+						<Input placeholder='用户名' size='large'/>
+					</Form.Field>
 					<Space height={24}/>
-					<Input name='password' ref='password' placeholder='密码' size='large' type='password'/>
+					<Form.Field
+						name='password'
+						empty='请输入用户名'
+						required>
+						<Input placeholder='密码' size='large' type='password'/>
+					</Form.Field>
 					<Space height={24}/>
 					<Button type='primary' title='登录' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
-				</form>
+				</Form>
 			</PageCommon.Passport>
 		)
 	}

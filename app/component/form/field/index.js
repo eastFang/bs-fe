@@ -1,15 +1,35 @@
 import React from 'react'
+import classnames from 'classnames'
 import './index.scss'
 
 class Field extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+	}
+
+	// showError() {
+	// 	// this.setState({
+	// 	// 	error: true,
+	// 	// })
+	// 	Message.error(this.props.error)
+	// }
+
+	// showEmpty() {
+	// 	// this.setState({
+	// 	// 	empty: false,
+	// 	// })
+	// 	Message.error(this.props.empty)
+	// }
+
+	getClassName() {
+		return classnames(
+			'field',
+		)
 	}
   
 	render() {
 		return (
-			<div className='field'>
+			<div className={this.getClassName()}>
 				{this.props.label && <label>{this.props.label}</label>}
 				{
 					React.Children.map(this.props.children, (child) => {
