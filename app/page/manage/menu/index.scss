@@ -1,0 +1,22 @@
+@import "aliasComponent/theme.scss";
+
+.manage-menu-ul {
+  overflow: hidden;
+  border-bottom: 1px solid $color-border;
+  
+  li {
+    float: left;
+    padding: 10px 15px;
+    line-height: 20px;
+    font-size: 16px;
+    color: $color-text3;
+    
+    & + li {
+      border-left: 1px solid $color-border;
+    }
+
+    .active {
+      color: $color-primary;
+    }
+  }
+}

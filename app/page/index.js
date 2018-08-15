@@ -39,6 +39,18 @@ const AsyncWrapForm = Loadable({
 	loader: () => import(/* webpackChunkName: "wrapForm" */ './wrapForm'),
 	loading: MyLoadingComponent
 })
+const AsyncManageCateogry = Loadable({
+	loader: () => import(/* webpackChunkName: "manageCategory" */ './manage/category'),
+	loading: MyLoadingComponent
+})
+const AsyncManageArticle = Loadable({
+	loader: () => import(/* webpackChunkName: "manageArticle" */ './manage/article'),
+	loading: MyLoadingComponent
+})
+const AsyncUserList = Loadable({
+	loader: () => import(/* webpackChunkName: "manageUser" */ './manage/user'),
+	loading: MyLoadingComponent
+})
 
 module.exports = {
 	Home: AsyncHome,
@@ -48,4 +60,9 @@ module.exports = {
 	Entrance: AsyncEntrance,
 	UserCenter: AsyncUserCenter,
 	WrapForm: AsyncWrapForm,
+	Manage: {
+		Category: AsyncManageCateogry,
+		Article: AsyncManageArticle,
+		User: AsyncUserList,
+	},
 }

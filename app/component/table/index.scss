@@ -1,0 +1,43 @@
+@import 'aliasComponent/theme.scss';
+
+table {
+  width: 100%;
+  border-spacing: 0;
+
+  thead {
+    background-color: $smoke;
+
+    th {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid $color-border;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  td {
+    padding: 16px;
+    text-align: left;
+    color: $color-text3;
+    
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  tbody {
+    td {
+      border-bottom: 1px solid $color-border;
+    }
+  }
+
+  tfoot {
+
+    .bs-pagination {
+      float: right;
+    }
+  }
+}

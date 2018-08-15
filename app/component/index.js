@@ -10,6 +10,7 @@ import Message from './message'
 import Form from './form'
 import Upload from './upload'
 import Editor from './eidtor'
+import Table from './table'
 
 module.exports = {
 	Button,
@@ -26,4 +27,5 @@ module.exports = {
 	Form,
 	Upload,
 	Editor,
+	Table,
 }

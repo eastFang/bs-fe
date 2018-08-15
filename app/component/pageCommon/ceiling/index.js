@@ -50,6 +50,7 @@ class Ceiling extends React.Component {
 	renderSystemUserOperation() {
 		return (
 			<React.Fragment>
+				<Link to='/category'>管理中心</Link>
 				<Link to='/userCenter'>个人中心</Link>
 				<a onClick={this._onLogout}>退出</a>
 				<Link to='/ui'>组件库</Link>

@@ -1,12 +1,12 @@
 import React from 'react'
-import { Upload } from 'aliasComponent'
+import { Table } from 'aliasComponent'
 
 export default class extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h3>上传</h3>
-				<Upload />
+				<h3>表格</h3>
+				<Table />
 			</React.Fragment>
 		)
 	}

@@ -58,8 +58,20 @@ const flyUtil = ({ url, params, method, ...others }) => {
 	})
 }
 
+const formatDate = (timestamp) => {
+	const dateO = new Date(timestamp)
+	const year = dateO.getFullYear()
+	const month = dateO.getMonth()
+	const date = dateO.getDate()
+	const hour = dateO.getHours()
+	const minute = dateO.getMinutes()
+	const second = dateO.getSeconds()
+	return `${year}-${month}-${date} ${hour}:${minute}:${second}`
+}
+
 export {
 	convert2ElemArray,
 	getOffsetDateFullInfo,
-	flyUtil
+	flyUtil,
+	formatDate,
 }

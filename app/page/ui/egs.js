@@ -7,6 +7,7 @@ import EgModal from './modal-eg'
 import EgMessage from './message-eg'
 import EgUpload from './upload-eg'
 import EgEditor from './editor-eg'
+import EgTable from './table-eg'
 
 module.exports = {
 	EgButton,
@@ -18,4 +19,5 @@ module.exports = {
 	EgMessage,
 	EgUpload,
 	EgEditor,
+	EgTable,
 }

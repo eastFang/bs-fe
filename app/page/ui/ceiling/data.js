@@ -38,6 +38,11 @@ const data = [
 		id: 'editor',
 		title: '编辑器',
 		text: 'Editor'
+	},
+	{
+		id: 'table',
+		title: '表格',
+		text: 'Table'
 	}
 ]
 
