@@ -43,8 +43,16 @@ const AsyncManageCateogry = Loadable({
 	loader: () => import(/* webpackChunkName: "manageCategory" */ './manage/category'),
 	loading: MyLoadingComponent
 })
+const AsyncManageLabel = Loadable({
+	loader: () =>  import(/* webpackChunkName: "manageLabel" */ './manage/label'),
+	loading: MyLoadingComponent
+})
 const AsyncManageArticle = Loadable({
 	loader: () => import(/* webpackChunkName: "manageArticle" */ './manage/article'),
+	loading: MyLoadingComponent
+})
+const AsyncManageArticleAdd = Loadable({
+	loader: () => import(/* webpackChunkName: "manageArticleAdd" */ './manage/article/add'),
 	loading: MyLoadingComponent
 })
 const AsyncUserList = Loadable({
@@ -62,7 +70,11 @@ module.exports = {
 	WrapForm: AsyncWrapForm,
 	Manage: {
 		Category: AsyncManageCateogry,
-		Article: AsyncManageArticle,
+		Label: AsyncManageLabel,
+		Article: {
+			List: AsyncManageArticle,
+			Add: AsyncManageArticleAdd,
+		},
 		User: AsyncUserList,
 	},
 }

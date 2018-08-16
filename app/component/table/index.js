@@ -11,7 +11,9 @@ export default class extends React.Component {
 		const tdList = []
 		let index = 0
 		for(let item in itemData) {
-			console.log(this.props.columns, index, this.props.columns[index])
+			if (index === this.props.columns.length) {
+				break
+			}
 			const tdVal = itemData[this.props.columns[index].key]
 			const render = this.props.columns[index].render
 			tdList.push(<td key={index}>{render ? render(tdVal) : tdVal}</td>)

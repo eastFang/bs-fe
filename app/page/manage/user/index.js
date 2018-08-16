@@ -1,6 +1,6 @@
 import React from 'react'
-import { PageCommon, Table } from 'aliasComponent'
-import Menu from '../menu'
+import { Table } from 'aliasComponent'
+import ManageCommonPage from '../common/page'
 import { flyUtil, formatDate } from 'aliasUtil'
 
 export default class extends React.Component {
@@ -57,11 +57,9 @@ export default class extends React.Component {
 	render() {
 		const { dataSource, total } = this.state
 		return (
-			<React.Fragment>
-				<PageCommon.Ceiling />
-				<Menu />
+			<ManageCommonPage>
 				<Table dataSource={dataSource} total={total} columns={this.columns} />
-			</React.Fragment>
+			</ManageCommonPage>
 		)
 	}
 }

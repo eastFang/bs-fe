@@ -12,7 +12,8 @@ class Button extends React.Component {
 		return classnames(
 			'bs-btn',
 			`bs-btn-${type}`,
-			`bs-btn-size-${size}`, 
+			`bs-btn-size-${size}`,
+			this.props.className
 		)
 	}
 
@@ -22,6 +23,7 @@ class Button extends React.Component {
 			title,
 			size,
 			href,
+			className,
 			...others
 		} = this.props
 		const btnClass = this.getBtnClass(type, size)

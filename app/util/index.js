@@ -61,7 +61,7 @@ const flyUtil = ({ url, params, method, ...others }) => {
 const formatDate = (timestamp) => {
 	const dateO = new Date(timestamp)
 	const year = dateO.getFullYear()
-	const month = dateO.getMonth()
+	const month = dateO.getMonth() + 1
 	const date = dateO.getDate()
 	const hour = dateO.getHours()
 	const minute = dateO.getMinutes()

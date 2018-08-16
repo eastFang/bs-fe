@@ -14,7 +14,7 @@ export default class extends React.Component {
 			title: 'id',
 			key: 'id'
 		}, {
-			title: '分类名称',
+			title: '标签名称',
 			key: 'name',
 		}, {
 			title: '创建时间',
@@ -27,17 +27,23 @@ export default class extends React.Component {
 			key: 'updatedAt',
 			render: (updatedAt) => {
 				return formatDate(updatedAt)
+			},
+		}, {
+			title: '状态',
+			key: 'visible',
+			render: (visible) => {
+				return visible === 0 ? '不可见' : '可见'
 			}
 		}]
 		this._onSubmit = this._onSubmit.bind(this)
 	}
-	
+  
 	componentDidMount() {
-		this.fetchCategoryList()
+		this.fetchLabelList()
 	}
 
-	fetchCategoryList() {
-		flyUtil({ url: '/api/category/paging' })
+	fetchLabelList() {
+		flyUtil({ url: '/api/label/paging' })
 			.then((res) => {
 				const { total, datas } = res
 				this.setState({
@@ -45,27 +51,28 @@ export default class extends React.Component {
 				})
 			})
 	}
-
+  
 	_onSubmit(evt, data) {
 		evt.preventDefault()
-		flyUtil({ url: '/api/category', params: data, method: 'post' })
+		data.visible = false
+		flyUtil({ url: '/api/label', params: data, method: 'post' })
 			.then(() => {
 				alert('创建成功')
-				this.refs.addCategory.close()
+				this.refs.addLabel.close()
 			})
 	}
-
+  
 	render() {
 		const { dataSource, total } = this.state
 		return (
 			<ManageCommonPage>
-				<Button type='primary' title='新建类目' onClick={() => this.refs.addCategory.show()}/>
-				<Space height={16}/>
+				<Button type='primary' title='新建标签' onClick={() => this.refs.addLabel.show()} />
+				<Space height={16} />
 				<Table dataSource={dataSource} total={total} columns={this.columns} />
-				<Modal title='新建类目' ref='addCategory' noFooter>
+				<Modal title='新建标签' ref='addLabel' noFooter>
 					<Form onSubmit={this._onSubmit}>
 						<Form.Field label='名称' name='name' required>
-							<Input placeholder='类目名称' />
+							<Input placeholder='标签名称' />
 						</Form.Field>
 						<Button className='pull-right' type='primary' title='提交' />
 					</Form>

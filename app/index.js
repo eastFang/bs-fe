@@ -27,7 +27,9 @@ const App = () => {
 					<Route path='/userCenter' component={UserCenter}></Route>
 					<Route path='/wrapForm' component={WrapForm}></Route>
 					<Route path='/category' component={Manage.Category}></Route>
-					<Route path='/article' component={Manage.Article}></Route>
+					<Route path='/label' component={Manage.Label}></Route>
+					<Route path='/article' component={Manage.Article.List}></Route>
+					<Route path='/addArticle' component={Manage.Article.Add}></Route>
 					<Route path='/user' component={Manage.User}></Route>
 				</Switch>
 			</Router>

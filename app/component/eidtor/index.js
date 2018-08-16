@@ -1,6 +1,7 @@
 import React from 'react'
 import BraftEditor from 'braft-editor'
 import 'braft-editor/dist/braft.css'
+import './index.scss'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -62,7 +63,11 @@ export default class extends React.Component {
 	}
  
 	render() {
-		return <BraftEditor media={this.meida()} ref={instance => this.editorInstance = instance} {...this.props}/>
+		return (
+			<div className='editor-wrap'>
+				<BraftEditor media={this.meida()} ref={instance => this.editorInstance = instance} {...this.props}/>
+			</div>
+		)
 	}
 }
 
