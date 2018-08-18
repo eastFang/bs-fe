@@ -8,7 +8,9 @@ class Form extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			formList: {}
+			formList: {},
+			errorField: null,
+			emptyField: null,
 		}
 		this._onSubmit = this._onSubmit.bind(this)
 	}
@@ -37,15 +39,23 @@ class Form extends React.Component {
 		let index = 0
 		const formData = {}
 		for(let field of filedList) {
-			const { required, empty, pattern, value, error, name } = field
+			const { required, pattern, value, name } = field
 			if (required && !value) {
-				Message.error(empty)
+				this.setState({
+					emptyField: name,
+				})
 				break
 			}
 			if (value && pattern && !pattern.test(value)) {
-				Message.error(error)
+				this.setState({
+					errorField: name,
+				})
 				break
 			}
+			this.setState({
+				emptyField: null,
+				errorField: null,
+			})
 			index ++
 			formData[name] = value
 		}
@@ -58,7 +68,12 @@ class Form extends React.Component {
 		return (
 			<form onSubmit={this._onSubmit}>
 				{
-					this.props.children	
+					React.Children.map(this.props.children, (child) => {
+						return React.cloneElement(child, {
+							errorfield: this.state.errorField,
+							emptyfield: this.state.emptyField,
+						})
+					})
 				}
 			</form>
 		)

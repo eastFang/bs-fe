@@ -69,8 +69,7 @@ class Select extends React.Component {
 			<ul style={this.showAreaDomStyle} className='bs-select-optionallist'>
 				{
 					React.Children.map(this.props.children, (child) => {
-						const newChild = React.cloneElement(child, this.providerChildrenProps())
-						return newChild
+						return React.cloneElement(child, this.providerChildrenProps())
 					})
 				}
 			</ul>

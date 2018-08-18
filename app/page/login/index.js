@@ -18,7 +18,7 @@ export default class extends React.Component {
 		}).then(() => {
 			this.props.history.push('/')
 		}).catch((error) => {
-			Message.error(error.message)
+			Message.error(error)
 		})
 	}
 
@@ -36,7 +36,7 @@ export default class extends React.Component {
 					<Space height={24}/>
 					<Form.Field
 						name='password'
-						empty='请输入用户名'
+						empty='请输入密码'
 						required>
 						<Input placeholder='密码' size='large' type='password'/>
 					</Form.Field>

@@ -1,36 +1,45 @@
 import React from 'react'
 import classnames from 'classnames'
+// import Message from '../../message'
 import './index.scss'
 
 class Field extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			error: false,
+			empty: false,
+		}
 	}
 
-	// showError() {
-	// 	// this.setState({
-	// 	// 	error: true,
-	// 	// })
-	// 	Message.error(this.props.error)
-	// }
+	showError(isError) {
+		this.setState({
+			error: isError,
+		})
+	}
 
-	// showEmpty() {
-	// 	// this.setState({
-	// 	// 	empty: false,
-	// 	// })
-	// 	Message.error(this.props.empty)
-	// }
+	showEmpty(isEmpty) {
+		this.setState({
+			empty: isEmpty,
+		})
+	}
 
-	getClassName() {
-		return classnames(
-			'field',
-			this.props.className
-		)
+	componentWillReceiveProps(nextProps) {
+		this.showEmpty(nextProps.emptyfield === nextProps.name)
+		this.showError(nextProps.errorfield === nextProps.name)
 	}
   
 	render() {
+		const className = classnames(
+			'field',
+			this.props.className,
+			{
+				empty: !!this.state.empty,
+				error: !!this.state.error,
+			}
+		) 
 		return (
-			<div className={this.getClassName()}>
+			<div className={className}>
 				{this.props.label && <label>{this.props.label}</label>}
 				{
 					React.Children.map(this.props.children, (child) => {
@@ -39,8 +48,14 @@ class Field extends React.Component {
 						})
 					})
 				}
-				<span className='note-error'>{this.props.error}</span>
-				<span className='note-empty'>{this.props.empty}</span>
+				<span className='note-error'>
+					<i className='iconfont icon-error'></i>
+					{this.props.error}
+				</span>
+				<span className='note-empty'>
+					<i className='iconfont icon-error'></i>
+					{this.props.empty}
+				</span>
 			</div>
 		)
 	}
