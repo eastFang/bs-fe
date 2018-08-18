@@ -1,9 +1,10 @@
 import Loadable from 'react-loadable'
 import React from 'react'
+import { PageCommon } from 'aliasComponent'
 
 const MyLoadingComponent = ({ isLoading, error}) => {
 	if (isLoading) {
-		return <div>Loading</div>
+		return <PageCommon.Loading />
 	} else if (error) {
 		return <div>sorry</div>
 	} else {

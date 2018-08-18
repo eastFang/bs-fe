@@ -5,12 +5,14 @@ import DatePicker from './datepicker'
 import Space from './space'
 import PageCommonPassport from './pageCommon/passport'
 import PageCommonCeiling from './pageCommon/ceiling'
+import PageCommonLoading from './pageCommon/loading'
 import Modal from './modal'
 import Message from './message'
 import Form from './form'
 import Upload from './upload'
 import Editor from './eidtor'
 import Table from './table'
+import Select from './select'
 
 module.exports = {
 	Button,
@@ -21,6 +23,7 @@ module.exports = {
 	PageCommon: {
 		Passport: PageCommonPassport,
 		Ceiling: PageCommonCeiling,
+		Loading: PageCommonLoading
 	},
 	Modal,
 	Message,
@@ -28,4 +31,5 @@ module.exports = {
 	Upload,
 	Editor,
 	Table,
+	Select
 }

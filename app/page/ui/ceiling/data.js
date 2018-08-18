@@ -43,6 +43,11 @@ const data = [
 		id: 'table',
 		title: '表格',
 		text: 'Table'
+	},
+	{
+		id: 'select',
+		title: '选择框',
+		text: 'Select'
 	}
 ]
 

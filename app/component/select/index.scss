@@ -1,0 +1,33 @@
+@import 'aliasComponent/theme.scss';
+
+.bs-select {
+  width: 160px;
+  display: inline-block;
+  
+  .bs-select-showarea {
+    border: 1px solid $color-border;
+    line-height: 30px;
+    padding: 0 10px;
+    border-radius: 4px;
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+.bs-select-optionallist {
+  position: absolute;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px $smoke;
+  transition: all ease .2s;
+  cursor: pointer;
+
+  li {
+    line-height: 30px;
+    padding: 0 10px;
+
+    &.selected {
+      background-color: $smoke;
+    }
+  }
+}

@@ -10,6 +10,7 @@ import {
 	EgUpload,
 	EgEditor,
 	EgTable,
+	EgSelect,
 } from './egs'
 import './index.scss'
 
@@ -28,6 +29,7 @@ export default class extends React.Component {
 				<div id='upload'><EgUpload /></div>
 				<div id='editor'><EgEditor /></div>
 				<div id='table'><EgTable /></div>
+				<div id='select'><EgSelect /></div>
 			</div>
 		)
 	}

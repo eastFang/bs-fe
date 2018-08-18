@@ -1,25 +1,18 @@
 import React from 'react'
 import Pagination from '../pagination'
+import PropTypes from 'prop-types'
 import './index.scss'
 
-export default class extends React.Component {
+class Table extends React.Component {
 	constructor(props) {
 		super(props)
 	}
 
 	getItemTdList(itemData) {
-		const tdList = []
-		let index = 0
-		for(let item in itemData) {
-			if (index === this.props.columns.length) {
-				break
-			}
-			const tdVal = itemData[this.props.columns[index].key]
-			const render = this.props.columns[index].render
-			tdList.push(<td key={index}>{render ? render(tdVal) : tdVal}</td>)
-			index++	
-		}
-		return tdList
+		return this.props.columns.map(({ key, render }, index) => {
+			const tdVal = itemData[key]
+			return <td key={index}>{render ? render(tdVal) : tdVal}</td>
+		})
 	}
   
 	render() {
@@ -62,3 +55,33 @@ export default class extends React.Component {
 		)
 	}
 }
+
+Table.propTypes = {
+	columns: PropTypes.array,
+	dataSource: PropTypes.array,
+	total: PropTypes.number
+}
+
+const defaultColumns = [
+	{
+		key: 'index1',
+		title: '列1',
+	},
+	{
+		key: 'index2',
+		title: '列2',
+	}
+]
+
+const defaultDataSource = [{
+	index1: '列1数据',
+	index2: '列2数据'
+}]
+
+Table.defaultProps = {
+	columns: defaultColumns,
+	dataSource: defaultDataSource,
+	total: 2
+}
+
+export default Table
