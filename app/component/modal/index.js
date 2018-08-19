@@ -42,15 +42,10 @@ class Modal extends React.Component {
 		)
 	}
 
-	onOK(evt) {
-		this.props.onOK && this.props.onOK(evt)
-	}
-
 	renderModal() {
 		const {
 			title,
 			onOK,
-			noFooter,
 		} = this.props
 		return (
 			<div className={this.getClass()} onClick={this.close}>
@@ -62,18 +57,14 @@ class Modal extends React.Component {
 					<div className='bs-modal-body'>
 						{this.props.children}
 					</div>
-					{
-						noFooter
-							? null
-							: <div className='bs-modal-footer'>
-								<Button title='关闭' onClick={this.close}/>
-								{
-									onOK
-										? <Button title='确定' type='primary' onClick={this.onOK.bind(this)} />
-										: null
-								}
-							</div>
-					}
+					<div className='bs-modal-footer'>
+						<Button title='关闭' onClick={this.close}/>
+						{
+							onOK
+								? <Button title='确定' type='primary' onClick={onOK} />
+								: null
+						}
+					</div>
 				</div>
 			</div>
 		)

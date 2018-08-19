@@ -1,6 +1,5 @@
 import React from 'react'
 import Field from './field'
-import Message from '../message'
 import PropTypes from 'prop-types'
 import './index.scss'
 

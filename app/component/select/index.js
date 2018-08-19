@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Option from './option'
 import './index.scss'
@@ -9,11 +10,18 @@ const portalRoot = document.getElementById('portal')
 class Select extends React.Component {
 	constructor(props) {
 		super(props)
-		const optionalList = React.Children.map(this.props.children, (child) => child.props.children)
+		const valueList = []
+		const optionalList = []
+		React.Children.forEach(this.props.children, (child) => {
+			optionalList.push(child.props.children)
+			valueList.push(child.props.value)
+		})
 		const selected = optionalList ? optionalList[0] : '请选择'
+		const value = valueList ? valueList[0] : null
 		this.state = {
 			isOpen: false, // optionlist 是否打开,
-			selected
+			selected,
+			value,
 		}
 		this.showAreaRef = React.createRef()
 		this._onToggleOptionalList = this._onToggleOptionalList.bind(this)
@@ -28,6 +36,7 @@ class Select extends React.Component {
 			top: `${scrollTop + top + height + 5}px`,
 			left: `${left}px`,
 		}
+		this.context.formList[this.props.name] = this
 	}
 
 	_onToggleOptionalList() {
@@ -39,8 +48,8 @@ class Select extends React.Component {
 	providerChildrenProps() {
 		const onToggleOptionalList = this._onToggleOptionalList
 		const currentSelectedVal = this.state.selected
-		const setSelectedVal = (childVal) => {
-			this.setState({ selected: childVal })
+		const setSelectedVal = (childVal, propVal) => {
+			this.setState({ selected: childVal, value: propVal })
 		}
 		return { onToggleOptionalList, setSelectedVal, currentSelectedVal }
 	}
@@ -85,6 +94,10 @@ class Select extends React.Component {
 			</div>
 		)
 	}
+}
+
+Select.contextTypes = {
+	formList: PropTypes.object
 }
 
 Select.Option = Option

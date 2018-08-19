@@ -8,9 +8,9 @@ export default class extends React.Component {
 	}
 
 	_onClick() {
-		const { onToggleOptionalList, setSelectedVal, children } = this.props
+		const { onToggleOptionalList, setSelectedVal, children, value } = this.props
 		onToggleOptionalList()
-		setSelectedVal(children)
+		setSelectedVal(children, value)
 	}
 
 	render() {
