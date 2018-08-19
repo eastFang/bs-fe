@@ -20,7 +20,7 @@ class Table extends React.Component {
 		if (!(dataSource && columns && dataSource.length && columns.length)) return null
 
 		return (
-			<table>
+			<table className='table'>
 				<thead>
 					<tr>
 						{
