@@ -37,20 +37,16 @@ export default class extends React.Component {
 		return (
 			<PageCommon.Passport passportBoxTitle='账号注册'>
 				<Form onSubmit={this._onSubmit}>
-					<Space height={24}/>
 					<Form.Field name='name' error='请输入用户名' required>
 						<Input size='large' placeholder='用户名'/>
 					</Form.Field>
-					<Space height={24} />
 					<Form.Field className='captcha-wrap' name='captcha' error='请输入验证码' required>
 						<Input size='large' placeholder='验证码'/>
 						<img src={`/api/user/captcha?_${this.state.timestamp}`} onClick={this._onRefreshCaptcha}/>
 					</Form.Field>
-					<Space height={24} />
 					<Form.Field name='password' error='请输入密码' required>
 						<Input size='large'placeholder='密码' type='password'/>
 					</Form.Field>
-					<Space height={24} />
 					<Button type='primary' title='立即注册' style={{ width: '100%', height: '48px', lineHeight: '48px'}}/>
 				</Form>
 			</PageCommon.Passport>

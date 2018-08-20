@@ -26,21 +26,18 @@ export default class extends React.Component {
 		return (
 			<PageCommon.Passport passportBoxTitle='账号登录'>
 				<Form onSubmit={this._onSubmit}>
-					<Space height={24}/>
 					<Form.Field
 						name='name'
 						empty='请输入用户名'
 						required>
 						<Input placeholder='用户名' size='large'/>
 					</Form.Field>
-					<Space height={24}/>
 					<Form.Field
 						name='password'
 						empty='请输入密码'
 						required>
 						<Input placeholder='密码' size='large' type='password'/>
 					</Form.Field>
-					<Space height={24}/>
 					<Button type='primary' title='登录' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
 				</Form>
 			</PageCommon.Passport>
