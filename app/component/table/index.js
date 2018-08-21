@@ -23,6 +23,10 @@ class Table extends React.Component {
 
 	renderTbody() {
 		const { dataSource } = this.props
+		if (!Array.isArray(dataSource)) {
+			return null
+		}
+
 		if (this.props.dataSource.length === 0) {
 			return (
 				<tr>
@@ -30,6 +34,7 @@ class Table extends React.Component {
 				</tr>
 			)
 		}
+
 		return (
 			dataSource.map((item, index) => {
 				return (
@@ -42,11 +47,7 @@ class Table extends React.Component {
 	}
   
 	render() {
-		const { dataSource, columns, total } = this.props
-		if (!Array.isArray(dataSource)) {
-			return null
-		}
-		// if (!(dataSource && columns && dataSource.length && columns.length)) return null
+		const { columns, total } = this.props
 
 		return (
 			<table className='table'>
