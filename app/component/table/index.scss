@@ -1,5 +1,7 @@
 @import 'aliasComponent/theme.scss';
 
+$color-hover-tr: #e6f7ff;
+
 .table {
   width: 100%;
   border-spacing: 0;
@@ -29,6 +31,11 @@
   }
 
   tbody {
+    tr {
+      &:hover {
+        background-color: $color-hover-tr;
+      }
+    }
     td {
       border-bottom: 1px solid $color-border;
     }

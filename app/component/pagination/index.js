@@ -62,7 +62,7 @@ class Pagination extends React.Component {
 		this.setState({
 			currentPageNo: pageNo
 		})
-		this.props.onChange && this.props.onChange(pageNo)
+		this.props.onChange && this.props.onChange(pageNo, this.initParams.pageSize)
 		return false
 	}
 

@@ -10,25 +10,30 @@ class Table extends React.Component {
 
 	getItemTdList(itemData) {
 		return this.props.columns.map(({ key, render }, index) => {
-			const tdVal = itemData[key]
-			console.log(key, itemData[key])
+			const keyList = key.replace(/\[/g, '.').replace(/\]/g, '').split('.')
+			let tdVal = ''
+			let tempCel = itemData
+			keyList.forEach((item) => {
+				tdVal = tempCel[item]
+				tempCel = tdVal
+			})
 			return <td key={index}>{render ? render(tdVal) : tdVal}</td>
 		})
 	}
   
 	render() {
 		const { dataSource, columns, total } = this.props
+		console.log(this.props)
 		if (!(dataSource && columns && dataSource.length && columns.length)) return null
-
 		return (
 			<table className='table'>
 				<thead>
 					<tr>
 						{
 							columns.map((item, index) => {
-								const { title } = item
+								const { title, width } = item
 								return (
-									<th key={index}>{title}</th>
+									<th key={index} width={width}>{title}</th>
 								)
 							})
 						}
@@ -48,7 +53,7 @@ class Table extends React.Component {
 				<tfoot>
 					<tr>
 						<td colSpan={columns.length}>
-							<Pagination total={total}/>
+							<Pagination total={total} />
 						</td>
 					</tr>
 				</tfoot>

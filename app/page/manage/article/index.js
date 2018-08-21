@@ -12,28 +12,35 @@ export default class extends React.Component {
 		}
 		this.columns = [{
 			title: 'id',
-			key: 'article[id]'
+			key: 'article[id]',
+			width: 30
 		}, {
 			title: '作者',
-			key: 'author',
+			key: 'article[author]',
+			width: 60
 		}, {
 			title: '类目名称',
-			key: 'categoryName'
+			key: 'article[categoryName]',
+			width: 70
 		}, {
 			title: '简介',
-			key: 'synopsis'
+			key: 'article[synopsis]',
+			width: 200,
 		}, {
 			title: '标题',
-			key: 'title'
+			key: 'article[title]',
+			width: 60,
 		}, {
 			title: '发布时间',
-			key: 'publishAt',
+			key: 'article[publishAt]',
+			width: 80,
 			render: (publishAt) => {
 				return formatDate(publishAt)
 			}
 		}, {
 			title: '更新时间',
-			key: 'updatedAt',
+			key: 'article[updatedAt]',
+			width: 80,
 			render: (updatedAt) => {
 				return formatDate(updatedAt)
 			}
@@ -45,10 +52,11 @@ export default class extends React.Component {
 	}
 
 	fetchArticleList() {
-		flyUtil({ url: '/api/admin/article/paging' })
+		// const { pageNo, pageSize } = this.props.location.query
+		const pageNo = 1,pageSize = 10
+		flyUtil({ url: '/api/admin/article/paging', params: { pageNo, pageSize} })
 			.then((res) => {
 				const { total, datas } = res
-				console.log(datas)
 				this.setState({
 					total, dataSource: datas
 				})
