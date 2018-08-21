@@ -66,7 +66,8 @@ const formatDate = (timestamp) => {
 	const hour = dateO.getHours()
 	const minute = dateO.getMinutes()
 	const second = dateO.getSeconds()
-	return `${year}-${month}-${date} ${hour}:${minute}:${second}`
+	const withPrefix = value => value < 10 ? `0${value}` : value
+	return `${year}-${withPrefix(month)}-${withPrefix(date)} ${withPrefix(hour)}:${withPrefix(minute)}:${withPrefix(second)}`
 }
 
 export {

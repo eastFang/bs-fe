@@ -20,11 +20,34 @@ class Table extends React.Component {
 			return <td key={index}>{render ? render(tdVal) : tdVal}</td>
 		})
 	}
+
+	renderTbody() {
+		const { dataSource } = this.props
+		if (this.props.dataSource.length === 0) {
+			return (
+				<tr>
+					<td className='center-text' colSpan={this.props.columns.length}>暂无可展示信息</td>
+				</tr>
+			)
+		}
+		return (
+			dataSource.map((item, index) => {
+				return (
+					<tr key={index}>
+						{this.getItemTdList(item)}
+					</tr>
+				)
+			})
+		)
+	}
   
 	render() {
 		const { dataSource, columns, total } = this.props
-		console.log(this.props)
-		if (!(dataSource && columns && dataSource.length && columns.length)) return null
+		if (!Array.isArray(dataSource)) {
+			return null
+		}
+		// if (!(dataSource && columns && dataSource.length && columns.length)) return null
+
 		return (
 			<table className='table'>
 				<thead>
@@ -40,15 +63,7 @@ class Table extends React.Component {
 					</tr>
 				</thead>
 				<tbody>
-					{
-						dataSource.map((item, index) => {
-							return (
-								<tr key={index}>
-									{this.getItemTdList(item)}
-								</tr>
-							)
-						})
-					}
+					{this.renderTbody()}
 				</tbody>
 				<tfoot>
 					<tr>

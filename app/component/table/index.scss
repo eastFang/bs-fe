@@ -28,6 +28,10 @@ $color-hover-tr: #e6f7ff;
     &:last-child {
       text-align: right;
     }
+
+    &.center-text {
+      text-align: center;
+    }
   }
 
   tbody {
