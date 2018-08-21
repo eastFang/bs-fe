@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { flyUtil } from 'aliasUtil'
+import WhiteList from './whiteList'
 import './index.scss'
 
 class Ceiling extends React.Component {
@@ -18,6 +19,11 @@ class Ceiling extends React.Component {
 				this.setState({
 					userInfo: res
 				})
+			})
+			.catch((err) => {
+				if (!WhiteList.includes(this.props.location.pathname)) {
+					this.props.history.push('/login')
+				}
 			})
 	}
 
