@@ -36,7 +36,9 @@ class Select extends React.Component {
 			top: `${scrollTop + top + height + 5}px`,
 			left: `${left}px`,
 		}
-		this.context.formList[this.props.name] = this
+		if (this.context.formList && this.props.name) {
+			this.context.formList[this.props.name] = this
+		}
 	}
 
 	_onToggleOptionalList() {

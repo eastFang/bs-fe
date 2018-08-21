@@ -11,6 +11,7 @@ class Table extends React.Component {
 	getItemTdList(itemData) {
 		return this.props.columns.map(({ key, render }, index) => {
 			const tdVal = itemData[key]
+			console.log(key, itemData[key])
 			return <td key={index}>{render ? render(tdVal) : tdVal}</td>
 		})
 	}

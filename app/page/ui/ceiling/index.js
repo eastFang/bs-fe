@@ -1,6 +1,7 @@
 import React, {
 	Component
 } from 'react'
+import { Link } from 'react-router-dom'
 import CeilingData from './data'
 import './index.scss'
 
@@ -19,6 +20,11 @@ export default class extends Component {
 						)
 					})
 				}
+				<li>
+					<Link to='/'>
+						返回首页
+					</Link>
+				</li>
 			</ul>
 		)
 	}

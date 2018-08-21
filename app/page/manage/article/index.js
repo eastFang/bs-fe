@@ -12,7 +12,7 @@ export default class extends React.Component {
 		}
 		this.columns = [{
 			title: 'id',
-			key: 'id'
+			key: 'article[id]'
 		}, {
 			title: '作者',
 			key: 'author',
@@ -48,6 +48,7 @@ export default class extends React.Component {
 		flyUtil({ url: '/api/admin/article/paging' })
 			.then((res) => {
 				const { total, datas } = res
+				console.log(datas)
 				this.setState({
 					total, dataSource: datas
 				})
