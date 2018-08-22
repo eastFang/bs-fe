@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Table, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
-import { formatDate } from 'aliasUtil'
+import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchArticleList } from 'aliasServer/manage'
 
 export default class extends React.Component {
@@ -49,7 +49,16 @@ export default class extends React.Component {
 	}
 
 	componentDidMount() {
-		fetchArticleList().then((res) => {
+		this.getArticleList(this.props.location.search)
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.getArticleList(nextProps.location.search)
+	}
+
+	getArticleList(search) {
+		const { pageNo = 1, pageSize = 10 } = queryStrToObj(search)
+		fetchArticleList({ pageNo, pageSize }).then((res) => {
 			const { total, datas } = res
 			this.setState({
 				total,

@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import Pagination from '../pagination'
 import PropTypes from 'prop-types'
 import './index.scss'

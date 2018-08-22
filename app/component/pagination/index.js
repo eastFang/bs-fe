@@ -1,6 +1,8 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { replaceQueryParamInSearch, queryStrToObj } from 'aliasUtil'
 import './index.scss'
 
 /**
@@ -10,7 +12,7 @@ class Pagination extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			currentPageNo: 1
+			currentPageNo: Number(queryStrToObj(props.location.search).pageNo || 1)
 		}
 		this.initParams = {
 			pageSize: props.pageSize,
@@ -62,7 +64,12 @@ class Pagination extends React.Component {
 		this.setState({
 			currentPageNo: pageNo
 		})
-		this.props.onChange && this.props.onChange(pageNo, this.initParams.pageSize)
+		if (this.props.onChange) {
+			this.props.onChange(pageNo, this.initParams.pageSize)
+		} else  {
+			const { location: { pathname, search }, history } = this.props
+			history.push(`${pathname}${replaceQueryParamInSearch(search, { pageNo, pageSize: this.initParams.pageSize })}`)
+		}
 		return false
 	}
 
@@ -173,4 +180,4 @@ Pagination.defaultProps = {
 	pageSize: 10,
 }
 
-export default Pagination
+export default withRouter(Pagination)

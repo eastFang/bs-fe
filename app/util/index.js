@@ -39,11 +39,6 @@ const getOffsetDateFullInfo = (year, month, offsetDate) => {
 	return { date, year: fullYear, month: fullMonth + 1 }
 }
 
-// const isJSON = (str) => {
-// 	if (typeof str !== 'string') return false
-// 	return str.match(/({)(.*)(:)/) && typeof JSON.parse(str) === 'object'
-// }
-
 const flyUtil = ({ url, params, method, ...others }) => {
 	const opts = {
 		method: (method || 'get').toLowerCase(),
@@ -70,9 +65,32 @@ const formatDate = (timestamp) => {
 	return `${year}-${withPrefix(month)}-${withPrefix(date)} ${withPrefix(hour)}:${withPrefix(minute)}:${withPrefix(second)}`
 }
 
+const queryStrToObj = (str) => {
+	str = str.replace(/\?/, '')
+	const paramList = str ? str.split('&') : []
+	const queryObj = {}
+	paramList.forEach((item) => {
+		const kvList = item.split('=')
+		queryObj[kvList[0]] = kvList[1]
+	})
+	return queryObj
+}
+
+const replaceQueryParamInSearch = (str, paramObj) => {
+	const newParamObj = { ...queryStrToObj(str), ...paramObj }
+	let queryStr = '?'
+	const newParamList = []
+	for (let key in newParamObj) {
+		newParamList.push(`${key}=${newParamObj[key]}`)
+	}
+	return `${queryStr}${newParamList.join('&')}`
+}
+
 export {
 	convert2ElemArray,
 	getOffsetDateFullInfo,
 	flyUtil,
 	formatDate,
+	queryStrToObj,
+	replaceQueryParamInSearch
 }

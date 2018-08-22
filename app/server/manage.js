@@ -1,7 +1,7 @@
 import { flyUtil } from 'aliasUtil'
 
-export const fetchArticleList = () => {
-	return flyUtil({ url: '/api/admin/article/paging', params: { pageNo: 1, pageSize: 10} })
+export const fetchArticleList = (params) => {
+	return flyUtil({ url: '/api/admin/article/paging', params })
 }
 
 export const fetchCategoryList = () => {
