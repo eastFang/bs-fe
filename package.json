@@ -6,10 +6,11 @@
   "author": "bingbingbing殇",
   "license": "MIT",
   "scripts": {
-    "compile": "rm -rf public && webpack --watch --config webpack.compile.js",
-    "window-compile": "del public && webpack --watch",
-    "start": "webpack-dev-server --open",
-    "dev": "webpack-dev-server"
+    "compile": "rm -rf public && webpack --watch --config webpack.compile.js --mode development",
+    "window-compile": "del public && webpack --watch --mode development",
+    "start": "webpack-dev-server --open --mode development",
+    "dev": "webpack-dev-server --mode development",
+    "prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
     "braft-editor": "^1.9.8",

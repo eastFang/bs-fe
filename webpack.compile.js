@@ -30,7 +30,6 @@ module.exports = {
 		chunkFilename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'public')
 	},
-	mode: 'development',
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, 'app/index.html'),
