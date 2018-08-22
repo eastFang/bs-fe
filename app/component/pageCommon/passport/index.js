@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Logo from 'aliasImage/logo.jpeg'
 import './index.scss'
 
 class Passport extends React.Component {
@@ -9,6 +10,7 @@ class Passport extends React.Component {
 		return (
 			<div className='page-passport'>
 				<div className='passport-box'>
+					<img className='logo' src={Logo} />
 					<header>{passportBoxTitle}</header>
 					{children}
 				</div>

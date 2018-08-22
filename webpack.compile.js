@@ -53,7 +53,8 @@ module.exports = {
 			aliasPage: path.resolve(__dirname, 'app/page/'),
 			aliasComponent: path.resolve(__dirname, 'app/component/'),
 			aliasUtil: path.resolve(__dirname, 'app/util/'),
-			aliasServer: path.resolve(__dirname, 'app/server/')
+			aliasServer: path.resolve(__dirname, 'app/server/'),
+			aliasImage: path.resolve(__dirname, 'app/image/'),
 		}
 	}
 }
