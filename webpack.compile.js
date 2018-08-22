@@ -52,7 +52,8 @@ module.exports = {
 			aliasReducer: path.resolve(__dirname, 'app/reducer/'),
 			aliasPage: path.resolve(__dirname, 'app/page/'),
 			aliasComponent: path.resolve(__dirname, 'app/component/'),
-			aliasUtil: path.resolve(__dirname, 'app/util/')
+			aliasUtil: path.resolve(__dirname, 'app/util/'),
+			aliasServer: path.resolve(__dirname, 'app/server/')
 		}
 	}
 }

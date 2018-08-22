@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Table, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
-import { flyUtil, formatDate } from 'aliasUtil'
+import { formatDate } from 'aliasUtil'
+import { fetchArticleList } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -48,19 +49,13 @@ export default class extends React.Component {
 	}
 
 	componentDidMount() {
-		this.fetchArticleList()
-	}
-
-	fetchArticleList() {
-		// const { pageNo, pageSize } = this.props.location.query
-		const pageNo = 1,pageSize = 10
-		flyUtil({ url: '/api/admin/article/paging', params: { pageNo, pageSize} })
-			.then((res) => {
-				const { total, datas } = res
-				this.setState({
-					total, dataSource: datas
-				})
+		fetchArticleList().then((res) => {
+			const { total, datas } = res
+			this.setState({
+				total,
+				dataSource: datas
 			})
+		})
 	}
 
 	render() {

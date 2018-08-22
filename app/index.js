@@ -10,7 +10,6 @@ import {
 	Login,
 	Register,
 	UserCenter,
-	WrapForm,
 	Manage,
 } from 'aliasPage'
 import './index.scss'
@@ -25,7 +24,6 @@ const App = () => {
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>
 					<Route path='/userCenter' component={UserCenter}></Route>
-					<Route path='/wrapForm' component={WrapForm}></Route>
 					<Route path='/category' component={Manage.Category}></Route>
 					<Route path='/label' component={Manage.Label}></Route>
 					<Route path='/article' component={Manage.Article.List}></Route>

@@ -28,16 +28,8 @@ const AsyncRegister = Loadable({
 	loader: () => import(/* webpackChunkName: "register" */ './register'),
 	loading: MyLoadingComponent
 })
-const AsyncEntrance = Loadable({
-	loader: () => import(/* webpackChunkName: "entrance" */ './entrance/connect'),
-	loading: MyLoadingComponent
-})
 const AsyncUserCenter = Loadable({
 	loader: () => import(/* webpackChunkName: "userCenter" */ './userCenter'),
-	loading: MyLoadingComponent
-})
-const AsyncWrapForm = Loadable({
-	loader: () => import(/* webpackChunkName: "wrapForm" */ './wrapForm'),
 	loading: MyLoadingComponent
 })
 const AsyncManageCateogry = Loadable({
@@ -66,9 +58,7 @@ module.exports = {
 	UI: AsyncUI,
 	Login: AsyncLogin,
 	Register: AsyncRegister,
-	Entrance: AsyncEntrance,
 	UserCenter: AsyncUserCenter,
-	WrapForm: AsyncWrapForm,
 	Manage: {
 		Category: AsyncManageCateogry,
 		Label: AsyncManageLabel,

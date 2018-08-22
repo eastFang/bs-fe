@@ -1,7 +1,8 @@
 import React from 'react'
 import { Table, Modal, Form, Input, Button, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
-import { flyUtil, formatDate } from 'aliasUtil'
+import { formatDate } from 'aliasUtil'
+import { fetchCategoryList, createCategory } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -33,22 +34,17 @@ export default class extends React.Component {
 	}
 	
 	componentDidMount() {
-		this.fetchCategoryList()
-	}
-
-	fetchCategoryList() {
-		flyUtil({ url: '/api/category/paging' })
-			.then((res) => {
-				const { total, datas } = res
-				this.setState({
-					total, dataSource: datas
-				})
+		fetchCategoryList().then((res) => {
+			const { total, datas } = res
+			this.setState({
+				total, dataSource: datas
 			})
+		})
 	}
 
 	_onSubmit(evt, data) {
 		evt.preventDefault()
-		flyUtil({ url: '/api/category', params: data, method: 'post' })
+		createCategory(data)
 			.then(() => {
 				alert('创建成功')
 				this.refs.addCategory.close()

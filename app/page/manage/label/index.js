@@ -2,6 +2,7 @@ import React from 'react'
 import { Table, Modal, Form, Input, Button, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { flyUtil, formatDate } from 'aliasUtil'
+import { fetchLabelList, createLabel } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -39,11 +40,7 @@ export default class extends React.Component {
 	}
   
 	componentDidMount() {
-		this.fetchLabelList()
-	}
-
-	fetchLabelList() {
-		flyUtil({ url: '/api/label/paging' })
+		fetchLabelList()
 			.then((res) => {
 				const { total, datas } = res
 				this.setState({
@@ -55,7 +52,7 @@ export default class extends React.Component {
 	_onSubmit(evt, data) {
 		evt.preventDefault()
 		data.visible = false
-		flyUtil({ url: '/api/label', params: data, method: 'post' })
+		createLabel(data)
 			.then(() => {
 				alert('创建成功')
 				this.refs.addLabel.close()

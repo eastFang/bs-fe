@@ -1,5 +1,6 @@
 import React from 'react'
 import { flyUtil } from 'aliasUtil'
+import { fetchUserProfile } from 'aliasServer/userCenter'
 import { PageCommon, Modal } from 'aliasComponent'
 import './index.scss'
 
@@ -12,17 +13,13 @@ export default class extends React.Component {
 		this._onEditInfo = this._onEditInfo.bind(this)
 	}
   
-	fetchUserFullInfo() {
-		flyUtil({ url: '/api/user/profile' })
+	componentDidMount() {
+		fetchUserProfile()
 			.then((res) => {
 				this.setState({
 					userFullInfo: res
 				})
 			})
-	}
-  
-	componentDidMount() {
-		this.fetchUserFullInfo()
 	}
 
 	_onEditInfo() {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Input, Button, Space, PageCommon, Message, Form } from 'aliasComponent'
-import { flyUtil } from 'aliasUtil'
+// import { flyUtil } from 'aliasUtil'
+import { register } from 'aliasServer/register'
 import './index.scss'
 
 export default class extends React.Component {
@@ -15,16 +16,12 @@ export default class extends React.Component {
 
 	_onSubmit(evt, data) {
 		evt.preventDefault()
-		const { name, captcha, password } = data
-		flyUtil({
-			url: '/api/user/register',
-			params: { name, captcha, password },
-			method: 'post'
-		}).then(() => {
-			this.props.history.push('/')
-		}).catch((error) => {
-			Message.error(error.message)
-		})
+		register(data)
+			.then(() => {
+				this.props.history.push('/')
+			}).catch((error) => {
+				Message.error(error.message)
+			})
 	}
 
 	_onRefreshCaptcha() {

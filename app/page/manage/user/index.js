@@ -1,7 +1,8 @@
 import React from 'react'
 import { Table } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
-import { flyUtil, formatDate } from 'aliasUtil'
+import { formatDate } from 'aliasUtil'
+import { fetchUserList } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -41,11 +42,7 @@ export default class extends React.Component {
 	}
 	
 	componentDidMount() {
-		this.fetchUserList()
-	}
-
-	fetchUserList() {
-		flyUtil({ url: '/api/admin/user/paging' })
+		fetchUserList()
 			.then((res) => {
 				const { total, datas } = res
 				this.setState({
