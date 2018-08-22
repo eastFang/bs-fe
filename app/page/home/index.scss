@@ -1,10 +1,53 @@
+@import "aliasComponent/theme.scss";
+
 .page-home {
-  li {
-    float: left;
-    width: 50%;
-    height: 100px;
-    text-align: center;
-    overflow: auto;
-    line-height: 100px;
+
+  .page-home-body {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .left-wrap {
+      float: left;
+      width: 800px;
+
+      .article-list {
+        li {
+          color: $color-text3;
+          border-bottom: 1px solid $color-border;
+
+          .title {
+            font-weight: bold;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  
+    .right-wrap {
+      width: 360px;
+      margin-left: 840px;
+
+      .category-area {
+        .title {
+          font-weight: bold;
+          font-size: 16px;
+        }
+        .category-list {
+          color: $color-text3;
+          overflow: hidden;
+
+          li {
+            float: left;
+            line-height: 18px;
+            font-size: 14px;
+            padding: 0 10px;
+            border-radius: 5px;
+            border: 1px solid $color-border;
+            margin: 0 10px 10px 0;
+          }
+        }
+      }
+    }
   }
 }

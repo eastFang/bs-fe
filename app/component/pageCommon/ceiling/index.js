@@ -20,7 +20,7 @@ class Ceiling extends React.Component {
 					userInfo: res
 				})
 			})
-			.catch((err) => {
+			.catch(() => {
 				if (!WhiteList.includes(this.props.location.pathname)) {
 					this.props.history.push('/login')
 				}
@@ -56,6 +56,7 @@ class Ceiling extends React.Component {
 	renderSystemUserOperation() {
 		return (
 			<React.Fragment>
+				<Link to='/'>返回首页</Link>
 				<Link to='/category'>管理中心</Link>
 				<Link to='/userCenter'>个人中心</Link>
 				<a onClick={this._onLogout}>退出</a>
