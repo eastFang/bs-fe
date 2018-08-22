@@ -1,5 +1,4 @@
 import React from 'react'
-import { flyUtil } from 'aliasUtil'
 import { fetchUserProfile } from 'aliasServer/userCenter'
 import { PageCommon, Modal } from 'aliasComponent'
 import './index.scss'
