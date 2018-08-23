@@ -1,0 +1,28 @@
+@import "aliasComponent/theme.scss";
+
+.bs-return-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  // diaplay: none；无法适用过渡效果，用height + opacity的方式
+  height: 0px;
+  border-radius: 25px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 0 2px 0px $color-border;
+  transition: all ease .2s;
+  cursor: pointer;
+  opacity: 0;
+
+  &.visible {
+    height: 50px;
+    opacity: 1;
+  }
+
+  i {
+    font-size: 50px;
+    line-height: 50px;
+    color: $color-text9;
+  }
+}

@@ -6,6 +6,7 @@ import Space from './space'
 import PageCommonPassport from './pageCommon/passport'
 import PageCommonCeiling from './pageCommon/ceiling'
 import PageCommonLoading from './pageCommon/loading'
+import PageCommonReturnTop from './pageCommon/returnTop'
 import Modal from './modal'
 import Message from './message'
 import Form from './form'
@@ -23,7 +24,8 @@ module.exports = {
 	PageCommon: {
 		Passport: PageCommonPassport,
 		Ceiling: PageCommonCeiling,
-		Loading: PageCommonLoading
+		Loading: PageCommonLoading,
+		ReturnTop: PageCommonReturnTop,
 	},
 	Modal,
 	Message,
