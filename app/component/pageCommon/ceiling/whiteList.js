@@ -4,7 +4,8 @@
 const withoutLoginUrlList = [
 	'/',
 	'/login',
-	'/register'
+	'/register',
+	'/squareArticle'
 ]
 
 export default withoutLoginUrlList

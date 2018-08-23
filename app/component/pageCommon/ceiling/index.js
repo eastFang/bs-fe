@@ -21,7 +21,7 @@ class Ceiling extends React.Component {
 				})
 			})
 			.catch(() => {
-				if (!WhiteList.includes(this.props.location.pathname)) {
+				if (!WhiteList.some((url) => new RegExp(url).test(this.props.location.pathname))) {
 					this.props.history.push('/login')
 				}
 			})

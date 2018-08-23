@@ -1,0 +1,18 @@
+@import "aliasComponent/theme.scss";
+
+.search-area {
+  text-align: center;
+  padding: 20px;
+
+  input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 400px;
+  }
+
+  button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    vertical-align: bottom;
+  }
+}
