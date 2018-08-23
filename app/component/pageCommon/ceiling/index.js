@@ -56,7 +56,9 @@ class Ceiling extends React.Component {
 	renderSystemUserOperation() {
 		return (
 			<React.Fragment>
-				<Link to='/'>返回首页</Link>
+				{ 
+					this.props.location.pathname !== '/' ? <Link to='/'>返回首页</Link> : null
+				}
 				<Link to='/category'>管理中心</Link>
 				<Link to='/userCenter'>个人中心</Link>
 				<a onClick={this._onLogout}>退出</a>

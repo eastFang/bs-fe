@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table, Modal, Form, Input, Button, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
-import { flyUtil, formatDate } from 'aliasUtil'
-import { fetchLabelList, createLabel } from 'aliasServer/manage'
+import { formatDate } from 'aliasUtil'
+import { fetchLabelPaging, createLabel } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -40,7 +40,7 @@ export default class extends React.Component {
 	}
   
 	componentDidMount() {
-		fetchLabelList()
+		fetchLabelPaging()
 			.then((res) => {
 				const { total, datas } = res
 				this.setState({

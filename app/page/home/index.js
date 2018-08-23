@@ -42,8 +42,6 @@ export default class extends React.Component {
 							)
 						})
 					}
-					<li>
-					</li>
 				</ul>
 			</div>
 		)

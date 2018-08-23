@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
-import { formatDate } from 'aliasUtil'
-import { fetchUserList } from 'aliasServer/manage'
+import { formatDate, queryStrToObj } from 'aliasUtil'
+import { fetchUserPaging } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -42,11 +42,20 @@ export default class extends React.Component {
 	}
 	
 	componentDidMount() {
-		fetchUserList()
+		this.getUserList(this.props.location.search)
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.getUserList(nextProps.location.search)
+	}
+
+	getUserList(search) {
+		const { pageNo = 1, pageSize = 10 } = queryStrToObj(search)
+		fetchUserPaging({ pageNo, pageSize })
 			.then((res) => {
-				const { total, datas } = res
 				this.setState({
-					total, dataSource: datas
+					dataSource: res.datas,
+					total: res.total
 				})
 			})
 	}

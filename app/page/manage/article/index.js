@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Table, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
-import { fetchArticleList } from 'aliasServer/manage'
+import { fetchArticlePaging } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -58,7 +58,7 @@ export default class extends React.Component {
 
 	getArticleList(search) {
 		const { pageNo = 1, pageSize = 10 } = queryStrToObj(search)
-		fetchArticleList({ pageNo, pageSize }).then((res) => {
+		fetchArticlePaging({ pageNo, pageSize }).then((res) => {
 			const { total, datas } = res
 			this.setState({
 				total,

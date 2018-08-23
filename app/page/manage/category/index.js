@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Modal, Form, Input, Button, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate } from 'aliasUtil'
-import { fetchCategoryList, createCategory } from 'aliasServer/manage'
+import { fetchCategoryPaging, createCategory } from 'aliasServer/manage'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -34,7 +34,7 @@ export default class extends React.Component {
 	}
 	
 	componentDidMount() {
-		fetchCategoryList().then((res) => {
+		fetchCategoryPaging().then((res) => {
 			const { total, datas } = res
 			this.setState({
 				total, dataSource: datas
