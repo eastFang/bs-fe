@@ -1,0 +1,28 @@
+@import "aliasComponent/theme.scss";
+
+.page-article-detail {
+  width: 1200px;
+  margin: 0 auto;
+
+  .title {
+    font-size: 20px;
+  }
+
+  .date {
+    color: $color-text9;
+  }
+
+  .summary {
+    text-align: center;
+    
+    .i-wrap {
+      color: $color-text6;
+      & + .i-wrap {
+        margin-left: 15px;
+      }
+      i {
+        margin-right: 4px;
+      }
+    }
+  }
+}

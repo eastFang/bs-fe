@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { PageCommon, Pagination } from 'aliasComponent'
 import fly from 'flyio'
 import ArticleSearch from '../search'
 import { fetchArticleSearch } from 'aliasServer/article'
-import { fetchCategoryList } from 'aliasServer/home'
+import { fetchCategoryList } from 'aliasServer/category'
 import { formatDate, queryStrToObj, replaceQueryParamInSearch } from 'aliasUtil'
 import './index.scss'
 
@@ -77,9 +78,11 @@ export default class extends React.Component {
 						article && article.paging && article.paging.datas && article.paging.datas.map((article, index) => {
 							return (
 								<li key={index}>
-									<p className='title'>{article.title}</p>
-									<p>{article.synopsis}</p>
-									<p>{formatDate(article.publishAt)}</p>
+									<Link to={`/articleDetail?id=${article.id}`}>
+										<p className='title'>{article.title}</p>
+										<p>{article.synopsis}</p>
+										<p>{formatDate(article.publishAt)}</p>
+									</Link>
 								</li>
 							)
 						})

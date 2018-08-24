@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { PageCommon, Space } from 'aliasComponent'
-import { fetchPopularArticleList, fetchCategoryList }  from 'aliasServer/home'
+import { fetchPopularArticleList }  from 'aliasServer/article'
+import { fetchCategoryList } from 'aliasServer/category'
 import fly from 'flyio'
 import { formatDate } from 'aliasUtil'
 import './index.scss'
@@ -43,6 +44,7 @@ export default class extends React.Component {
 						})
 					}
 				</ul>
+				<Link to='/squareArticle'>更多文章</Link>
 			</div>
 		)
 	}

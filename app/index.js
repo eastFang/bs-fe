@@ -33,7 +33,7 @@ const App = () => {
 						<Route path='/addArticle' component={Manage.Article.Add}></Route>
 						<Route path='/user' component={Manage.User}></Route>
 						<Route path='/squareArticle' component={Article.List}></Route>
-						<Route path='/article/:id' component={Article.Detail}></Route>
+						<Route path='/articleDetail' component={Article.Detail}></Route>
 					</Switch>
 				</PageCommon.ReturnTop>
 			</Router>
