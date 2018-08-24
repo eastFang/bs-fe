@@ -66,12 +66,11 @@ export default class extends React.Component {
 				<Button type='primary' title='新建标签' onClick={() => this.refs.addLabel.show()} />
 				<Space height={16} />
 				<Table dataSource={dataSource} total={total} columns={this.columns} />
-				<Modal title='新建标签' ref='addLabel' noFooter>
-					<Form onSubmit={this._onSubmit}>
+				<Modal title='新建标签' ref='addLabel' onOK={(...args) => this.refs.form._onSubmit(...args)}>
+					<Form onSubmit={this._onSubmit} ref='form'>
 						<Form.Field label='名称' name='name' required>
 							<Input placeholder='标签名称' />
 						</Form.Field>
-						<Button className='pull-right' type='primary' title='提交' />
 					</Form>
 				</Modal>
 			</ManageCommonPage>

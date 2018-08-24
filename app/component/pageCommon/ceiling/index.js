@@ -21,7 +21,8 @@ class Ceiling extends React.Component {
 				})
 			})
 			.catch(() => {
-				if (!WhiteList.some((url) => new RegExp(url).test(this.props.location.pathname))) {
+				const isGolbalPage = WhiteList.some((urlReg) => urlReg.test(this.props.location.pathname))
+				if (!isGolbalPage) {
 					this.props.history.push('/login')
 				}
 			})
