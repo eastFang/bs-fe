@@ -35,12 +35,6 @@ class Modal extends React.Component {
 			visible: false
 		})
 	}
-  
-	getClass() {
-		return classnames(
-			'bs-modal',
-		)
-	}
 
 	renderModal() {
 		const {
@@ -48,7 +42,7 @@ class Modal extends React.Component {
 			onOK,
 		} = this.props
 		return (
-			<div className={this.getClass()} onClick={this.close}>
+			<div className='bs-modal' onClick={this.close}>
 				<div className='wrap' onClick={evt => evt.stopPropagation()}>
 					<div className='bs-modal-header'>
 						<span className='title'>{title}</span>

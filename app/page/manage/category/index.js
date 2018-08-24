@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Modal, Form, Input, Button, Space } from 'aliasComponent'
+import { Table, Modal, Form, Input, Button, Space, Message } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate } from 'aliasUtil'
 import { fetchCategoryPaging, createCategory } from 'aliasServer/manage'
@@ -46,8 +46,8 @@ export default class extends React.Component {
 		evt.preventDefault()
 		createCategory(data)
 			.then(() => {
-				alert('创建成功')
-				this.refs.addCategory.close()
+				Message.success('创建成功')
+				location.href = '/label'
 			})
 	}
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Modal, Form, Input, Button, Space } from 'aliasComponent'
+import { Table, Modal, Form, Input, Button, Space, Message } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate } from 'aliasUtil'
 import { fetchLabelPaging, createLabel } from 'aliasServer/manage'
@@ -40,6 +40,10 @@ export default class extends React.Component {
 	}
   
 	componentDidMount() {
+		this.getLabelPaging()
+	}
+
+	getLabelPaging() {
 		fetchLabelPaging()
 			.then((res) => {
 				const { total, datas } = res
@@ -54,8 +58,9 @@ export default class extends React.Component {
 		data.visible = false
 		createLabel(data)
 			.then(() => {
-				alert('创建成功')
-				this.refs.addLabel.close()
+				Message.success('创建成功')
+				// 暂时用这个方法解决下...
+				location.href = '/label'
 			})
 	}
   
