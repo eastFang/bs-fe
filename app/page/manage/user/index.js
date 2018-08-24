@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Modal, Form } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
-import { fetchUserDetail, fetchUserPaging } from 'aliasServer/adminUser'
+import { fetchUserDetail, fetchUserPaging } from 'aliasServer/user'
 
 export default class extends React.Component {
 	constructor(props) {

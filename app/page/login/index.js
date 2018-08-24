@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input, Button, PageCommon, Message, Form } from 'aliasComponent'
-import { login } from 'aliasServer/login'
+import { login } from 'aliasServer/user'
 
 export default class extends React.Component {
 	constructor(props) {

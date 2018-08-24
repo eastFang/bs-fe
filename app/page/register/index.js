@@ -1,7 +1,6 @@
 import React from 'react'
-import { Input, Button, Space, PageCommon, Message, Form } from 'aliasComponent'
-// import { flyUtil } from 'aliasUtil'
-import { register } from 'aliasServer/register'
+import { Input, Button, PageCommon, Message, Form } from 'aliasComponent'
+import { register } from 'aliasServer/user'
 import './index.scss'
 
 export default class extends React.Component {

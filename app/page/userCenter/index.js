@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchUserProfile } from 'aliasServer/userCenter'
+import { fetchCurrentUserProfile } from 'aliasServer/user'
 import { PageCommon, Modal } from 'aliasComponent'
 import './index.scss'
 
@@ -13,7 +13,7 @@ export default class extends React.Component {
 	}
   
 	componentDidMount() {
-		fetchUserProfile()
+		fetchCurrentUserProfile()
 			.then((res) => {
 				this.setState({
 					userFullInfo: res

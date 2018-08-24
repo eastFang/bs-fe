@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
-import { fetchUserLoginLogPaging } from 'aliasServer/logUserLogin'
+import { fetchUserLoginLogPaging } from 'aliasServer/log'
 
 export default class extends React.Component {
 	constructor(props) {

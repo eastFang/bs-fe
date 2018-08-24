@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Modal, Form, Input, Button, Space, Message } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate } from 'aliasUtil'
-import { fetchCategoryPaging, createCategory } from 'aliasServer/manage'
+import { fetchCategoryPaging, createCategory } from 'aliasServer/category'
 
 export default class extends React.Component {
 	constructor(props) {
