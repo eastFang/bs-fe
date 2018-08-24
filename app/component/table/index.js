@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import Pagination from '../pagination'
 import PropTypes from 'prop-types'
 import './index.scss'
@@ -11,8 +10,12 @@ class Table extends React.Component {
 
 	getItemTdList(itemData) {
 		return this.props.columns.map(({ key, render }, index) => {
-			const keyList = key.replace(/\[/g, '.').replace(/\]/g, '').split('.')
+			if (!key) {
+				return <td key={`operation${index}`}>{render(itemData)}</td>
+			}
+
 			let tdVal = ''
+			const keyList = key.replace(/\[/g, '.').replace(/\]/g, '').split('.')
 			let tempCel = itemData
 			keyList.forEach((item) => {
 				tdVal = tempCel[item]

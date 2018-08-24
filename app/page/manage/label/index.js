@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Modal, Form, Input, Button, Space, Message } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate } from 'aliasUtil'
-import { fetchLabelPaging, createLabel } from 'aliasServer/manage'
+import { fetchLabelPaging, createLabel, showVisible, hideVisible } from 'aliasServer/label'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -33,7 +33,12 @@ export default class extends React.Component {
 			title: '状态',
 			key: 'visible',
 			render: (visible) => {
-				return visible === 0 ? '不可见' : '可见'
+				return visible ? '可见' : '不可见'
+			},
+		},  {
+			title: '操作',
+			render: (record) => {
+				return this.renderOperation(record)
 			}
 		}]
 		this._onSubmit = this._onSubmit.bind(this)
@@ -62,6 +67,26 @@ export default class extends React.Component {
 				// 暂时用这个方法解决下...
 				location.href = '/label'
 			})
+	}
+
+	_onToggleItem(id, actionType) {
+		(actionType === 'show' ? showVisible(id) : hideVisible(id))
+			.then(() => {
+				Message.success('设置成功')
+				location.reload()
+			})
+	} 
+
+	renderOperation(record) {
+		return (
+			<React.Fragment>
+				{
+					record.visible
+						? <a onClick={() => this._onToggleItem(record.id, 'hide')}>隐藏</a>
+						: <a onClick={() => this._onToggleItem(record.id, 'show')}>显示</a>
+				}
+			</React.Fragment>
+		)
 	}
   
 	render() {

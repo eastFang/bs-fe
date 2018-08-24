@@ -29,6 +29,11 @@ export default class extends React.Component {
 			render: (updatedAt) => {
 				return formatDate(updatedAt)
 			}
+		}, {
+			title: '操作',
+			render: (record) => {
+				return this.renderOperation(record)
+			}
 		}]
 		this._onSubmit = this._onSubmit.bind(this)
 	}
@@ -49,6 +54,19 @@ export default class extends React.Component {
 				Message.success('创建成功')
 				location.href = '/label'
 			})
+	}
+
+	_onUpdateItem(id) {
+		console.log(id)
+		
+	}
+
+	renderOperation(record) {
+		return (
+			<React.Fragment>
+				<a onClick={() => this._onUpdateItem(record.id)}>更新</a>
+			</React.Fragment>
+		)
 	}
 
 	render() {
