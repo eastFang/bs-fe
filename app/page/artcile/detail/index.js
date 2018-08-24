@@ -38,7 +38,7 @@ export default class extends React.Component {
 				<PageCommon.Ceiling />
 				<div className='page-article-detail'>
 					<p className='title'>{title}</p>
-					<p className='data'>{formatDate(publishAt)}</p>
+					<p className='date'>{formatDate(publishAt)}</p>
 					<div dangerouslySetInnerHTML={{ __html: content }}/>
 					<p className='summary'>
 						<a className='i-wrap'><i className='iconfont icon-like'></i>{like}</a>
