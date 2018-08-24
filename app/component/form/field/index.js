@@ -54,7 +54,7 @@ class Field extends React.Component {
 				</span>
 				<span className='note-empty'>
 					<i className='iconfont icon-error'></i>
-					{this.props.empty}
+					{this.props.empty || '必填，不可为空'}
 				</span>
 			</div>
 		)
