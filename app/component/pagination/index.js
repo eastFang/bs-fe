@@ -61,6 +61,10 @@ class Pagination extends React.Component {
 	 * @param {页码} pageNo 
 	 */
 	_onChange(pageNo) {
+		if (pageNo == this.state.currentPageNo) {
+			return
+		}
+
 		this.setState({
 			currentPageNo: pageNo
 		})
@@ -70,7 +74,6 @@ class Pagination extends React.Component {
 			const { location: { pathname, search }, history } = this.props
 			history.push(`${pathname}${replaceQueryParamInSearch(search, { pageNo, pageSize: this.initParams.pageSize })}`)
 		}
-		return false
 	}
 
 	_onElliChange(type) {
@@ -150,11 +153,6 @@ class Pagination extends React.Component {
 		if (pageCount > 1) {
 			pageNoList.push(this.getItemPageNoDom(pageCount))
 		}
-		// for(let index = 0; index < pageCount; index++) {
-		// 	const itemPageNo = index + 1
-		// 	const isCurrent = itemPageNo === currentPageNo
-		// 	pageNoList.push(<li className={this.getPageNoItemClass(isCurrent)} key={index} onClick={() => this._onChange(itemPageNo)}>{itemPageNo}</li>)
-		// }
 		return pageNoList
 	}
 
