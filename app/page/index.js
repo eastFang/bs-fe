@@ -60,6 +60,10 @@ const AsyncArticleDetail = Loadable({
 	loader: () => import(/* webpackChunkName: "articleDetail" */ './artcile/detail'),
 	loading: MyLoadingComponent
 })
+const AsyncUserLoginLog = Loadable({
+	loader: () => import(/* webpackChunkName: "userLoginLog" */ './manage/logUserLogin'),
+	loading: MyLoadingComponent
+})
 
 module.exports = {
 	Home: AsyncHome,
@@ -75,6 +79,7 @@ module.exports = {
 			Add: AsyncManageArticleAdd,
 		},
 		User: AsyncUserList,
+		UserLoginLog: AsyncUserLoginLog
 	},
 	Article: {
 		List: AsyncArticleList,

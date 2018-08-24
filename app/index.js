@@ -32,6 +32,7 @@ const App = () => {
 						<Route exact path='/article' component={Manage.Article.List}></Route>
 						<Route path='/addArticle' component={Manage.Article.Add}></Route>
 						<Route path='/user' component={Manage.User}></Route>
+						<Route exact path='/userLoginLog' component={Manage.UserLoginLog}></Route>
 						<Route path='/squareArticle' component={Article.List}></Route>
 						<Route path='/articleDetail' component={Article.Detail}></Route>
 					</Switch>

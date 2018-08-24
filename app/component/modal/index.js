@@ -66,7 +66,6 @@ class Modal extends React.Component {
 
 	render() {
 		if (!this.state.visible) return null
-
 		return (
 			ReactDOM.createPortal(this.renderModal(), portalRoot)
 		)

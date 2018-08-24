@@ -11,7 +11,3 @@ export const fetchCategoryPaging = () => {
 export const createCategory = (category) => {
 	return flyUtil({ url: '/api/category', params: category, method: 'post' })
 }
-
-export const fetchUserPaging = (params) => {
-	return flyUtil({ url: '/api/admin/user/paging', params })
-}

@@ -14,6 +14,10 @@ const list = [
 	{
 		value: '用户管理',
 		url: '/user'
+	},
+	{
+		value: '登陆日志',
+		url: '/userLoginLog'
 	}
 ]
 
