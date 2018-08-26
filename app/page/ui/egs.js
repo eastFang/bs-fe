@@ -10,6 +10,7 @@ import EgEditor from './editor-eg'
 import EgTable from './table-eg'
 import EgSelect from './select-eg'
 import EgTextarea from './textarea-eg'
+import EgRadio from './radio-eg'
 
 module.exports = {
 	EgButton,
@@ -24,4 +25,5 @@ module.exports = {
 	EgTable,
 	EgSelect,
 	EgTextarea,
+	EgRadio,
 }

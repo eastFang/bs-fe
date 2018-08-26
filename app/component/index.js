@@ -15,6 +15,7 @@ import Editor from './eidtor'
 import Table from './table'
 import Select from './select'
 import Textarea from './textarea'
+import Radio from './radio'
 
 module.exports = {
 	Button,
@@ -35,5 +36,6 @@ module.exports = {
 	Editor,
 	Table,
 	Select,
-	Textarea
+	Textarea,
+	Radio,
 }

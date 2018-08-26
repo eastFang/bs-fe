@@ -12,6 +12,7 @@ import {
 	EgTable,
 	EgSelect,
 	EgTextarea,
+	EgRadio,
 } from './egs'
 import './index.scss'
 
@@ -32,6 +33,7 @@ export default class extends React.Component {
 				<div id='table'><EgTable /></div>
 				<div id='select'><EgSelect /></div>
 				<div id='textarea'><EgTextarea /></div>
+				<div id='radio'><EgRadio /></div>
 			</div>
 		)
 	}

@@ -86,11 +86,22 @@ const replaceQueryParamInSearch = (str, paramObj) => {
 	return `${queryStr}${newParamList.join('&')}`
 }
 
+const randomStr = (len) => {
+	const collection = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
+	let str = ''
+	const maxLen = collection.length
+	for(let i = 0; i < len; i++) {
+		str += collection.charAt(Math.floor(Math.random() * maxLen))
+	}
+	return str
+}
+
 export {
 	convert2ElemArray,
 	getOffsetDateFullInfo,
 	flyUtil,
 	formatDate,
 	queryStrToObj,
-	replaceQueryParamInSearch
+	replaceQueryParamInSearch,
+	randomStr,
 }

@@ -39,7 +39,7 @@ class Field extends React.Component {
 		) 
 		return (
 			<div className={className}>
-				{this.props.label && <label>{this.props.label}</label>}
+				{this.props.label && <label className='field-label'>{this.props.label}</label>}
 				{
 					React.Children.map(this.props.children, (child) => {
 						return React.cloneElement(child, {

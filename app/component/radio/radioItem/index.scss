@@ -1,0 +1,10 @@
+@import "aliasComponent/theme.scss";
+
+.radio-label {
+  margin-right: 20px;
+  cursor: pointer;
+  
+  input {
+    margin-right: 10px;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { fetchCurrentUserProfile } from 'aliasServer/user'
-import { PageCommon, Upload, Form, Input, Space, Button, Message, Textarea } from 'aliasComponent'
+import { PageCommon, Upload, Form, Input, Space, Button, Message, Textarea, Radio } from 'aliasComponent'
 import { updateUserProfile } from 'aliasServer/user'
 import Avatar from './avatar'
 import './index.scss'
@@ -93,6 +93,13 @@ export default class extends React.Component {
 					</Form.Field>
 					<Form.Field label='个人网站' name='homePage' pattern={/^http(s)?:\/\/.*\..*/} error='请输入正确的网址' required>
 						<Input placeholder='个人网站' value={homePage}/>
+					</Form.Field>
+					<Form.Field label='性别' name='gender'>
+						<Radio value={gender}>
+							<Radio.RadioItem value={1}>男</Radio.RadioItem>
+							<Radio.RadioItem value={2}>女</Radio.RadioItem>
+							<Radio.RadioItem value={3}>保密</Radio.RadioItem>
+						</Radio>
 					</Form.Field>
 					<Form.Field label='&nbsp;'>
 						<Button title='保存' type='primary' />

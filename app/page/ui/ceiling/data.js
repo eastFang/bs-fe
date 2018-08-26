@@ -54,6 +54,11 @@ const data = [
 		title: '文本框',
 		text: 'Textarea'
 	},
+	{
+		id: 'radio',
+		title: '单选框',
+		text: 'Radio'
+	}
 ]
 
 export default data
