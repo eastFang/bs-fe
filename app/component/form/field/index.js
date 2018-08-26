@@ -1,6 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-// import Message from '../../message'
 import './index.scss'
 
 class Field extends React.Component {

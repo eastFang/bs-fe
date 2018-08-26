@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import classnames from 'classnames'
 import './index.scss'
 
 const portalRoot = document.getElementById('portal')
