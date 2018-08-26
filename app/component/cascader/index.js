@@ -16,7 +16,7 @@ class Cascader extends React.Component {
 		this.state = {
 			isOpen: false, // optionlist是否打开
 			fullList: initFullList,
-			value: null,
+			value: props.value || null,
 		}
 		this.tempValue = []
 		this._onToggleOptionList = this._onToggleOptionList.bind(this)
@@ -29,7 +29,7 @@ class Cascader extends React.Component {
 	}
   
 	_onToggleOptionList() {
-		if (!this.state.isOpen && !this.state.value) {
+		if (!this.state.isOpen) {
 			this.fetchDataByLevel()
 		}
 		this.setState({
@@ -75,6 +75,11 @@ class Cascader extends React.Component {
 					return
 				}
 				fullList[res[0].level] = res
+				if (level === undefined) {
+					for(let i = 0; i < this.maxLevel - 1; i++) {
+						fullList[fullList.length - i - 1] = []
+					}
+				}
 				this.setState({
 					fullList,
 				})

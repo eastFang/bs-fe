@@ -37,12 +37,24 @@ export default class extends React.Component {
 
 	_onSubmit(evt, data) {
 		evt.preventDefault()
-		console.log(data)
-		
-		// updateUserProfile(data)
-		// 	.then(() => {
-		// 		Message.success('更新成功')
-		// 	})
+		const address = {}
+		const keyMap = {
+			0: 'country',
+			1: 'province',
+			2: 'city'
+		}
+		if (data.address) {
+			data.address.forEach(({id, name}, index) => {
+				address[keyMap[index]] = name
+				address[`${keyMap[index]}Id`] = id
+			})
+		}
+		delete data.address
+
+		updateUserProfile({ ...data, ...address })
+			.then(() => {
+				Message.success('更新成功')
+			})
 	}
 
 	_onToggleModule(module) {
@@ -60,10 +72,16 @@ export default class extends React.Component {
 		const {
 			name, mobile, email,
 			homePage, avatar, gender,
-			realName, birth, country,
-			province, city, nickName,
+			realName, birth, country, countryId,
+			province, provinceId, city, cityId, nickName,
 			profile,
 		} = this.state.userFullInfo
+		
+		const address = []
+		countryId ? address.push({ id: countryId, name: country }) : null
+		provinceId ? address.push({ id: provinceId, name: province }) : null
+		cityId ? address.push({ id: cityId, name: city }) : null
+
 		const { activeModule } = this.state
 		if (activeModule === '基础设置') {
 			return (
@@ -104,7 +122,7 @@ export default class extends React.Component {
 						</Radio>
 					</Form.Field>
 					<Form.Field label='居住地' name='address'>
-						<Cascader />
+						<Cascader value={address}/>
 					</Form.Field>
 					<Form.Field label='&nbsp;'>
 						<Button title='保存' type='primary' />
