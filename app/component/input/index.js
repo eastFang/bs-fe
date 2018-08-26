@@ -13,10 +13,18 @@ class Input extends React.Component {
 	}
 
 	_onChange(event) {
-		this.setState({
-			value: event.target.value
-		})
+		this.setValue(event.target.value)
 		this.props.onChange && this.props.onChange()
+	}
+
+	/**
+	 * 暴露给父组件使用
+	 * @param {值} value 
+	 */
+	setValue(value) {
+		this.setState({
+			value
+		})
 	}
 
 	componentDidMount() {
@@ -35,7 +43,7 @@ class Input extends React.Component {
 	render() {
 		const { size, ...others } = this.props
 
-		return <input className={this.getInputClass(size)} {...others} value={this.state.value} onChange={this._onChange}/>
+		return <input className={this.getInputClass(size)} {...others} value={this.state.value} onChange={this._onChange} autoComplete='off'/>
 	}
 }
 

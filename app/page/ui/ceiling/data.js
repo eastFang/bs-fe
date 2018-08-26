@@ -48,7 +48,12 @@ const data = [
 		id: 'select',
 		title: '选择框',
 		text: 'Select'
-	}
+	},
+	{
+		id: 'textarea',
+		title: '文本框',
+		text: 'Textarea'
+	},
 ]
 
 export default data

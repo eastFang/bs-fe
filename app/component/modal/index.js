@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import Button from '../button'
 import './index.scss'
 

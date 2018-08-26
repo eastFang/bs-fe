@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { flyUtil } from 'aliasUtil'
+import WhiteLogo from 'aliasImage/white-logo.png'
 import WhiteList from './whiteList'
 import './index.scss'
 
@@ -33,14 +34,16 @@ class Ceiling extends React.Component {
 	}
 
 	_onLogout() {
-		flyUtil({ url: '/api/user/logout', method: 'post' })
-			.then(() => {
-				this.props.history.push('/')
-			})
+		console.log(this.props)
+		// this.props.history.pushState('/')
+		// flyUtil({ url: '/api/user/logout', method: 'post' })
+		// 	.then(() => {
+		// 		this.props.history.pushState('/')
+		// 	})
 	}
 
 	/**
-	 * 游客用户 可操作入口
+	 * 游客 可操作入口
 	 */
 	renderVistorOperation() {
 		return (
@@ -57,9 +60,6 @@ class Ceiling extends React.Component {
 	renderSystemUserOperation() {
 		return (
 			<React.Fragment>
-				{ 
-					this.props.location.pathname !== '/' ? <Link to='/'>返回首页</Link> : null
-				}
 				<Link to='/category'>管理中心</Link>
 				<Link to='/userCenter'>个人中心</Link>
 				<a onClick={this._onLogout}>退出</a>
@@ -72,7 +72,9 @@ class Ceiling extends React.Component {
 		return (
 			<div className='ceiling-wrap'>
 				<div className='left-area'>
-					{this.state.userInfo && this.state.userInfo.nickName } 你好! 欢迎来到hardEast博客
+					<Link to='/'>
+						<img className='logo' src={WhiteLogo} />
+					</Link>
 				</div>
 				<div className='right-area'>
 					{this.state.userInfo ? this.renderSystemUserOperation() : this.renderVistorOperation()}

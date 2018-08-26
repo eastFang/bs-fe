@@ -22,6 +22,7 @@ export default class extends React.Component {
 				this.setState({
 					uploadedImgList
 				})
+				this.props.successCallback && this.props.successCallback(imgUrl)
 			})
 			.catch((error) => {
 				// 错误回调：不直接抛出错误提示的原因，不想upload依赖Message
@@ -48,7 +49,7 @@ export default class extends React.Component {
 					</span>
 					<input type='file' onChange={this._onChange} value=''/>
 				</div>
-				<ul className='list'>
+				{/*<ul className='list'>
 					{
 						this.state.uploadedImgList.map((uploadImg, index) => {
 							return (
@@ -61,7 +62,7 @@ export default class extends React.Component {
 							)
 						})
 					}
-				</ul>
+				</ul>*/}
 			</div>
 		)
 	}

@@ -11,6 +11,7 @@ import {
 	EgEditor,
 	EgTable,
 	EgSelect,
+	EgTextarea,
 } from './egs'
 import './index.scss'
 
@@ -30,6 +31,7 @@ export default class extends React.Component {
 				<div id='editor'><EgEditor /></div>
 				<div id='table'><EgTable /></div>
 				<div id='select'><EgSelect /></div>
+				<div id='textarea'><EgTextarea /></div>
 			</div>
 		)
 	}

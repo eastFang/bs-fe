@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Logo from 'aliasImage/logo.jpeg'
+import Logo from 'aliasImage/logo.png'
 import './index.scss'
 
 class Passport extends React.Component {

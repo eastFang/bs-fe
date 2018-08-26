@@ -9,6 +9,8 @@ input {
 
 body {
   font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  font-size: 14px;
+  padding-bottom: 40px;
 }
 
 ul {
@@ -20,17 +22,7 @@ ul {
 a {
   cursor: pointer;
   color: $color-text6;
-
-  &[href] {
-    text-decoration: underline;
-    &:hover {
-      color: $color-link;
-    }
-  }
-
-  &:hover {
-    color: $color-primary;
-  }
+  text-decoration: none;
 }
 
 .pull-left {

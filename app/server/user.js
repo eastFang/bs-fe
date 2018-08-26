@@ -8,6 +8,14 @@ export const fetchCurrentUserProfile = () => {
 }
 
 /**
+ * 更新用户信息
+ * @param {用户信息} params 
+ */
+export const updateUserProfile = (params) => {
+	return flyUtil({ url: '/api/user/profile', method: 'post', params })
+}
+
+/**
  * 用户注册
  * @param { name: 用户名, capthca: 图片验证码, password: 密码 } 
  */

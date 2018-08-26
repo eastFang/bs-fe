@@ -1,5 +1,7 @@
 @import 'aliasComponent/theme.scss';
 .bs-upload {
+  display: inline-block;
+  vertical-align: middle;
   .control {
     position: relative;
     width: 100px;
@@ -7,6 +9,7 @@
     border: 1px solid $color-border;
     text-align: center;
     border-radius: 4px;
+    display: inline-block;
 
     .tip-wrap {
       display: inline-block;

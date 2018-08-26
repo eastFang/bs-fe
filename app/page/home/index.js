@@ -4,7 +4,6 @@ import { PageCommon, Space } from 'aliasComponent'
 import { fetchPopularArticleList }  from 'aliasServer/article'
 import { fetchCategoryList } from 'aliasServer/category'
 import fly from 'flyio'
-import { formatDate } from 'aliasUtil'
 import './index.scss'
 import Avatar from './avatar.jpeg'
 
@@ -33,18 +32,24 @@ export default class extends React.Component {
 				<ul className='article-list'>
 					{
 						this.state.articleList && this.state.articleList.map((item, index) => {
-							const { article } = item
+							const { article, summary } = item
 							return (
 								<li key={index}>
-									<p className='title'>{article.title}</p>
-									<p>{article.synopsis}</p>
-									<p>{formatDate(article.publishAt)}</p>
+									<Link to={`/articleDetail?id=${article.id}`}>
+										<p className='title'>{article.title}</p>
+										<p className='synopsis'>{article.synopsis}</p>
+										<p className='summary'>
+											<span>{article.author}</span>
+											<span className='i-wrap'><i className='iconfont icon-likes'></i>{summary.like}</span>
+											<span className='i-wrap'><i className='iconfont icon-comments'></i>{summary.comments}</span>
+										</p>
+									</Link>
 								</li>
 							)
 						})
 					}
 				</ul>
-				<Link to='/squareArticle'>更多文章</Link>
+				<Link className='more-articles' to='/squareArticle'>更多文章</Link>
 			</div>
 		)
 	}
@@ -60,7 +65,9 @@ export default class extends React.Component {
 							categoryList && categoryList.map((category, index) => {
 								return (
 									<li key={index}>
-										{category.name}
+										<Link to={`/squareArticle?categoryId=${category.id}`}>
+											{category.name}
+										</Link>
 									</li>
 								)
 							})

@@ -9,6 +9,7 @@ import EgUpload from './upload-eg'
 import EgEditor from './editor-eg'
 import EgTable from './table-eg'
 import EgSelect from './select-eg'
+import EgTextarea from './textarea-eg'
 
 module.exports = {
 	EgButton,
@@ -22,4 +23,5 @@ module.exports = {
 	EgEditor,
 	EgTable,
 	EgSelect,
+	EgTextarea,
 }

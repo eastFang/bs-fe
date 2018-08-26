@@ -14,6 +14,7 @@ import Upload from './upload'
 import Editor from './eidtor'
 import Table from './table'
 import Select from './select'
+import Textarea from './textarea'
 
 module.exports = {
 	Button,
@@ -33,5 +34,6 @@ module.exports = {
 	Upload,
 	Editor,
 	Table,
-	Select
+	Select,
+	Textarea
 }

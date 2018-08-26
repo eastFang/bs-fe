@@ -1,0 +1,15 @@
+@import 'aliasComponent/theme.scss';
+
+.bs-textarea {
+  border: 1px solid $color-border;
+  outline: 0;
+  border-radius: 4px;
+  resize: none;
+  width: 320px;
+  padding: 8px;
+
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: 0px 0px 0px 2px $color-primary-light4;
+  }
+}
