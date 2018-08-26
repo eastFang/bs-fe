@@ -1,6 +1,6 @@
 import React from 'react'
 import { fetchCurrentUserProfile } from 'aliasServer/user'
-import { PageCommon, Upload, Form, Input, Space, Button, Message, Textarea, Radio } from 'aliasComponent'
+import { PageCommon, Upload, Form, Input, Space, Button, Message, Textarea, Radio, Cascader } from 'aliasComponent'
 import { updateUserProfile } from 'aliasServer/user'
 import Avatar from './avatar'
 import './index.scss'
@@ -37,10 +37,12 @@ export default class extends React.Component {
 
 	_onSubmit(evt, data) {
 		evt.preventDefault()
-		updateUserProfile(data)
-			.then(() => {
-				Message.success('更新成功')
-			})
+		console.log(data)
+		
+		// updateUserProfile(data)
+		// 	.then(() => {
+		// 		Message.success('更新成功')
+		// 	})
 	}
 
 	_onToggleModule(module) {
@@ -100,6 +102,9 @@ export default class extends React.Component {
 							<Radio.RadioItem value={2}>女</Radio.RadioItem>
 							<Radio.RadioItem value={3}>保密</Radio.RadioItem>
 						</Radio>
+					</Form.Field>
+					<Form.Field label='居住地' name='address'>
+						<Cascader />
 					</Form.Field>
 					<Form.Field label='&nbsp;'>
 						<Button title='保存' type='primary' />

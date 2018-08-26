@@ -1,0 +1,48 @@
+@import "aliasComponent/theme.scss";
+
+.bs-cascader {
+  position: relative;
+  display: inline-block;
+  
+  .bs-cascader-showarea {
+    cursor: pointer;
+    color: $color-text3;
+    line-height: 32px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: 0 10px;
+    min-width: 150px;
+
+    .placeholder {
+      color: $color-text9;
+    }
+  }
+
+  .bs-cascader-optionlist {
+    position: absolute;
+    white-space: nowrap;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 2px $color-border;
+    margin-top: 4px;
+    background-color: white;
+    
+    ul {
+      height: 200px;
+      width: 150px;
+      overflow-y: auto;
+      display: inline-block;
+
+      li {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        line-height: 28px;
+        padding: 0 5px;
+
+        &.selected {
+          background-color: $smoke;
+        }
+      }
+    }
+  }
+}

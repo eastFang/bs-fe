@@ -58,6 +58,11 @@ const data = [
 		id: 'radio',
 		title: '单选框',
 		text: 'Radio'
+	},
+	{
+		id: 'cascader',
+		title: '级联选择器',
+		text: 'Cascader'
 	}
 ]
 

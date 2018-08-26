@@ -16,6 +16,7 @@ import Table from './table'
 import Select from './select'
 import Textarea from './textarea'
 import Radio from './radio'
+import Cascader from './cascader'
 
 module.exports = {
 	Button,
@@ -38,4 +39,5 @@ module.exports = {
 	Select,
 	Textarea,
 	Radio,
+	Cascader,
 }

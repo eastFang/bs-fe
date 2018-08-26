@@ -11,6 +11,7 @@ import EgTable from './table-eg'
 import EgSelect from './select-eg'
 import EgTextarea from './textarea-eg'
 import EgRadio from './radio-eg'
+import EgCascader from './cascader-eg'
 
 module.exports = {
 	EgButton,
@@ -26,4 +27,5 @@ module.exports = {
 	EgSelect,
 	EgTextarea,
 	EgRadio,
+	EgCascader,
 }
