@@ -8,12 +8,16 @@ import './index.scss'
 class Cascader extends React.Component {
 	constructor(props) {
 		super(props)
+		this.maxLevel = props.level || 3
+		const initFullList = []
+		for(let i = 0; i < this.maxLevel; i++) {
+			initFullList.push([])
+		}
 		this.state = {
 			isOpen: false, // optionlist是否打开
-			fullList: [[], [], []],
+			fullList: initFullList,
 			value: null,
 		}
-		this.maxLevel = 3
 		this.tempValue = []
 		this._onToggleOptionList = this._onToggleOptionList.bind(this)
 	}
