@@ -65,7 +65,7 @@ module.exports = {
 	},
 	entry: {
 		app: './app/index',
-		vendor: ['react', 'flyio', 'react-dom', 'react-router-dom']
+		vendor: ['react', 'flyio', 'react-dom', 'react-router-dom', 'lodash']
 	},
 	output: {
 		chunkFilename: '[name].bundle.js',

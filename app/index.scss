@@ -1,5 +1,12 @@
 @import "aliasComponent/theme.scss";
 
+$color-html-background: #fbfbfb;
+
+html {
+  height: 100%;
+  background-color: $color-html-background;
+}
+
 ul,
 body,
 input {
