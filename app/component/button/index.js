@@ -23,12 +23,11 @@ class Button extends React.Component {
 			title,
 			size,
 			href,
-			className,
 			...others
 		} = this.props
 		const btnClass = this.getBtnClass(type, size)
 
-		const PureBtn = <button className={btnClass} {...others}>{title}</button>
+		const PureBtn = <button {...others} className={btnClass}>{title}</button>
 		if (!href) {
 			return PureBtn
 		} 
