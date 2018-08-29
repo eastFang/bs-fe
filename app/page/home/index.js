@@ -35,7 +35,7 @@ export default class extends React.Component {
 							const { article, summary } = item
 							return (
 								<li key={index}>
-									<Link to={`/articleDetail?id=${article.id}`}>
+									<Link to={`/article/${article.id}`}>
 										<p className='title'>{article.title}</p>
 										<p className='synopsis'>{article.synopsis}</p>
 										<p className='summary'>

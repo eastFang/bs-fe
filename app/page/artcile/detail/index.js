@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageCommon } from 'aliasComponent'
 import { fetchArticleDetail } from 'aliasServer/article'
-import { queryStrToObj, formatDate } from 'aliasUtil'
+import { formatDate } from 'aliasUtil'
 import './index.scss'
 
 export default class extends React.Component {
@@ -13,7 +13,7 @@ export default class extends React.Component {
 	}
 
 	componentDidMount() {
-		const { id } = queryStrToObj(this.props.location.search)
+		const { id } = this.props.match.params
 		fetchArticleDetail(id)
 			.then((res) => {
 				this.setState({

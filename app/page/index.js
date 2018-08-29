@@ -1,6 +1,7 @@
 import Loadable from 'react-loadable'
 import React from 'react'
 import { PageCommon } from 'aliasComponent'
+import WrapAuth from './wrapAuth'
 
 const MyLoadingComponent = ({ isLoading, error}) => {
 	if (isLoading) {
@@ -84,5 +85,6 @@ module.exports = {
 	Article: {
 		List: AsyncArticleList,
 		Detail: AsyncArticleDetail,
-	}
+	},
+	WrapAuth
 }

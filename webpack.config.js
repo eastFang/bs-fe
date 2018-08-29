@@ -69,7 +69,8 @@ module.exports = {
 	},
 	output: {
 		chunkFilename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'public')
+		path: path.resolve(__dirname, 'public'),
+		publicPath: '/', // 配合react-router 二级以上路由可以访问到静态资源
 	},
 	optimization: {
 		splitChunks: {

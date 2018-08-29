@@ -30,7 +30,7 @@ class Ceiling extends React.Component {
 	}
 
 	componentDidMount() {
-		this.fetchUserInfo()
+		// this.fetchUserInfo()
 	}
 
 	_onLogout() {

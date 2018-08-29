@@ -6,7 +6,7 @@ const withoutLoginUrlList = [
 	/\/login/,
 	/\/register/,
 	/\/squareArticle/,
-	/\/articleDetail/,
+	/\/article\/\d+/,
 ]
 
 export default withoutLoginUrlList

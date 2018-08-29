@@ -78,7 +78,7 @@ export default class extends React.Component {
 						article && article.paging && article.paging.datas && article.paging.datas.map((article, index) => {
 							return (
 								<li key={index}>
-									<Link to={`/articleDetail?id=${article.id}`}>
+									<Link to={`/article/${article.id}`}>
 										<p className='title'>{article.title}</p>
 										<p>{article.synopsis}</p>
 										<p>{formatDate(article.publishAt)}</p>
