@@ -1,0 +1,52 @@
+import React from 'react'
+import { Spin, Pagination } from 'aliasComponent'
+import { Link, withRouter } from 'react-router-dom'
+import { fetchArticleSearch }  from 'aliasServer/article'
+import { queryStrToObj, formatDate } from 'aliasUtil'
+
+class ArticleList extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			article: null,
+			isFetching: true,
+		}
+	}
+
+	componentDidMount() {
+		const params = queryStrToObj(this.props.location.search)
+		fetchArticleSearch(params)
+			.then((res) => {
+				this.setState({
+					article: res,
+					isFetching: false
+				})
+			})
+	}
+  
+	render() {
+		const { isFetching, article } = this.state
+		return (
+			<Spin isFetching={isFetching}>
+				<ul className='right-ul'>
+					{
+						article && article.paging && article.paging.datas && article.paging.datas.map((article, index) => {
+							return (
+								<li key={index}>
+									<Link to={`/article/${article.id}`}>
+										<p className='title'>{article.title}</p>
+										<p>{article.synopsis}</p>
+										<p>{formatDate(article.publishAt)}</p>
+									</Link>
+								</li>
+							)
+						})
+					}
+				</ul>
+				<Pagination total={article && article.paging ? article.paging.total : 0}/>
+			</Spin>
+		)
+	}
+}
+
+export default withRouter(ArticleList)
