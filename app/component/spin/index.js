@@ -6,20 +6,20 @@ class Spin extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			spin: !!props.spin,
+			isFetching: !!props.isFetching,
 		}
 	}
   
 	componentWillReceiveProps(nextProps) {
-		if (this.props.spin !== nextProps.spin) {
+		if (this.props.isFetching !== nextProps.isFetching) {
 			this.setState({
-				spin: nextProps.spin
+				isFetching: nextProps.isFetching
 			})
 		}
 	}
 
 	render() {
-		if (!this.state.spin) {
+		if (!this.state.isFetching) {
 			return this.props.children
 		}
 

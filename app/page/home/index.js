@@ -16,7 +16,6 @@ class Home extends React.Component {
 				</div>
 				<div className='right-wrap'>
 					<CategoryList />
-					<img src={Avatar} />
 				</div>
 			</div>
 		)
