@@ -4,7 +4,6 @@ import { withCeiling } from 'aliasPageCommon'
 import ArticleList from './articleList'
 import CategoryList from './categoryList'
 import './index.scss'
-import Avatar from './avatar.jpeg'
 
 class Home extends React.Component {
 	render() {

@@ -1,10 +1,10 @@
 import Loadable from 'react-loadable'
 import React from 'react'
-import { PageCommonLoading } from 'aliasPageCommon'
+import { Loading } from 'aliasPageCommon'
 
 const MyLoadingComponent = ({ isLoading, error}) => {
 	if (isLoading) {
-		return <PageCommonLoading />
+		return <Loading />
 	} else if (error) {
 		return <div>sorry</div>
 	} else {
@@ -16,10 +16,6 @@ const AsyncHome = Loadable({
 	loader: () => import(/* webpackChunkName: "home" */ './home'),
 	loading: MyLoadingComponent
 })
-// const AsyncUI = Loadable({
-// 	loader: () => import(/* webpackChunkName: "ui" */ './ui'),
-// 	loading: MyLoadingComponent
-// })
 const AsyncLogin = Loadable({
 	loader: () => import(/* webpackChunkName: "login" */ './login'),
 	loading: MyLoadingComponent

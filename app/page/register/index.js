@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input, Button, Message, Form } from 'aliasComponent'
-import { PageCommonPassport } from 'aliasPageCommon'
+import { Passport } from 'aliasPageCommon'
 import { register } from 'aliasServer/user'
 import './index.scss'
 
@@ -32,7 +32,7 @@ export default class extends React.Component {
 
 	render() {
 		return (
-			<PageCommonPassport passportBoxTitle='账号注册'>
+			<Passport passportBoxTitle='账号注册'>
 				<Form onSubmit={this._onSubmit}>
 					<Form.Field name='name' empty='请输入用户名' required>
 						<Input size='large' placeholder='用户名'/>
@@ -46,7 +46,7 @@ export default class extends React.Component {
 					</Form.Field>
 					<Button type='primary' title='立即注册' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
 				</Form>
-			</PageCommonPassport>
+			</Passport>
 		)
 	}
 }

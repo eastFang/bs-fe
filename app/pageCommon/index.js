@@ -1,15 +1,15 @@
-import PageCommonPassport from './passport'
-import PageCommonCeiling from './ceiling/connect'
+import Passport from './passport'
+import Ceiling from './ceiling/connect'
 import withCeiling from './ceiling/with'
-import PageCommonLoading from './loading'
-import PageCommonReturnTop from './returnTop'
-import PageCommonVerifyUser from './verifyUser/connect'
+import Loading from './loading'
+import ReturnTop from './returnTop'
+import VerifyUser from './verifyUser'
 
 module.exports = {
-	PageCommonPassport,
-	PageCommonCeiling,
-	PageCommonLoading,
-	PageCommonReturnTop,
+	Passport,
+	Ceiling,
+	Loading,
+	ReturnTop,
 	withCeiling,
-	PageCommonVerifyUser,
+	VerifyUser,
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input, Button, Message, Form } from 'aliasComponent'
-import { PageCommonPassport } from 'aliasPageCommon'
+import { Passport } from 'aliasPageCommon'
 import { login } from 'aliasServer/user'
 
 export default class extends React.Component {
@@ -23,7 +23,7 @@ export default class extends React.Component {
 
 	render() {
 		return (
-			<PageCommonPassport passportBoxTitle='账号登录'>
+			<Passport passportBoxTitle='账号登录'>
 				<Form onSubmit={this._onSubmit}>
 					<Form.Field
 						name='name'
@@ -39,7 +39,7 @@ export default class extends React.Component {
 					</Form.Field>
 					<Button type='primary' title='登录' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
 				</Form>
-			</PageCommonPassport>
+			</Passport>
 		)
 	}
 }
