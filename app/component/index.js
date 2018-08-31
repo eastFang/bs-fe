@@ -3,10 +3,6 @@ import Pagination from './pagination'
 import Input from './input'
 import DatePicker from './datepicker'
 import Space from './space'
-import PageCommonPassport from './pageCommon/passport'
-import PageCommonCeiling from './pageCommon/ceiling'
-import PageCommonLoading from './pageCommon/loading'
-import PageCommonReturnTop from './pageCommon/returnTop'
 import Modal from './modal'
 import Message from './message'
 import Form from './form'
@@ -17,6 +13,7 @@ import Select from './select'
 import Textarea from './textarea'
 import Radio from './radio'
 import Cascader from './cascader'
+import Spin from './spin'
 
 module.exports = {
 	Button,
@@ -24,12 +21,6 @@ module.exports = {
 	Input,
 	DatePicker,
 	Space,
-	PageCommon: {
-		Passport: PageCommonPassport,
-		Ceiling: PageCommonCeiling,
-		Loading: PageCommonLoading,
-		ReturnTop: PageCommonReturnTop,
-	},
 	Modal,
 	Message,
 	Form,
@@ -40,4 +31,5 @@ module.exports = {
 	Textarea,
 	Radio,
 	Cascader,
+	Spin,
 }

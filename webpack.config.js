@@ -91,6 +91,8 @@ module.exports = {
 			aliasUtil: path.resolve(__dirname, 'app/util/'),
 			aliasServer: path.resolve(__dirname, 'app/server/'),
 			aliasImage: path.resolve(__dirname, 'app/image/'),
+			aliasPageCommon: path.resolve(__dirname, 'app/pageCommon/'),
+			aliasUI: path.resolve(__dirname, 'app/ui'),
 		}
 	}
 }

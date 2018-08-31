@@ -14,6 +14,7 @@
   transition: all ease .2s;
   cursor: pointer;
   opacity: 0;
+  background-color: $color-textb;
 
   &.visible {
     height: 50px;
@@ -21,8 +22,8 @@
   }
 
   i {
-    font-size: 50px;
+    font-size: 25px;
     line-height: 50px;
-    color: $color-text9;
+    color: white;
   }
 }

@@ -5,7 +5,7 @@ const withoutLoginUrlList = [
 	/^\/$/,
 	/\/login/,
 	/\/register/,
-	/\/squareArticle/,
+	/\/search/,
 	/\/article\/\d+/,
 ]
 

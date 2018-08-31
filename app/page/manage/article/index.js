@@ -71,7 +71,7 @@ export default class extends React.Component {
 		const { dataSource, total } = this.state
 		return (
 			<ManageCommonPage>
-				<Button type='primary' title='新建文章' onClick={() => this.props.history.push('/addArticle')}/>
+				<Button type='primary' title='新建文章' onClick={() => this.props.history.push('/article/add')}/>
 				<Space height={16}/>
 				<Table dataSource={dataSource} total={total} columns={this.columns} />
 			</ManageCommonPage>

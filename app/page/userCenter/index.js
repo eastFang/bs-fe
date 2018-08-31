@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchCurrentUserProfile } from 'aliasServer/user'
-import { PageCommon, Upload, Form, Input, Space, Button, Message, Textarea, Radio, Cascader } from 'aliasComponent'
+import { Upload, Form, Input, Space, Button, Message, Textarea, Radio, Cascader } from 'aliasComponent'
+import { withCeiling } from 'aliasPageCommon'
 import { updateUserProfile } from 'aliasServer/user'
 import Avatar from './avatar'
 import './index.scss'
@@ -10,7 +11,7 @@ const moduleList = [
 	'个人资料'
 ]
 
-export default class extends React.Component {
+class UserCenter extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -136,26 +137,25 @@ export default class extends React.Component {
 		if (!this.state.userFullInfo) {
 			return null
 		}
-
+		
 		return (
-			<React.Fragment>
-				<PageCommon.Ceiling />
-				<div className='center-wrap'>
-					<Space height={40} />
-					<div className='left-area'>
-						<ul>
-							{
-								moduleList.map((module, index) => {
-									return <li className={module === this.state.activeModule ? 'active' : ''} key={index} onClick={() => this._onToggleModule(module)}>{module}</li>
-								})
-							}
-						</ul>
-					</div>
-					<div className='right-area'>
-						{this.renderFormFields()}
-					</div>
+			<div className='center-wrap'>
+				<Space height={40} />
+				<div className='left-area'>
+					<ul>
+						{
+							moduleList.map((module, index) => {
+								return <li className={module === this.state.activeModule ? 'active' : ''} key={index} onClick={() => this._onToggleModule(module)}>{module}</li>
+							})
+						}
+					</ul>
 				</div>
-			</React.Fragment>
+				<div className='right-area'>
+					{this.renderFormFields()}
+				</div>
+			</div>
 		)
 	}
 }
+
+export default withCeiling()(UserCenter)

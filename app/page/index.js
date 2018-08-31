@@ -1,11 +1,10 @@
 import Loadable from 'react-loadable'
 import React from 'react'
-import { PageCommon } from 'aliasComponent'
-import WrapAuth from './wrapAuth'
+import { PageCommonLoading } from 'aliasPageCommon'
 
 const MyLoadingComponent = ({ isLoading, error}) => {
 	if (isLoading) {
-		return <PageCommon.Loading />
+		return <PageCommonLoading />
 	} else if (error) {
 		return <div>sorry</div>
 	} else {
@@ -17,10 +16,10 @@ const AsyncHome = Loadable({
 	loader: () => import(/* webpackChunkName: "home" */ './home'),
 	loading: MyLoadingComponent
 })
-const AsyncUI = Loadable({
-	loader: () => import(/* webpackChunkName: "ui" */ './ui'),
-	loading: MyLoadingComponent
-})
+// const AsyncUI = Loadable({
+// 	loader: () => import(/* webpackChunkName: "ui" */ './ui'),
+// 	loading: MyLoadingComponent
+// })
 const AsyncLogin = Loadable({
 	loader: () => import(/* webpackChunkName: "login" */ './login'),
 	loading: MyLoadingComponent
@@ -30,7 +29,7 @@ const AsyncRegister = Loadable({
 	loading: MyLoadingComponent
 })
 const AsyncUserCenter = Loadable({
-	loader: () => import(/* webpackChunkName: "userCenter" */ './userCenter'),
+	loader: () => import(/* webpackChunkName: "userCenter" */ './userCenter/connect'),
 	loading: MyLoadingComponent
 })
 const AsyncManageCateogry = Loadable({
@@ -68,7 +67,7 @@ const AsyncUserLoginLog = Loadable({
 
 module.exports = {
 	Home: AsyncHome,
-	UI: AsyncUI,
+	// UI: AsyncUI,
 	Login: AsyncLogin,
 	Register: AsyncRegister,
 	UserCenter: AsyncUserCenter,
@@ -86,5 +85,4 @@ module.exports = {
 		List: AsyncArticleList,
 		Detail: AsyncArticleDetail,
 	},
-	WrapAuth
 }

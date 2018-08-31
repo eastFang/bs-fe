@@ -1,23 +1,23 @@
 const list = [
 	{
 		value: '类目管理',
-		url: '/category'
+		url: '/manage/category'
 	},
 	{
 		value: '标签管理',
-		url: '/label'
+		url: '/manage/label'
 	},
 	{
 		value: '文章管理',
-		url: '/article'
+		url: '/manage/article'
 	},
 	{
 		value: '用户管理',
-		url: '/user'
+		url: '/manage/user'
 	},
 	{
 		value: '登陆日志',
-		url: '/userLoginLog'
+		url: '/manage/userLoginLog'
 	}
 ]
 

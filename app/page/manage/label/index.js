@@ -65,7 +65,7 @@ export default class extends React.Component {
 			.then(() => {
 				Message.success('创建成功')
 				// 暂时用这个方法解决下...
-				location.href = '/label'
+				location.href = '/manage/label'
 			})
 	}
 

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Input, Button, PageCommon, Message, Form } from 'aliasComponent'
+import { Input, Button, Message, Form } from 'aliasComponent'
+import { PageCommonPassport } from 'aliasPageCommon'
 import { login } from 'aliasServer/user'
 
 export default class extends React.Component {
@@ -12,7 +13,9 @@ export default class extends React.Component {
 		evt.preventDefault()
 		login(data) 
 			.then(() => {
-				this.props.history.push('/')
+				// TODO优化
+				// 登陆成功后Wrap无法重新调起获取用户登录信息
+				location.href = '/'
 			}).catch((error) => {
 				Message.error(error)
 			})
@@ -20,7 +23,7 @@ export default class extends React.Component {
 
 	render() {
 		return (
-			<PageCommon.Passport passportBoxTitle='账号登录'>
+			<PageCommonPassport passportBoxTitle='账号登录'>
 				<Form onSubmit={this._onSubmit}>
 					<Form.Field
 						name='name'
@@ -36,7 +39,7 @@ export default class extends React.Component {
 					</Form.Field>
 					<Button type='primary' title='登录' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
 				</Form>
-			</PageCommon.Passport>
+			</PageCommonPassport>
 		)
 	}
 }

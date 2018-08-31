@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PageCommon, Pagination } from 'aliasComponent'
+import { Pagination } from 'aliasComponent'
+import { withCeiling } from 'aliasPageCommon'
 import fly from 'flyio'
-import ArticleSearch from '../search'
 import { fetchArticleSearch } from 'aliasServer/article'
 import { fetchCategoryList } from 'aliasServer/category'
 import { formatDate, queryStrToObj, replaceQueryParamInSearch } from 'aliasUtil'
 import './index.scss'
 
-export default class extends React.Component {
+class ArticleList extends React.Component {
 	constructor(props) {
 		super(props)
 		const { categoryId = '' } = queryStrToObj(props.location.search)
@@ -43,7 +43,7 @@ export default class extends React.Component {
 	}
 
 	_onSearch(categoryId) {
-		this.props.history.push(`/squareArticle${replaceQueryParamInSearch(this.props.location.search, { categoryId } )}`)
+		this.props.history.push(`/search${replaceQueryParamInSearch(this.props.location.search, { categoryId } )}`)
 	}
 
 	renderLeftArea() {
@@ -95,16 +95,14 @@ export default class extends React.Component {
 
 	render() {
 		return (
-			<React.Fragment>
-				<PageCommon.Ceiling />
-				<div className='page-article-list'>
-					<ArticleSearch />
-					<div className='page-article-list-body'>
-						{this.renderLeftArea()}
-						{this.renderRightArea()}
-					</div>
+			<div className='page-article-list'>
+				<div className='page-article-list-body'>
+					{this.renderLeftArea()}
+					{this.renderRightArea()}
 				</div>
-			</React.Fragment>
+			</div>
 		)
 	}
 }
+
+export default withCeiling()(ArticleList)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageCommon } from 'aliasComponent'
+import { PageCommonCeiling } from 'aliasPageCommon'
 import Menu from '../menu'
 import './index.scss'
 
@@ -7,7 +7,7 @@ export default class extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<PageCommon.Ceiling />
+				<PageCommonCeiling />
 				<Menu />
 				<div className='manage-wrap'>
 					{this.props.children}

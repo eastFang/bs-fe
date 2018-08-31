@@ -63,6 +63,11 @@ const data = [
 		id: 'cascader',
 		title: '级联选择器',
 		text: 'Cascader'
+	},
+	{
+		id: 'spin',
+		title: '菊花',
+		text: 'Spin'
 	}
 ]
 

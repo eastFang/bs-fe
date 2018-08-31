@@ -52,7 +52,7 @@ export default class extends React.Component {
 		createCategory(data)
 			.then(() => {
 				Message.success('创建成功')
-				location.href = '/label'
+				location.href = '/manage/label'
 			})
 	}
 

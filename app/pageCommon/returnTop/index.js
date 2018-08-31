@@ -6,7 +6,7 @@ export default class extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			visible: false
+			visible: false,
 		}
 		this._onReturnTop = this._onReturnTop.bind(this)
 	}
@@ -38,11 +38,8 @@ export default class extends React.Component {
 			}
 		)
 		return (
-			<div>
-				{this.props.children}
-				<div className={className} onClick={this._onReturnTop}>
-					<i className='iconfont icon-up'></i>
-				</div>
+			<div className={className} onClick={this._onReturnTop}>
+				<i className='iconfont icon-up'></i>
 			</div>
 		)
 	}

@@ -13,6 +13,8 @@
 
       .article-list {
         margin-bottom: 30px;
+        min-height: 300px;
+        
         li {
           border-bottom: 1px solid $color-border;
           font-size: 12px;
