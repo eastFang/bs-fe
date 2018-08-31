@@ -5,17 +5,18 @@ export default class extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			spin: true
+			isFetching: true
 		}
 	}
+
 	render() {
 		return (
 			<React.Fragment>
 				<h3>菊花</h3>
-				<Spin spin={this.state.spin}>
+				<Spin isFetching={this.state.isFetching}>
 					<div style={{ width: '100px', height: '100px' }} onClick={() => alert(333)}>菊花</div>
 				</Spin>
-				<a onClick={() => this.setState({ spin: !this.state.spin })}>切换状态</a>
+				<a onClick={() => this.setState({ spin: !this.state.isFetching })}>切换状态</a>
 			</React.Fragment>
 		)
 	}
