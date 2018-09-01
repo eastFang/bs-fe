@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { Input, Button } from 'aliasComponent'
+import { Input, Button, Img } from 'aliasComponent'
 import WhiteLogo from 'aliasImage/white-logo.png'
 import { flyUtil } from 'aliasUtil'
 import { queryStrToObj } from 'aliasUtil'
@@ -44,7 +44,7 @@ class Ceiling extends React.Component {
 		return (
 			<div className='user-operation'>
 				<a className='wrap-img'>
-					<img src={avatar} />
+					<Img className='avatar' src={avatar} />
 					<i className='iconfont icon-down' />
 				</a>
 				<ul className='entrance-ul'>

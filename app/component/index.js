@@ -14,6 +14,7 @@ import Textarea from './textarea'
 import Radio from './radio'
 import Cascader from './cascader'
 import Spin from './spin'
+import Img from './img'
 
 module.exports = {
 	Button,
@@ -32,4 +33,5 @@ module.exports = {
 	Radio,
 	Cascader,
 	Spin,
+	Img,
 }
