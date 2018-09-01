@@ -4,10 +4,6 @@ const list = [
 		url: '/manage/category'
 	},
 	{
-		value: '标签管理',
-		url: '/manage/label'
-	},
-	{
 		value: '文章管理',
 		url: '/manage/article'
 	},

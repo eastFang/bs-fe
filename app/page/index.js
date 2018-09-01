@@ -32,10 +32,6 @@ const AsyncManageCateogry = Loadable({
 	loader: () => import(/* webpackChunkName: "manageCategory" */ './manage/category'),
 	loading: MyLoadingComponent
 })
-const AsyncManageLabel = Loadable({
-	loader: () =>  import(/* webpackChunkName: "manageLabel" */ './manage/label'),
-	loading: MyLoadingComponent
-})
 const AsyncManageArticle = Loadable({
 	loader: () => import(/* webpackChunkName: "manageArticle" */ './manage/article'),
 	loading: MyLoadingComponent
@@ -69,7 +65,6 @@ module.exports = {
 	UserCenter: AsyncUserCenter,
 	Manage: {
 		Category: AsyncManageCateogry,
-		Label: AsyncManageLabel,
 		Article: {
 			List: AsyncManageArticle,
 			Add: AsyncManageArticleAdd,

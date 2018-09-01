@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spin } from 'aliasComponent'
 import { Link } from 'react-router-dom'
-import { fetchPopularArticleList }  from 'aliasServer/article'
+import { fetchArticleSearch }  from 'aliasServer/article'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -13,10 +13,10 @@ export default class extends React.Component {
 	}
 
 	componentDidMount() {
-		fetchPopularArticleList()
+		fetchArticleSearch()
 			.then((res) => {
 				this.setState({
-					articleList: res,
+					articleList: res.paging.datas,
 					isFetching: false
 				})
 			})
@@ -24,12 +24,13 @@ export default class extends React.Component {
   
 	render() {
 		const { isFetching, articleList } = this.state
- 		return (
+    
+		return (
 			<Spin isFetching={isFetching}>
-				<ul className='article-list'>
+				<ul className='article-search-list'>
 					{
-						articleList && articleList.map((item, index) => {
-							const { article, summary } = item
+						articleList && articleList.map((article, index) => {
+							const { summary } = article
 							return (
 								<li key={index}>
 									<Link to={`/article/${article.id}`}>

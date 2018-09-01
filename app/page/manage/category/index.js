@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Modal, Form, Input, Button, Space, Message } from 'aliasComponent'
+import { Table, Modal, Form, Input, Button, Space, Message, Spin } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate } from 'aliasUtil'
 import { fetchCategoryPaging, createCategory } from 'aliasServer/category'
@@ -10,7 +10,9 @@ export default class extends React.Component {
 		this.state = {
 			dataSource: null,
 			total: 0,
+			isFetching: true,
 		}
+
 		this.columns = [{
 			title: 'id',
 			key: 'id'
@@ -42,7 +44,7 @@ export default class extends React.Component {
 		fetchCategoryPaging().then((res) => {
 			const { total, datas } = res
 			this.setState({
-				total, dataSource: datas
+				total, dataSource: datas, isFetching: false
 			})
 		})
 	}
@@ -70,12 +72,14 @@ export default class extends React.Component {
 	}
 
 	render() {
-		const { dataSource, total } = this.state
+		const { dataSource, total, isFetching } = this.state
 		return (
 			<ManageCommonPage>
 				<Button type='primary' title='新建类目' onClick={() => this.refs.addCategory.show()}/>
 				<Space height={16}/>
-				<Table dataSource={dataSource} total={total} columns={this.columns} />
+				<Spin isFetching={isFetching}>
+					<Table dataSource={dataSource} total={total} columns={this.columns} />
+				</Spin>
 				<Modal title='新建类目' ref='addCategory' onOK={(...args) => this.refs.form._onSubmit(...args)}>
 					<Form onSubmit={this._onSubmit} ref='form'>
 						<Form.Field label='名称' name='name' required>

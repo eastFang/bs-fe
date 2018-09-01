@@ -1,40 +1,43 @@
 import React from 'react'
 import { Spin } from 'aliasComponent'
 import { Link } from 'react-router-dom'
-import { fetchCategoryList } from 'aliasServer/category'
+import { fetchPopularArticleList }  from 'aliasServer/article'
+import { formatDate } from 'aliasUtil'
 
 export default class extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			categoryList: null,
+			articleList: null,
 			isFetching: true,
 		}
 	}
 
 	componentDidMount() {
-		fetchCategoryList()
+		fetchPopularArticleList()
 			.then((res) => {
 				this.setState({
-					categoryList: res,
+					articleList: res,
 					isFetching: false
 				})
 			})
 	}
   
 	render() {
-		const { isFetching, categoryList } = this.state
+		const { isFetching, articleList } = this.state
 		return (
 			<React.Fragment>
-				<h3>分类导航</h3>
+				<h3>热门文章</h3>
 				<Spin isFetching={isFetching}>
-					<ul className='category-list'>
+					<ul className='article-popular-list'>
 						{
-							categoryList && categoryList.map((category, index) => {
+							articleList && articleList.map((item, index) => {
+								const { article } = item
 								return (
 									<li key={index}>
-										<Link to={`/search?categoryId=${category.id}`}>
-											{category.name}
+										<Link to={`/article/${article.id}`}>
+											<p className='title'>{article.title}</p>
+											<p className='date'>{formatDate(article.publishAt)}</p>
 										</Link>
 									</li>
 								)

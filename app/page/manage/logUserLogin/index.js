@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'aliasComponent'
+import { Table, Spin } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchUserLoginLogPaging } from 'aliasServer/log'
@@ -10,6 +10,7 @@ export default class extends React.Component {
 		this.state = {
 			dataSource: null,
 			total: 0,
+			isFetching: true,
 		}
 		this.columns = [{
 			title: 'id',
@@ -58,16 +59,19 @@ export default class extends React.Component {
 			.then((res) => {
 				this.setState({
 					dataSource: res.datas,
-					total: res.total
+					total: res.total,
+					isFetching: false,
 				})
 			})
 	}
 
 	render() {
-		const { dataSource, total } = this.state
+		const { dataSource, total, isFetching } = this.state
 		return (
 			<ManageCommonPage>
-				<Table dataSource={dataSource} total={total} columns={this.columns} />
+				<Spin isFetching={isFetching}>
+					<Table dataSource={dataSource} total={total} columns={this.columns} />
+				</Spin>
 			</ManageCommonPage>
 		)
 	}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Table, Space } from 'aliasComponent'
+import { Button, Table, Space, Spin } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchAdminArticlePaging } from 'aliasServer/article'
@@ -9,7 +9,8 @@ export default class extends React.Component {
 		super(props)
 		this.state = {
 			dataSource: null,
-			total: 0
+			total: 0,
+			isFetching: true,
 		}
 		this.columns = [{
 			title: 'id',
@@ -62,18 +63,21 @@ export default class extends React.Component {
 			const { total, datas } = res
 			this.setState({
 				total,
-				dataSource: datas
+				dataSource: datas,
+				isFetching: false,
 			})
 		})
 	}
 
 	render() {
-		const { dataSource, total } = this.state
+		const { dataSource, total, isFetching } = this.state
 		return (
 			<ManageCommonPage>
 				<Button type='primary' title='新建文章' onClick={() => this.props.history.push('/article/add')}/>
 				<Space height={16}/>
-				<Table dataSource={dataSource} total={total} columns={this.columns} />
+				<Spin isFetching={isFetching}>
+					<Table dataSource={dataSource} total={total} columns={this.columns} />
+				</Spin>
 			</ManageCommonPage>
 		)
 	}

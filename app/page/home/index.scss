@@ -11,7 +11,7 @@
       float: left;
       width: 600px;
 
-      .article-list {
+      .article-search-list {
         margin-bottom: 30px;
         min-height: 300px;
         
@@ -41,7 +41,7 @@
           }
         }
       }
-
+      
       .more-articles {
         display: inline-block;
         width: 100%;
@@ -58,25 +58,28 @@
       width: 300px;
       margin-left: 700px;
 
-      .category-area {
-        .title {
-          font-weight: bold;
-          font-size: 16px;
-        }
-        .category-list {
-          color: $color-text3;
-          overflow: hidden;
+      .category-list {
+        color: $color-text3;
+        overflow: hidden;
 
-          li {
-            float: left;
-            cursor: pointer;
-            line-height: 18px;
-            font-size: 14px;
-            padding: 0 10px;
-            border-radius: 5px;
-            border: 1px solid $color-border;
-            margin: 0 10px 10px 0;
-          }
+        li {
+          float: left;
+          cursor: pointer;
+          line-height: 18px;
+          font-size: 14px;
+          padding: 0 10px;
+          border-radius: 5px;
+          border: 1px solid $color-border;
+          margin: 0 10px 10px 0;
+        }
+      }
+
+      .article-popular-list {
+        li {
+          margin-bottom: 20px;
+          border: 1px solid $color-border;
+          padding: 0 10px;
+          border-radius: 4px;
         }
       }
     }

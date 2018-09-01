@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Modal, Form } from 'aliasComponent'
+import { Table, Modal, Form, Spin } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchUserDetail, fetchUserPaging } from 'aliasServer/user'
@@ -11,6 +11,7 @@ export default class extends React.Component {
 			dataSource: null,
 			detailItem: null,
 			total: 0,
+			isFetching: true,
 		}
 		this.columns = [{
 			title: 'id',
@@ -71,7 +72,8 @@ export default class extends React.Component {
 			.then((res) => {
 				this.setState({
 					dataSource: res.datas,
-					total: res.total
+					total: res.total,
+					isFetching: false
 				})
 			})
 	}
@@ -117,10 +119,12 @@ export default class extends React.Component {
 	}
 
 	render() {
-		const { dataSource, total } = this.state
+		const { dataSource, total, isFetching } = this.state
 		return (
 			<ManageCommonPage>
-				<Table dataSource={dataSource} total={total} columns={this.columns} />
+				<Spin isFetching={isFetching}>
+					<Table dataSource={dataSource} total={total} columns={this.columns} />
+				</Spin>
 				<Modal title='用户详情' ref='detailModal'>
 					{this.renderModalContent()}
 				</Modal>
