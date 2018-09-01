@@ -1,0 +1,15 @@
+.bs-error-page {
+  text-align: center;
+
+  .error-img {
+    width: 450px;
+    height: 450px;
+    vertical-align: middle;
+    margin-left: -100px;
+  }
+
+  .operation-list {
+    display: inline-block;
+    text-align: left;
+  }
+}

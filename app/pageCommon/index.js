@@ -4,6 +4,7 @@ import withCeiling from './ceiling/with'
 import Loading from './loading'
 import ReturnTop from './returnTop'
 import VerifyUser from './verifyUser'
+import ErrorPage from './error'
 
 module.exports = {
 	Passport,
@@ -12,4 +13,5 @@ module.exports = {
 	ReturnTop,
 	withCeiling,
 	VerifyUser,
+	ErrorPage,
 }

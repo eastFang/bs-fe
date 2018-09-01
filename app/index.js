@@ -13,7 +13,7 @@ import {
 	Article,
 } from 'aliasPage'
 import UI from 'aliasUI'
-import { ReturnTop, VerifyUser } from 'aliasPageCommon'
+import { ReturnTop, VerifyUser, ErrorPage } from 'aliasPageCommon'
 import './index.scss'
 
 const App = () => {
@@ -35,7 +35,7 @@ const App = () => {
 						<Route exact path='/manage/userLoginLog' component={VerifyUser(Manage.UserLoginLog)}></Route>
 						<Route path='/search' component={VerifyUser(Article.List)}></Route>
 						<Route path='/article/:id' component={VerifyUser(Article.Detail)}></Route>
-						<Route path='*' render={() => '404'}></Route>
+						<Route path='*' component={ErrorPage}></Route>
 					</Switch>
 					<ReturnTop />
 				</div>
