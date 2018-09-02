@@ -37,3 +37,10 @@ export const fetchArticleDetail = (id) => {
 export const fetchAdminArticlePaging = (params) => {
 	return flyUtil({ url: '/api/admin/article/paging', params })
 }
+
+/**
+ * 创建文章
+ */
+export const createArticle = (params) => {
+	return flyUtil({ url: '/api/admin/article', params, method: 'post' })
+}

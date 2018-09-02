@@ -1,13 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import BraftEditor from 'braft-editor'
 import 'braft-editor/dist/braft.css'
 import './index.scss'
 
-export default class extends React.Component {
+class Editor extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			content: ''
+			value: ''
+		}
+		this._onHTMLChange = this._onHTMLChange.bind(this)
+	}
+
+	_onHTMLChange(html) {
+		this.setState({
+			value: html
+		})
+	}
+
+	componentDidMount() {
+		if (this.props.name && this.context.formList) {
+			this.context.formList[this.props.name] = this
 		}
 	}
 
@@ -58,16 +72,21 @@ export default class extends React.Component {
 		return { uploadFn }
 	}
 
-	getContent() {
-		return this.editorInstance.getHTMLContent()
-	}
+	// getContent() {
+	// 	return this.editorInstance.getHTMLContent()
+	// }
  
 	render() {
 		return (
 			<div className='editor-wrap'>
-				<BraftEditor media={this.meida()} ref={instance => this.editorInstance = instance} {...this.props}/>
+				<BraftEditor media={this.meida()} onHTMLChange={this._onHTMLChange} {...this.props}/>
 			</div>
 		)
 	}
 }
 
+Editor.contextTypes = {
+	formList: PropTypes.object
+}
+
+export default Editor

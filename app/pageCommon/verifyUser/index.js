@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { fetchCurrentUserProfile } from 'aliasServer/user'
 import { connect } from 'react-redux'
 import WhiteList from './whiteList'
+import AdminList from './adminList'
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -18,7 +19,7 @@ export default Comp => connect(null, mapDispatchToProps)(
 		constructor(props) {
 			super(props)
 			this.state = {
-				isLogin: null,
+				userInfo: null,
 			}
 		}
 	
@@ -31,12 +32,12 @@ export default Comp => connect(null, mapDispatchToProps)(
 				.then((res) => {
 					this.props.getUserInfo(res)
 					this.setState({
-						isLogin: true
+						userInfo: res
 					})
 				})
 				.catch(() => {
 					this.setState({
-						isLogin: false
+						userInfo: false
 					})
 				})
 		}
@@ -48,14 +49,19 @@ export default Comp => connect(null, mapDispatchToProps)(
 		 * 3. 非白名单路径
 		 */
 		render() {
-			const { isLogin } = this.state
-			if (isLogin === null) {
+			const { userInfo } = this.state
+			
+			if (userInfo === null) {
 				return null
-			} else if (isLogin === false // 获取用户接口返回未登陆状态
+			} else if (userInfo === false // 获取用户接口返回未登陆状态
 				&& location.pathname !== '/login' // 非登录页
 				&& !WhiteList.some((urlReg) => urlReg.test(location.pathname)) // 非白名单之列
 			) {
 				return <Redirect from={location.pathname} to='/login' />
+			} else if (userInfo.name !== 'admin'
+				&& AdminList.some((urlReg) => urlReg.test(location.pathname))
+			) {
+				return <Redirect from={location.pathname} to='/error' />
 			} else {
 				return <Comp {...this.props}/>
 			}

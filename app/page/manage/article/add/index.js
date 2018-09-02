@@ -1,9 +1,11 @@
 import React from 'react'
-import ManageCommonPage from '../../common/page'
-import { Editor, Button, Form, Input, Space, Select } from 'aliasComponent'
+import { Editor, Button, Form, Input, Select, Message } from 'aliasComponent'
+import { withCeiling } from 'aliasPageCommon'
 import { flyUtil } from 'aliasUtil'
+import { createArticle } from 'aliasServer/article'
+import './index.scss'
 
-export default class extends React.Component {
+class ArticleAdd extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -14,7 +16,14 @@ export default class extends React.Component {
   
 	_onSubmit(evt, data) {
 		evt.preventDefault()
-		console.log(data)
+		const params = {
+			article: { title: data.title, categoryId: data.categoryId },
+			detail: { content: data.content }
+		}
+		createArticle(params)
+			.then(() => {
+				Message.success('创建成功')
+			})
 	}
 
 	componentDidMount() {
@@ -45,23 +54,25 @@ export default class extends React.Component {
 	}
 
 	render() {
-		
 		return (
-			<ManageCommonPage>
+			<div className='page-article-add-body'>
 				<Form onSubmit={this._onSubmit}>
 					<Form.Field label='标题' name='title' empty='文章标题不得为空' required>
 						<Input placeholder='文章标题' />
 					</Form.Field>
-					<Form.Field label='简介' name='synopsis' empty='文章简介不得为空' required>
-						<Input placeholder='文章简介' />
-					</Form.Field>
-					<Form.Field label='分类' name='cagegoryId'>
+					<Form.Field label='分类' name='categoryId'>
 						{this.renderCategorySelect()}	
 					</Form.Field>
-					<Editor ref='editor'/>
-					<Button title='提交' type='primary' />
+					<Form.Field label='内容' name='content' required>
+						<Editor />
+					</Form.Field>
+					<Form.Field label='&nbsp;'>
+						<Button title='提交' type='primary' />
+					</Form.Field>
 				</Form>
-			</ManageCommonPage>
+			</div>
 		)
 	}
 }
+
+export default withCeiling('page-article-add')(ArticleAdd)

@@ -8,7 +8,7 @@ export default class extends React.Component {
 	render() {
 		return (
 			<div className='bs-error-page'>
-				<Img class='error-img' src={errorImg} />
+				<Img className='error-img' src={errorImg} />
 				<div className='operation-list'>
 					<h3>这个页面不见了...</h3>
 					<p>404</p>
