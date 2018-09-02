@@ -61,7 +61,7 @@ export default Comp => connect(null, mapDispatchToProps)(
 			} else if (userInfo.name !== 'admin'
 				&& AdminList.some((urlReg) => urlReg.test(location.pathname))
 			) {
-				return <Redirect from={location.pathname} to='/error' />
+				return <Redirect from={location.pathname} to='/error?code=403' />
 			} else {
 				return <Comp {...this.props}/>
 			}
