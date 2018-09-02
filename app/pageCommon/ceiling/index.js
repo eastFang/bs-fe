@@ -49,11 +49,23 @@ class Ceiling extends React.Component {
 				</a>
 				<ul className='entrance-ul'>
 					<li><Link to='/userCenter'>个人中心</Link></li>
+					{this.renderAdminOperation()}
 					<li><a onClick={this._onLogout}>退出</a></li>
-					<li><Link to='/ui'>组件库</Link></li>
-					<li><Link to='/manage/category'>管理中心</Link></li>
 				</ul>
 			</div>
+		)
+	}
+
+	renderAdminOperation() {
+		if (this.props.userInfo.name !== 'admin') {
+			return null
+		}
+
+		return (
+			<React.Fragment>
+				<li><Link to='/ui'>组件库</Link></li>
+				<li><Link to='/manage/category'>管理中心</Link></li>
+			</React.Fragment>
 		)
 	}
 
