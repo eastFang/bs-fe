@@ -56,6 +56,9 @@ class Ceiling extends React.Component {
 		)
 	}
 
+	/**
+	 * 运营 可操作入口
+	 */
 	renderAdminOperation() {
 		if (this.props.userInfo.name !== 'admin') {
 			return null
