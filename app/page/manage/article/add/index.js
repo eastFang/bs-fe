@@ -17,8 +17,8 @@ class ArticleAdd extends React.Component {
 	_onSubmit(evt, data) {
 		evt.preventDefault()
 		const params = {
-			article: { title: data.title, categoryId: data.categoryId },
-			detail: { content: data.content }
+			article: { title: data.title, categoryId: data.categoryId, visible: false },
+			detail: { content: data.content, isMarkdown: false }
 		}
 		createArticle(params)
 			.then(() => {

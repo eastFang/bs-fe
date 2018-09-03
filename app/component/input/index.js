@@ -36,14 +36,15 @@ class Input extends React.Component {
 	getInputClass(size) {
 		return classnames(
 			'bs-input',
-			`bs-input-${size}`
+			`bs-input-${size}`,
+			this.props.className
 		)
 	}
 
 	render() {
 		const { size, ...others } = this.props
 
-		return <input className={this.getInputClass(size)} {...others} value={this.state.value} onChange={this._onChange} autoComplete='off'/>
+		return <input {...others} className={this.getInputClass(size)} value={this.state.value} onChange={this._onChange} autoComplete='off'/>
 	}
 }
 

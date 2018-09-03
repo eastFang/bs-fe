@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import { Link, withRouter } from 'react-router-dom'
 import { Input, Button, Img } from 'aliasComponent'
 import WhiteLogo from 'aliasImage/white-logo.png'
@@ -9,8 +10,14 @@ import './index.scss'
 class Ceiling extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			searchInputFocus: false,
+		}
 		this._onLogout = this._onLogout.bind(this)
 		this._onRouteAddArticle = this._onRouteAddArticle.bind(this)
+		this._onSearch = this._onSearch.bind(this)
+		this._onFocusSearchInput = this._onFocusSearchInput.bind(this)
+		this._onBlurSearchInput = this._onBlurSearchInput.bind(this)
 	}
 
 	_onLogout() {
@@ -22,6 +29,22 @@ class Ceiling extends React.Component {
 
 	_onRouteAddArticle() {
 		this.props.history.push('/article/add')
+	}
+
+	_onSearch() {
+		this.refs.form.submit()
+	}
+
+	_onFocusSearchInput() {
+		this.setState({
+			searchInputFocus: true
+		})
+	}
+
+	_onBlurSearchInput() {
+		this.setState({
+			searchInputFocus: false
+		})
 	}
 
 	/**
@@ -83,8 +106,15 @@ class Ceiling extends React.Component {
 				</div>
 				<div className='search-wrap'>
 					<form className='search-area' action='/search' ref='form'>
-						<Input placeholder='请输入关键字' name='keyword' size='large' value={keyword}/>
-						<a className='iconfont icon-search' type='primary' onClick={() => this.refs.form.submit()}></a>
+						<Input className={classnames({ focus: this.state.searchInputFocus })}
+							placeholder='请输入关键字'
+							name='keyword'
+							size='large'
+							value={keyword}
+							ref='input'
+							onFocus={this._onFocusSearchInput}
+							onBlur={this._onBlurSearchInput}/>
+						<a className='iconfont icon-search' onClick={this._onSearch} onMouseDown={evt => evt.preventDefault()}></a>
 					</form>
 				</div>
 				<div className='right-area'>

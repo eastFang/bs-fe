@@ -30,7 +30,7 @@
         background-color: $smoke;
         transition: all ease .2s;
 
-        &:focus {
+        &.focus {
           width: 200px;
 
           & + a {
