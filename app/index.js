@@ -11,6 +11,7 @@ import {
 	UserCenter,
 	Manage,
 	Article,
+	FriendLink,
 } from 'aliasPage'
 import UI from 'aliasUI'
 import { ReturnTop, VerifyUser, ErrorPage } from 'aliasPageCommon'
@@ -35,6 +36,7 @@ const App = () => {
 						<Route exact path='/manage/userLoginLog' component={VerifyUser(Manage.UserLoginLog)}></Route>
 						<Route path='/search' component={VerifyUser(Article.List)}></Route>
 						<Route path='/article/:id' component={VerifyUser(Article.Detail)}></Route>
+						<Route path='/manage/friendLink' component={VerifyUser(FriendLink.List)}></Route>
 						<Route path='*' component={ErrorPage}></Route>
 					</Switch>
 					<ReturnTop />

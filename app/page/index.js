@@ -56,6 +56,10 @@ const AsyncUserLoginLog = Loadable({
 	loader: () => import(/* webpackChunkName: "userLoginLog" */ './manage/logUserLogin'),
 	loading: MyLoadingComponent
 })
+const AsyncFriendLinkList = Loadable({
+	loader: () => import(/* webpackChunkName: "friendLink" */ './manage/friendLink'),
+	loading: MyLoadingComponent
+})
 
 module.exports = {
 	Home: AsyncHome,
@@ -74,5 +78,8 @@ module.exports = {
 		List: AsyncArticleList,
 		Detail: AsyncArticleDetail,
 		Add: AsyncArticleAdd,
+	},
+	FriendLink: {
+		List: AsyncFriendLinkList
 	},
 }

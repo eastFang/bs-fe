@@ -14,6 +14,10 @@ const list = [
 	{
 		value: '登陆日志',
 		url: '/manage/userLoginLog'
+	},
+	{
+		value: '友情链接',
+		url: '/manage/friendLink'
 	}
 ]
 
