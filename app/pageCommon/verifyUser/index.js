@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { fetchCurrentUserProfile } from 'aliasServer/user'
+import { fetchSeeLogs } from 'aliasServer/log'
 import { connect } from 'react-redux'
 import WhiteList from './whiteList'
 import AdminList from './adminList'
@@ -31,6 +32,7 @@ export default Comp => connect(null, mapDispatchToProps)(
 			fetchCurrentUserProfile()
 				.then((res) => {
 					this.props.getUserInfo(res)
+					fetchSeeLogs()
 					this.setState({
 						userInfo: res
 					})

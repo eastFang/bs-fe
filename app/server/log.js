@@ -7,3 +7,7 @@ import { flyUtil } from 'aliasUtil'
 export const fetchUserLoginLogPaging = (params) => {
 	return flyUtil({ url: '/api/admin/user/login-log/paging', params })
 }
+
+export const fetchSeeLogs = () => {
+	return flyUtil({ url: '/api/admin/see-log/paging' })
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Editor, Button, Form, Input, Select, Message, Row, Col } from 'aliasComponent'
+import { Editor, Button, Input, Message, Row, Col } from 'aliasComponent'
 import { createArticle } from 'aliasServer/article'
 import Category from './category'
 import './index.scss'
@@ -37,7 +37,7 @@ class ArticleAdd extends React.Component {
 		}
 		createArticle(params)
 			.then(() => {
-				Message.success('创建成功')
+				Message.success('创建成功，耐心待运营审核！')
 			})
 	}
 

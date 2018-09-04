@@ -44,3 +44,11 @@ export const fetchAdminArticlePaging = (params) => {
 export const createArticle = (params) => {
 	return flyUtil({ url: '/api/admin/article', params, method: 'post' })
 }
+
+/**
+ * 编辑文章
+ * @param {文章信息} params 
+ */
+export const editArticle = (params) => {
+	return flyUtil({ url: '/api/admin/article', params, method: 'put' })
+}
