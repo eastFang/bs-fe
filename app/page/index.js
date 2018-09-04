@@ -59,7 +59,6 @@ const AsyncUserLoginLog = Loadable({
 
 module.exports = {
 	Home: AsyncHome,
-	// UI: AsyncUI,
 	Login: AsyncLogin,
 	Register: AsyncRegister,
 	UserCenter: AsyncUserCenter,

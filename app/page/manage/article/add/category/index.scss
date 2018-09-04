@@ -1,0 +1,28 @@
+@import "aliasComponent/theme.scss";
+
+
+
+.article-add-child-category {
+  background-color: $color-text6;
+  height: 100vh;
+  
+  .wrap-btn {
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  .category-ul {
+    li {
+      line-height: 36px;
+      padding: 0 10px;
+      color: white;
+      cursor: pointer;
+
+      &.active {
+        background-color: $color-text9;
+        border-left: 3px solid $color-primary;
+      }
+    }
+  }
+}

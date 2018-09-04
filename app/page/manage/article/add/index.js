@@ -1,24 +1,39 @@
 import React from 'react'
-import { Editor, Button, Form, Input, Select, Message } from 'aliasComponent'
-import { withCeiling } from 'aliasPageCommon'
-import { flyUtil } from 'aliasUtil'
+import ReactDOM from 'react-dom'
+import { Editor, Button, Form, Input, Select, Message, Row, Col } from 'aliasComponent'
 import { createArticle } from 'aliasServer/article'
+import Category from './category'
 import './index.scss'
 
 class ArticleAdd extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			categoryList: null,
-		}
-		this._onSubmit = this._onSubmit.bind(this)
+		this._onSubmitArticle = this._onSubmitArticle.bind(this)
 	}
-  
-	_onSubmit(evt, data) {
-		evt.preventDefault()
+
+	/**
+	 * 发布文章
+	 */
+	_onSubmitArticle() {
+		const categoryId = this.refs.category.state.currentCategoryId
+		const title = this.refs.title.state.value
+		const content = this.refs.editor.state.value
+		if (!categoryId) {
+			Message.info('请选择类目')
+			return
+		}
+		if (!title) {
+			Message.info('请输入文章标题')
+			ReactDOM.findDOMNode(this.refs.title).focus()
+			return
+		}
+		if (!content) {
+			Message.info('请输入文章内容')
+			return
+		}
 		const params = {
-			article: { title: data.title, categoryId: data.categoryId, visible: false },
-			detail: { content: data.content, isMarkdown: false }
+			article: { title, categoryId, visible: false },
+			detail: { content, isMarkdown: false }
 		}
 		createArticle(params)
 			.then(() => {
@@ -26,53 +41,24 @@ class ArticleAdd extends React.Component {
 			})
 	}
 
-	componentDidMount() {
-		this.fetchCategoryList()
-	}
-
-	fetchCategoryList() {
-		flyUtil({ url: '/api/category/list' })
-			.then((res) => {
-				this.setState({
-					categoryList: res,
-				})
-			})
-	}
-
-	renderCategorySelect() {
-		const { categoryList } = this.state
-		if (!categoryList) {
-			return null
-		}
-		return (
-			<Select>
-				{
-					categoryList.map((category, index) => <Select.Option key={index} value={category.id}>{category.name}</Select.Option>)
-				}
-			</Select>
-		)
-	}
-
 	render() {
 		return (
-			<div className='page-article-add-body'>
-				<Form onSubmit={this._onSubmit}>
-					<Form.Field label='标题' name='title' empty='文章标题不得为空' required>
-						<Input placeholder='文章标题' />
-					</Form.Field>
-					<Form.Field label='分类' name='categoryId'>
-						{this.renderCategorySelect()}	
-					</Form.Field>
-					<Form.Field label='内容' name='content' required>
-						<Editor />
-					</Form.Field>
-					<Form.Field label='&nbsp;'>
-						<Button title='提交' type='primary' />
-					</Form.Field>
-				</Form>
+			<div className='page-article-add'>
+				<Row>
+					<Col span={4} va='top'>
+						<Category ref='category'/>
+					</Col>
+					<Col span={20} va='top'>
+						<div className='input-wrap'>
+							<Input className='article-title-input' placeholder='文章标题' ref='title'/>
+							<Button className='pull-right' type='primary' title='发布' onClick={this._onSubmitArticle}/>
+						</div>
+						<Editor ref='editor'/>
+					</Col>
+				</Row>
 			</div>
 		)
 	}
 }
 
-export default withCeiling('page-article-add')(ArticleAdd)
+export default ArticleAdd

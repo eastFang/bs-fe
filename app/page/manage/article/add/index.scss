@@ -1,14 +1,27 @@
 .page-article-add {
+  width: 100%;
 
-  .page-article-add-body {
-    width: 1200px;
-    margin: 0 auto;
-
-    .editor-wrap {
-      display: inline-block;
-      vertical-align: top;
-      width: 800px;
-      border-radius: 4px;
+  .input-wrap {
+    .article-title-input {
+      width: 100%;
+      border: 0;
+      height: 40px;
+      &:focus {
+        box-shadow: 0 0 0 0;
+      }
     }
+
+    .pull-right {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      width: 100px;
+    }
+  }
+
+  .editor-wrap {
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 4px;
   }
 }
