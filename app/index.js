@@ -20,7 +20,7 @@ const App = () => {
 	return (
 		<Provider store={createStore(Reducer)}>
 			<Router>
-				<div>
+				<React.Fragment>
 					<Switch>
 						<Route exact path='/' component={VerifyUser(Home)}></Route>
 						<Route path='/ui' component={UI}></Route>
@@ -38,7 +38,7 @@ const App = () => {
 						<Route path='*' component={ErrorPage}></Route>
 					</Switch>
 					<ReturnTop />
-				</div>
+				</React.Fragment>
 			</Router>
 		</Provider>
 	)
