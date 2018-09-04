@@ -30,7 +30,7 @@ const App = () => {
 						<Route path='/manage/category' component={VerifyUser(Manage.Category)}></Route>
 						<Route path='/manage/label' component={VerifyUser(Manage.Label)}></Route>
 						<Route exact path='/manage/article' component={VerifyUser(Manage.Article.List)}></Route>
-						<Route path='/article/add' component={VerifyUser(Manage.Article.Add)}></Route>
+						<Route path='/article/add' component={VerifyUser(Article.Add)}></Route>
 						<Route path='/manage/user' component={VerifyUser(Manage.User)}></Route>
 						<Route exact path='/manage/userLoginLog' component={VerifyUser(Manage.UserLoginLog)}></Route>
 						<Route path='/search' component={VerifyUser(Article.List)}></Route>

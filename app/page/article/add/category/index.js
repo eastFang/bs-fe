@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Modal, Form, Input } from 'aliasComponent'
+import { Button, Modal, Form, Input, Spin } from 'aliasComponent'
 import { fetchCategoryList, createCategory } from 'aliasServer/category'
 import './index.scss'
 
@@ -10,6 +10,7 @@ export default class extends React.Component {
 		this.state = {
 			categoryList: null,
 			currentCategoryId: null,
+			isFetching: true,
 		}
 		this._onAddCategory = this._onAddCategory.bind(this)
 		this._onSubmitAddCategory = this._onSubmitAddCategory.bind(this)
@@ -23,6 +24,7 @@ export default class extends React.Component {
 		this.setState({
 			currentCategoryId: categoryId
 		})
+		this.props.onChangeCategory && this.props.onChangeCategory(categoryId)
 	}
 
 	_onAddCategory() {
@@ -41,8 +43,11 @@ export default class extends React.Component {
 	fetchCategory() {
 		fetchCategoryList()
 			.then((res) => {
-				const state = { categoryList: res }
-				res && res.length && res[0].id ? state.currentCategoryId = res[0].id : null
+				const state = { categoryList: res, isFetching: false }
+				const categoryId = res && res.length && res[0].id
+				if (categoryId) {
+					this.onChangeCategory(categoryId)
+				}
 				this.setState(state)
 			})
 	}
@@ -56,18 +61,20 @@ export default class extends React.Component {
 						<Button title='回到首页' />
 					</Link>
 				</p>
-				<ul className='category-ul'>
-					<li onClick={this._onAddCategory}> <strong>+</strong> 新建类目</li>
-					{
-						categoryList && categoryList.map((category, index) => {
-							return (
-								<li className={category.id === this.state.currentCategoryId ? 'active' : ''} key={index}
-									onClick={() => this.onChangeCategory(category.id)}
-								>{category.name}</li>
-							)
-						})
-					}
-				</ul>
+				<Spin isFetching={this.state.isFetching}>
+					<ul className='category-ul'>
+						<li onClick={this._onAddCategory}> <strong>+</strong> 新建类目</li>
+						{
+							categoryList && categoryList.map((category, index) => {
+								return (
+									<li className={category.id === this.state.currentCategoryId ? 'active' : ''} key={index}
+										onClick={() => this.onChangeCategory(category.id)}
+									>{category.name}</li>
+								)
+							})
+						}
+					</ul>
+				</Spin>
 				<Modal title='新建类目' ref='addCategory' onOK={(...args) => this.refs.form._onSubmit(...args)}>
 					<Form onSubmit={this._onSubmitAddCategory} ref='form'>
 						<Form.Field label='名称' name='name' required>

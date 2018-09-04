@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BraftEditor from 'braft-editor'
+import BraftEditor, { EditorState } from 'braft-editor'
 import 'braft-editor/dist/braft.css'
 import './index.scss'
 
@@ -10,6 +10,7 @@ class Editor extends React.Component {
 		this.state = {
 			value: ''
 		}
+		this.editorInstance = null
 		this._onHTMLChange = this._onHTMLChange.bind(this)
 	}
 
@@ -75,11 +76,18 @@ class Editor extends React.Component {
 	// getContent() {
 	// 	return this.editorInstance.getHTMLContent()
 	// }
+	setValue(htmlContent) {
+		this.editorInstance.setContent(htmlContent)
+	}
  
 	render() {
 		return (
 			<div className='editor-wrap'>
-				<BraftEditor media={this.meida()} onHTMLChange={this._onHTMLChange} {...this.props}/>
+				<BraftEditor media={this.meida()} ref={instance => this.editorInstance = instance}
+					onHTMLChange={this._onHTMLChange} 
+					value={this.state.value}
+					contentFormat={'html'}
+					{...this.props}/>
 			</div>
 		)
 	}

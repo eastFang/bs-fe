@@ -1,0 +1,22 @@
+@import 'aliasComponent/theme.scss';
+
+.article-add-child-article {
+  .article-ul {
+    min-height: 150px;
+    color: $color-text3;
+
+    li {
+      padding: 10px 20px;
+      border-bottom: 1px solid $color-border;
+      cursor: pointer;
+
+      &.active {
+        background-color: $color-border;
+      }
+
+      p {
+        margin: 10px 0;
+      }
+    }
+  }
+}

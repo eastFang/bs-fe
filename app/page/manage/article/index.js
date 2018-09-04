@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Table, Space, Spin, Message } from 'aliasComponent'
+import { Table, Space, Spin, Message } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
-import { fetchAdminArticlePaging, editArticle } from 'aliasServer/article'
+import { fetchAdminArticlePaging, editArticle, fetchArticleDetail } from 'aliasServer/article'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -68,21 +68,23 @@ export default class extends React.Component {
 		this.getArticleList(nextProps.location.search)
 	}
 
-	stopArticle(article, articleId) {
-		Object.assign(article.article, { id: articleId, visible: false })
-		editArticle(article)
-			.then(() => {
-				Message.success('操作成功')
-				location.reload()
-			})
-	}
-
-	publishArticle(article, articleId) {
-		Object.assign(article.article, { id: articleId, visible: true })
-		editArticle(article)
-			.then(() => {
-				Message.success('操作成功')
-				location.reload()
+	toggleArticle(articleId, visible) {
+		const { dataSource } = this.state
+		fetchArticleDetail(articleId)
+			.then((res) => {
+				Object.assign(res.article, { id: articleId, visible })
+				editArticle(res)
+					.then(() => {
+						for(let item of dataSource) {
+							if (item.article.id === articleId) {
+								item.article.visible = visible
+								break
+							}
+						}
+						this.setState({
+							dataSource
+						}, () => Message.success('操作成功'))
+					})
 			})
 	}
 
@@ -90,7 +92,7 @@ export default class extends React.Component {
 		const { article: { visible, id } } = record
 		return (
 			<React.Fragment>
-				{ visible ? <a onClick={() => this.stopArticle(record, id)}>停用</a> : <a onClick={() => this.publishArticle(record, id)}>发布</a>}<br />
+				{ visible ? <a onClick={() => this.toggleArticle(id, false)}>停用</a> : <a onClick={() => this.toggleArticle(id, true)}>发布</a>}<br />
 			</React.Fragment>
 		)
 	}
@@ -111,7 +113,6 @@ export default class extends React.Component {
 		const { dataSource, total, isFetching } = this.state
 		return (
 			<ManageCommonPage>
-				<Button type='primary' title='新建文章' onClick={() => this.props.history.push('/article/add')}/>
 				<Space height={16}/>
 				<Spin isFetching={isFetching}>
 					<Table dataSource={dataSource} total={total} columns={this.columns} />

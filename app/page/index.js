@@ -36,20 +36,20 @@ const AsyncManageArticle = Loadable({
 	loader: () => import(/* webpackChunkName: "manageArticle" */ './manage/article'),
 	loading: MyLoadingComponent
 })
-const AsyncManageArticleAdd = Loadable({
-	loader: () => import(/* webpackChunkName: "manageArticleAdd" */ './manage/article/add'),
-	loading: MyLoadingComponent
-})
 const AsyncUserList = Loadable({
 	loader: () => import(/* webpackChunkName: "manageUser" */ './manage/user'),
 	loading: MyLoadingComponent
 })
 const AsyncArticleList = Loadable({
-	loader: () => import(/* webpackChunkName: "articleList" */ './artcile/list'),
+	loader: () => import(/* webpackChunkName: "articleList" */ './article/list'),
+	loading: MyLoadingComponent
+})
+const AsyncArticleAdd = Loadable({
+	loader: () => import(/* webpackChunkName: "articleAdd" */ './article/add'),
 	loading: MyLoadingComponent
 })
 const AsyncArticleDetail = Loadable({
-	loader: () => import(/* webpackChunkName: "articleDetail" */ './artcile/detail'),
+	loader: () => import(/* webpackChunkName: "articleDetail" */ './article/detail'),
 	loading: MyLoadingComponent
 })
 const AsyncUserLoginLog = Loadable({
@@ -66,7 +66,6 @@ module.exports = {
 		Category: AsyncManageCateogry,
 		Article: {
 			List: AsyncManageArticle,
-			Add: AsyncManageArticleAdd,
 		},
 		User: AsyncUserList,
 		UserLoginLog: AsyncUserLoginLog
@@ -74,5 +73,6 @@ module.exports = {
 	Article: {
 		List: AsyncArticleList,
 		Detail: AsyncArticleDetail,
+		Add: AsyncArticleAdd,
 	},
 }

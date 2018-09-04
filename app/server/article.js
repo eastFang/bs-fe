@@ -8,12 +8,12 @@ export const fetchArticleSearch = (params) => {
 	return flyUtil({ url: '/api/search/article', params })
 }
 
-// /**
-//  * 文章列表
-//  */
-// export const fetchArticlePaging = () => {
-// 	return flyUtil({ url: '/api/article/paging' })
-// }
+/**
+ * 个人中心文章列表
+ */
+export const fetchUserArticlePaging = (params) => {
+	return flyUtil({ url: '/api/article/paging', params })
+}
 
 /**
  * popular文章列表

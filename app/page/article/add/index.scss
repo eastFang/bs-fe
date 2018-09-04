@@ -1,7 +1,11 @@
+@import 'aliasComponent/theme.scss';
+
 .page-article-add {
   width: 100%;
 
   .input-wrap {
+    border-left: 1px solid $color-border;
+    
     .article-title-input {
       width: 100%;
       border: 0;
