@@ -3,13 +3,16 @@
 
 
 .article-add-child-category {
-  background-color: $color-text6;
+  background-color: $color-text3;
   height: 100vh;
   
   .wrap-btn {
     text-align: center;
     margin: 0;
-    padding: 20px 0;
+    padding: 20px 20px;
+    button {
+      width: 100%;
+    }
   }
 
   .category-ul {
