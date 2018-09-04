@@ -3,6 +3,7 @@ import { Spin } from 'aliasComponent'
 import { Link } from 'react-router-dom'
 import { fetchPopularArticleList }  from 'aliasServer/article'
 import { formatDate } from 'aliasUtil'
+import './index.scss'
 
 export default class extends React.Component {
 	constructor(props) {

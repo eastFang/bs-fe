@@ -1,0 +1,15 @@
+@import 'aliasComponent/theme.scss';
+
+.right-ul {
+  margin-bottom: 20px;
+
+  li {
+    color: $color-text3;
+    border-bottom: 1px solid $color-border;
+
+    .title {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}

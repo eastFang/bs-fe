@@ -1,0 +1,17 @@
+@import 'aliasComponent/theme.scss';
+
+.category-list {
+  color: $color-text3;
+  overflow: hidden;
+
+  li {
+    float: left;
+    cursor: pointer;
+    line-height: 18px;
+    font-size: 14px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid $color-border;
+    margin: 0 10px 10px 0;
+  }
+}

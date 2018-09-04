@@ -1,0 +1,12 @@
+@import 'aliasComponent/theme.scss';
+
+.more-articles {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: $color-text9;
+  color: white;
+  line-height: 40px;
+  text-align: center;
+}

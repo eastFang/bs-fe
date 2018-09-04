@@ -3,6 +3,7 @@ import { Spin } from 'aliasComponent'
 import { withRouter } from 'react-router-dom'
 import { fetchCategoryList } from 'aliasServer/category'
 import { queryStrToObj, replaceQueryParamInSearch } from 'aliasUtil'
+import './index.scss'
 
 class CategoryList extends React.Component {
 	constructor(props) {

@@ -2,6 +2,7 @@ import React from 'react'
 import { Spin } from 'aliasComponent'
 import { Link } from 'react-router-dom'
 import { fetchArticleSearch }  from 'aliasServer/article'
+import './index.scss'
 
 export default class extends React.Component {
 	constructor(props) {

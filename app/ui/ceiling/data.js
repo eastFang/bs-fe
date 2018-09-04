@@ -68,6 +68,11 @@ const data = [
 		id: 'spin',
 		title: '菊花',
 		text: 'Spin'
+	},
+	{
+		id: 'row',
+		title: '行',
+		text: 'Row'
 	}
 ]
 

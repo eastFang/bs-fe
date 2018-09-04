@@ -1,0 +1,10 @@
+@import 'aliasComponent/theme.scss';
+
+.article-popular-list {
+  li {
+    margin-bottom: 20px;
+    border: 1px solid $color-border;
+    padding: 0 10px;
+    border-radius: 4px;
+  }
+}

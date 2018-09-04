@@ -15,6 +15,8 @@ import Radio from './radio'
 import Cascader from './cascader'
 import Spin from './spin'
 import Img from './img'
+import Row from './row'
+import Col from './row/col'
 
 module.exports = {
 	Button,
@@ -34,4 +36,6 @@ module.exports = {
 	Cascader,
 	Spin,
 	Img,
+	Row,
+	Col,
 }

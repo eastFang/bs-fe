@@ -14,6 +14,7 @@ import Textarea from './textarea'
 import Radio from './radio'
 import Cascader from './cascader'
 import Spin from './spin'
+import Row from './row'
 import './index.scss'
 
 export default class extends React.Component {
@@ -36,6 +37,7 @@ export default class extends React.Component {
 				<div id='radio'><Radio /></div>
 				<div id='cascader'><Cascader /></div>
 				<div id='spin'><Spin /></div>
+				<div id='row'><Row /></div>
 			</div>
 		)
 	}

@@ -3,6 +3,7 @@ import { Spin, Pagination } from 'aliasComponent'
 import { Link, withRouter } from 'react-router-dom'
 import { fetchArticleSearch }  from 'aliasServer/article'
 import { queryStrToObj, formatDate } from 'aliasUtil'
+import './index.scss'
 
 class ArticleList extends React.Component {
 	constructor(props) {
