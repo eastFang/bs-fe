@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spin } from 'aliasComponent'
 import { withRouter } from 'react-router-dom'
-import { fetchCategoryList } from 'aliasServer/category'
+import { fetchUserCategoryList } from 'aliasServer/category'
 import { queryStrToObj, replaceQueryParamInSearch } from 'aliasUtil'
 import './index.scss'
 
@@ -18,7 +18,7 @@ class CategoryList extends React.Component {
 
 	componentDidMount() {
 		const params = queryStrToObj(this.props.location.search)
-		fetchCategoryList()
+		fetchUserCategoryList()
 			.then((res) => {
 				this.setState({
 					categoryList: res,

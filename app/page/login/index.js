@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Input, Button, Message, Form } from 'aliasComponent'
 import { Passport } from 'aliasPageCommon'
 import { login } from 'aliasServer/user'
@@ -13,7 +14,7 @@ export default class extends React.Component {
 		evt.preventDefault()
 		login(data) 
 			.then(() => {
-				// TODO优化
+				// TODO: 优化
 				// 登陆成功后Wrap无法重新调起获取用户登录信息
 				location.href = '/'
 			}).catch((error) => {
@@ -37,6 +38,9 @@ export default class extends React.Component {
 						required>
 						<Input placeholder='密码' size='large' type='password'/>
 					</Form.Field>
+					<div className='link-other'>
+						<Link className='pull-right' to='/register'>立即注册</Link>
+					</div>
 					<Button type='primary' title='登录' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
 				</Form>
 			</Passport>

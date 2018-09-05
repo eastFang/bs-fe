@@ -54,3 +54,11 @@ export const fetchUserDetail = (id) => {
 export const fetchUserPaging = (params) => {
 	return flyUtil({ url: '/api/admin/user/paging', params })
 }
+
+/**
+ * 用户端 - 修改密码
+ * @param { 老密码, 新密码 } param0 
+ */
+export const userChangePassword = ({ oldPassword, newPassword}) => {
+	return flyUtil({ url: `/api/user/change-password?oldPassword=${oldPassword}&newPassword=${newPassword}`, method: 'put' })
+}

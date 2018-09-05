@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Modal, Form, Input, Button, Space, Message, Spin } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate } from 'aliasUtil'
-import { fetchCategoryPaging, createCategory } from 'aliasServer/category'
+import { fetchCategoryPaging, userCreateCategory } from 'aliasServer/category'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -51,7 +51,7 @@ export default class extends React.Component {
 
 	_onSubmit(evt, data) {
 		evt.preventDefault()
-		createCategory(data)
+		userCreateCategory(data)
 			.then(() => {
 				Message.success('创建成功')
 				location.href = '/manage/label'

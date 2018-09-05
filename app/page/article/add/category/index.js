@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Modal, Form, Input, Spin } from 'aliasComponent'
-import { fetchCategoryList, createCategory } from 'aliasServer/category'
+import { fetchUserCategoryList, userCreateCategory } from 'aliasServer/category'
 import './index.scss'
 
 export default class extends React.Component {
@@ -33,7 +33,7 @@ export default class extends React.Component {
 
 	_onSubmitAddCategory(evt, data) {
 		evt.preventDefault()
-		createCategory(data)
+		userCreateCategory(data)
 			.then(() => {
 				this.refs.addCategory.close()
 				this.fetchCategory()
@@ -41,7 +41,7 @@ export default class extends React.Component {
 	}
 
 	fetchCategory() {
-		fetchCategoryList()
+		fetchUserCategoryList()
 			.then((res) => {
 				const state = { categoryList: res, isFetching: false }
 				const categoryId = res && res.length && res[0].id

@@ -66,10 +66,10 @@ class Ceiling extends React.Component {
 		const { avatar } = this.props.userInfo
 		return (
 			<div className='user-operation'>
-				<a className='wrap-img'>
+				<Link className='wrap-img' to='/userCenter'>
 					<Img className='avatar' src={avatar} />
 					<i className='iconfont icon-down' />
-				</a>
+				</Link>
 				<ul className='entrance-ul'>
 					<li><Link to='/userCenter'>个人中心</Link></li>
 					{this.renderAdminOperation()}

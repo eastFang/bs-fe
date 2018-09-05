@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Input, Button, Message, Form } from 'aliasComponent'
 import { Passport } from 'aliasPageCommon'
 import { register } from 'aliasServer/user'
@@ -44,6 +45,9 @@ export default class extends React.Component {
 					<Form.Field name='password' empty='请输入密码' required>
 						<Input size='large'placeholder='密码' type='password'/>
 					</Form.Field>
+					<div className='link-other'>
+						<Link className='pull-right' to='/login'>立即登录</Link>
+					</div>
 					<Button type='primary' title='立即注册' style={{ width: '100%', height: '40px', lineHeight: '40px'}}/>
 				</Form>
 			</Passport>

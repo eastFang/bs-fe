@@ -28,8 +28,8 @@ export default class extends React.Component {
 				<Spin>
 					<ul className='friendlink-ul'>
 						{
-							friendLinkList && friendLinkList.map((friendLink) => {
-								return <li><a href={friendLink.link} target='_blank'>{friendLink.webName}</a></li>
+							friendLinkList && friendLinkList.map((friendLink, index) => {
+								return <li key={index}><a href={friendLink.link} target='_blank'>{friendLink.webName}</a></li>
 							})
 						}
 					</ul>
