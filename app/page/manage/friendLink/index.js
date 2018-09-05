@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Spin, Button, Message, Modal, Form, Input, Space } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
-import { fetchAdminFriendLinkList, adminCreateFriendLink } from 'aliasServer/friendLink'
+import { fetchAdminFriendLinkList, adminCreateFriendLink, adminUpdateFriendLink } from 'aliasServer/friendLink'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -69,6 +69,25 @@ export default class extends React.Component {
 			})
 	}
 
+	_onToggle(record, visible) {
+		record.visible = visible
+		adminUpdateFriendLink(record)
+			.then(() => {
+				const { dataSource } = this.state
+				for (let item of dataSource) {
+					if (item.id === record.id) {
+						item.visible = visible
+						break
+					}
+				}
+				this.setState({
+					dataSource
+				}, () => {
+					Message.success('更新成功')
+				})
+			})
+	}
+
 	getUserLoginLogPaging(search) {
 		const { pageNo = 1, pageSize = 10 } = queryStrToObj(search)
 		fetchAdminFriendLinkList({ pageNo, pageSize })
@@ -84,7 +103,7 @@ export default class extends React.Component {
 	renderOperation(record) {
 		return (
 			<React.Fragment>
-				{ record.visible ? <a>隐藏</a> : <a>显示</a> }
+				{ record.visible ? <a onClick={() => this._onToggle(record, false)}>隐藏</a> : <a onClick={() => this._onToggle(record, true)}>显示</a> }
 			</React.Fragment>
 		)
 	}
