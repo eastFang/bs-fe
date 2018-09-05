@@ -5,6 +5,7 @@ import ArticlePopular from './articlePopular'
 import CategoryList from './categoryList'
 import ArticleSearch from './articleSearch'
 import MoreArticles from './moreArticles'
+import FriendLink from './friendLink'
 import './index.scss'
 
 class Home extends React.Component {
@@ -19,6 +20,7 @@ class Home extends React.Component {
 					<Col span={8} va='top'>
 						<CategoryList />
 						<ArticlePopular />
+						<FriendLink />
 					</Col>
 				</Row>
 			</div>
