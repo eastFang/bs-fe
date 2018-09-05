@@ -1,25 +1,27 @@
 @import "aliasComponent/theme.scss";
 
 .page-article-detail {
-  width: 1200px;
+  width: 700px;
   margin: 0 auto;
 
   .title {
-    font-size: 20px;
-  }
-
-  .date {
-    color: $color-text9;
+    font-size: 34px;
+    width: 620px;
+    font-weight: bold;
+    margin: 1em auto;
   }
 
   .summary {
-    text-align: center;
+    width: 620px;
+    margin: 0 auto 20px;
+
+    .date {
+      color: $color-text9;
+    }
     
     .i-wrap {
       color: $color-text6;
-      & + .i-wrap {
-        margin-left: 15px;
-      }
+      margin-left: 15px;
       i {
         margin-right: 4px;
       }
