@@ -1,6 +1,8 @@
 import React from 'react'
+import { Img } from 'aliasComponent'
 import { Link } from 'react-router-dom'
 import menuList from './data'
+import Logo from 'aliasImage/white-logo.png'
 import './index.scss'
 
 export default class extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Ceiling } from 'aliasPageCommon'
 import Menu from '../menu'
+import Ceiling from '../ceiling'
 import './index.scss'
 
 export default class extends React.Component {
@@ -8,8 +8,10 @@ export default class extends React.Component {
 		return (
 			<React.Fragment>
 				<Ceiling />
-				<Menu />
-				<div className='manage-wrap'>
+				<div className='manage-left-menu'>
+					<Menu />
+				</div>
+				<div className='manage-right-content'>
 					{this.props.children}
 				</div>
 			</React.Fragment>

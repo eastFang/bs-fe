@@ -1,0 +1,16 @@
+@import "aliasComponent/theme.scss";
+
+.manage-ceiling {
+  position: fixed;
+  height: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 2px 2px $color-border;
+
+  .logo {
+    width: 200px;
+    height: 60px;
+  }
+}

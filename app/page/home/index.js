@@ -18,7 +18,7 @@ class Home extends React.Component {
 						<MoreArticles />
 					</Col>
 					<Col span={8} va='top'>
-						<CategoryList />
+						{/**<CategoryList />*/}
 						<ArticlePopular />
 						<FriendLink />
 					</Col>

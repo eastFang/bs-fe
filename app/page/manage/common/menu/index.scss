@@ -2,17 +2,15 @@
 
 .manage-menu-ul {
   overflow: hidden;
-  border-bottom: 1px solid $color-border;
-  
+
   li {
-    float: left;
-    padding: 10px 15px;
+    padding: 20px 15px;
     line-height: 20px;
     font-size: 16px;
-    color: $color-text3;
-    
-    & + li {
-      border-left: 1px solid $color-border;
+    text-align: center;
+
+    a {
+      color: white;
     }
 
     .active {

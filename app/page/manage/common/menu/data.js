@@ -1,8 +1,8 @@
 const list = [
-	{
-		value: '类目管理',
-		url: '/manage/category'
-	},
+	// {
+	// 	value: '类目管理',
+	// 	url: '/manage/category'
+	// },
 	{
 		value: '文章管理',
 		url: '/manage/article'

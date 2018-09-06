@@ -90,7 +90,7 @@ class Ceiling extends React.Component {
 		return (
 			<React.Fragment>
 				<li><Link to='/ui'>组件库</Link></li>
-				<li><Link to='/manage/category'>管理中心</Link></li>
+				<li><Link to='/manage/article'>管理中心</Link></li>
 			</React.Fragment>
 		)
 	}
