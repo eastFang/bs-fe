@@ -52,3 +52,10 @@ export const createArticle = (params) => {
 export const editArticle = (params) => {
 	return flyUtil({ url: '/api/admin/article', params, method: 'put' })
 }
+
+/**
+ * 点赞文章
+ */
+export const likeArticle = (params) => {
+	return flyUtil({ url: '/api/like-log', params, method: 'post' })
+}

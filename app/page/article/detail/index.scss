@@ -1,29 +1,67 @@
 @import "aliasComponent/theme.scss";
 
-.page-article-detail {
-  width: 700px;
-  margin: 0 auto;
+$color-liked: #74ca46;
 
-  .title {
-    font-size: 34px;
-    width: 620px;
-    font-weight: bold;
-    margin: 1em auto;
+.page-article-detail {
+  background-color: $smoke;
+  min-height: 100vh;
+
+  .left-heat {
+    position: fixed;
+    top: 50%;
+    left: 100px;
+    width: 36px;
+    margin-top: -50px;
+
+    .icon-wrap {
+      display: block;
+      width: 36px;
+      color: $color-text9;
+      text-align: center;
+      height: 36px;
+      border-radius: 18px;
+      background-color: white;
+      line-height: 36px;
+      margin-bottom: 15px;
+
+      &.liked {
+        color: $color-liked;
+      }
+      
+      &:hover {
+        color: $color-liked;
+      }
+    }
   }
 
-  .summary {
-    width: 620px;
-    margin: 0 auto 20px;
+  .page-article-detail-body {
+    width: 700px;
+    min-height: 400px;
+    padding: 30px;
+    margin: 0 auto;
+    background-color: white;
 
-    .date {
-      color: $color-text9;
+    .title {
+      font-size: 34px;
+      width: 620px;
+      font-weight: bold;
+      margin: 1em auto;
     }
-    
-    .i-wrap {
-      color: $color-text6;
-      margin-left: 15px;
-      i {
-        margin-right: 4px;
+
+    .summary {
+      width: 620px;
+      margin: 0 auto 20px;
+
+      .date {
+        color: $color-text9;
+      }
+      
+      .i-wrap {
+        color: $color-text6;
+        margin-left: 15px;
+        i {
+          margin-right: 4px;
+        }
       }
     }
   }

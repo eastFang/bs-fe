@@ -49,7 +49,7 @@ const flyUtil = ({ url, params, method, ...others }) => {
 			return res.data
 		}
 	}).catch((error) => {
-		return Promise.reject(error.response.data)
+		return Promise.reject(error.response.data, error)
 	})
 }
 
