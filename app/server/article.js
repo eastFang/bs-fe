@@ -59,3 +59,10 @@ export const editArticle = (params) => {
 export const likeArticle = (params) => {
 	return flyUtil({ url: '/api/like-log', params, method: 'post' })
 }
+
+/**
+ * 取消点赞
+ */
+export const cancelLikeArticle = (params) => {
+	return flyUtil({ url: '/api/like-log', params, method: 'delete' })
+}

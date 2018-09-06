@@ -1,6 +1,8 @@
 import React from 'react'
 import { Table, Spin } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
+import { TableFilter } from 'aliasPageCommon'
+import filterConfig from './tableFilterConfig'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchUserLoginLogPaging } from 'aliasServer/log'
 
@@ -69,6 +71,7 @@ export default class extends React.Component {
 		const { dataSource, total, isFetching } = this.state
 		return (
 			<ManageCommonPage>
+				<TableFilter fields={filterConfig} />
 				<Spin isFetching={isFetching}>
 					<Table dataSource={dataSource} total={total} columns={this.columns} />
 				</Spin>

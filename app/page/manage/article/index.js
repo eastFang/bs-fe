@@ -1,8 +1,10 @@
 import React from 'react'
 import { Table, Space, Spin, Message } from 'aliasComponent'
+import { TableFilter } from 'aliasPageCommon'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchAdminArticlePaging, editArticle, fetchArticleDetail } from 'aliasServer/article'
+import filterConfig from './tableFilterConfig'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -65,6 +67,7 @@ export default class extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		window.scrollTo({ top: 0 })
 		this.getArticleList(nextProps.location.search)
 	}
 
@@ -98,8 +101,8 @@ export default class extends React.Component {
 	}
 
 	getArticleList(search) {
-		const { pageNo = 1, pageSize = 10 } = queryStrToObj(search)
-		fetchAdminArticlePaging({ pageNo, pageSize }).then((res) => {
+		const params = { ...{ pageNo: 1, pageSize: 10 }, ...queryStrToObj(search)}
+		fetchAdminArticlePaging(params).then((res) => {
 			const { total, datas } = res
 			this.setState({
 				total,
@@ -114,6 +117,7 @@ export default class extends React.Component {
 		return (
 			<ManageCommonPage>
 				<Space height={16}/>
+				<TableFilter fields={filterConfig}/>
 				<Spin isFetching={isFetching}>
 					<Table dataSource={dataSource} total={total} columns={this.columns} />
 				</Spin>

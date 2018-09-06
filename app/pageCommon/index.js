@@ -5,6 +5,7 @@ import Loading from './loading'
 import ReturnTop from './returnTop'
 import VerifyUser from './verifyUser'
 import ErrorPage from './error'
+import TableFilter from './tableFilter'
 
 module.exports = {
 	Passport,
@@ -14,4 +15,5 @@ module.exports = {
 	withCeiling,
 	VerifyUser,
 	ErrorPage,
+	TableFilter,
 }

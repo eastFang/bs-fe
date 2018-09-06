@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spin, Message } from 'aliasComponent'
 import { withCeiling } from 'aliasPageCommon'
-import { fetchArticleDetail, likeArticle } from 'aliasServer/article'
+import { fetchArticleDetail, likeArticle, cancelLikeArticle } from 'aliasServer/article'
 import { formatDate } from 'aliasUtil'
 import classnames from 'classnames'
 import './index.scss'
@@ -17,7 +17,7 @@ class ArticleDetail extends React.Component {
 		this.params = {
 			articleId: this.props.match.params.id
 		}
-		this._onLike = this._onLike.bind(this)
+		this._onLikeOrCancelLike = this._onLikeOrCancelLike.bind(this)
 	}
 
 	componentDidMount() {
@@ -26,17 +26,20 @@ class ArticleDetail extends React.Component {
 				this.setState({
 					articleFullInfo: res,
 					isFetching: false,
+					liked: res.hasLiked,
 				})
 			})
 	}
 
 	/**
-	 * 点赞
+	 * 点赞/取消点赞
 	 */
-	_onLike() {
-		likeArticle({ aimId: this.params.articleId, type: 1 })
+	_onLikeOrCancelLike() {
+		const liked = this.state.liked
+		const articleFunc = liked ? cancelLikeArticle : likeArticle
+		articleFunc({ aimId: this.params.articleId, type: 1 })
 			.then(() => {
-				const liked = this.state.liked
+				
 				this.setState({
 					liked: !liked,
 				}, () => {
@@ -55,9 +58,9 @@ class ArticleDetail extends React.Component {
 		}
 
 		const { 
-			article: { title, publishAt,  },
+			article: { author, title, publishAt,  },
 			detail: { content },
-			summary: { like, comments }
+			summary: { like, comments, popular }
 		} = articleFullInfo
 		const likeClassName = classnames(
 			'icon-wrap',
@@ -68,7 +71,7 @@ class ArticleDetail extends React.Component {
 		return (
 			<Spin isFetching={isFetching}>
 				<div className='left-heat'>
-					<a className={likeClassName} onClick={this._onLike}>
+					<a className={likeClassName} onClick={this._onLikeOrCancelLike}>
 						<i className='iconfont icon-likes'></i>
 					</a>
 					<a className='icon-wrap'>
@@ -78,7 +81,8 @@ class ArticleDetail extends React.Component {
 				<div className='page-article-detail-body'>
 					<p className='title'>{title}</p>
 					<div className='summary'>
-						<span className='date'>发布于 {formatDate(publishAt)}</span>
+						<span className='date'>By {author} At {formatDate(publishAt)}</span>
+						<span className='i-wrap'>浏览量 {popular}</span>
 						<span className='i-wrap'>喜欢 {like}</span>
 						<span className='i-wrap'>评论 {comments}</span>
 					</div>

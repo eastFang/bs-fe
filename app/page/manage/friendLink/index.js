@@ -1,8 +1,10 @@
 import React from 'react'
 import { Table, Spin, Button, Message, Modal, Form, Input, Space } from 'aliasComponent'
+import { TableFilter } from 'aliasPageCommon'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchAdminFriendLinkList, adminCreateFriendLink, adminUpdateFriendLink } from 'aliasServer/friendLink'
+import filterConfig from './tableFilterConfig'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -132,6 +134,7 @@ export default class extends React.Component {
 			<ManageCommonPage>
 				<Button type='primary' title='新建友情链接' onClick={() => this._onEditFriendLink()}/>
 				<Space height={16}/>
+				<TableFilter fields={filterConfig} />
 				<Spin isFetching={isFetching}>
 					<Table dataSource={dataSource} total={total} columns={this.columns} />
 				</Spin>

@@ -1,8 +1,10 @@
 import React from 'react'
 import { Table, Modal, Form, Spin } from 'aliasComponent'
 import ManageCommonPage from '../common/page'
+import { TableFilter } from 'aliasPageCommon'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchUserDetail, fetchUserPaging } from 'aliasServer/user'
+import filterConfig from './tableFilterConfig'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -67,8 +69,8 @@ export default class extends React.Component {
 	}
 
 	getUserList(search) {
-		const { pageNo = 1, pageSize = 10 } = queryStrToObj(search)
-		fetchUserPaging({ pageNo, pageSize })
+		const params = { ...{ pageNo: 1, pageSize: 10 }, ...queryStrToObj(search) }
+		fetchUserPaging(params)
 			.then((res) => {
 				this.setState({
 					dataSource: res.datas,
@@ -122,6 +124,7 @@ export default class extends React.Component {
 		const { dataSource, total, isFetching } = this.state
 		return (
 			<ManageCommonPage>
+				<TableFilter fields={filterConfig}/>
 				<Spin isFetching={isFetching}>
 					<Table dataSource={dataSource} total={total} columns={this.columns} />
 				</Spin>
