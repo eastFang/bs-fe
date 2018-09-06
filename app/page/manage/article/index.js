@@ -27,10 +27,6 @@ export default class extends React.Component {
 			key: 'article[categoryName]',
 			width: 70
 		}, {
-			title: '简介',
-			key: 'article[synopsis]',
-			width: 200,
-		}, {
 			title: '标题',
 			key: 'article[title]',
 			width: 60,
