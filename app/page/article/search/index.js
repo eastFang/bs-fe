@@ -9,7 +9,7 @@ class Search extends React.Component {
 		const { keyword } = queryStrToObj(this.props.location.search)
 		return (
 			<form className='search-area'>
-				<Input placeholder='请输入关键字' name='keyword' size='large' value={keyword}/>
+				<Input placeholder='请输入关键字' name='keyword' size='large' value={decodeURI(keyword)}/>
 				<Button type='primary' title='&nbsp;&nbsp;搜索&nbsp;&nbsp;' size='large'/>
 			</form>
 		)
