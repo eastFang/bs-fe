@@ -1,5 +1,6 @@
 import React from 'react'
 import { Spin, Pagination } from 'aliasComponent'
+import { Empty } from 'aliasPageCommon'
 import { Link, withRouter } from 'react-router-dom'
 import { fetchArticleSearch }  from 'aliasServer/article'
 import { queryStrToObj, formatDate } from 'aliasUtil'
@@ -32,10 +33,19 @@ class ArticleList extends React.Component {
 					isFetching: false
 				})
 			})
+			.catch(() => {
+				this.setState({
+					article: { paging: { datas: [] }},
+					isFetching: false
+				})
+			})
 	}
   
 	render() {
 		const { isFetching, article } = this.state
+		if (article && article.paging && article.paging.datas && article.paging.datas.length === 0) {
+			return <Empty />
+		}
 		return (
 			<Spin isFetching={isFetching}>
 				<ul className='right-ul'>

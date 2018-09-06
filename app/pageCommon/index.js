@@ -6,6 +6,7 @@ import ReturnTop from './returnTop'
 import VerifyUser from './verifyUser'
 import ErrorPage from './error'
 import TableFilter from './tableFilter'
+import Empty from './empty'
 
 module.exports = {
 	Passport,
@@ -16,4 +17,5 @@ module.exports = {
 	VerifyUser,
 	ErrorPage,
 	TableFilter,
+	Empty,
 }
