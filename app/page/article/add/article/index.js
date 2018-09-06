@@ -1,6 +1,7 @@
 import React from 'react'
 import { Spin } from 'aliasComponent'
-import { fetchAdminArticlePaging } from 'aliasServer/article'
+import { reject, last } from 'lodash'
+import { userArticlePaging, userDeleteArticle } from 'aliasServer/article'
 import { formatDate } from 'aliasUtil'
 import './index.scss'
 
@@ -9,40 +10,53 @@ export default class extends React.Component {
 		super(props)
 		this.state = {
 			articleList: null,
-			isFetching: true,
 			currentArticleId: null,
 		}
-		this._onAddArticle = this._onAddArticle.bind(this)
-		this._onChangeArticle = this._onChangeArticle.bind(this)
 	}
+
 	componentWillReceiveProps(nextProps) {
-		if (this.props.categoryId !== nextProps.categoryId && nextProps.categoryId) {
-			const userId = this.props.userInfo.id
-			const categoryId = nextProps.categoryId
-			fetchAdminArticlePaging({ userId, categoryId })
+		const { categoryId: nextCategoryId, successAddOrEditArticleId: nextSuccessAddOrEditArticleId } = nextProps
+		const { categoryId, successAddOrEditArticleId } = this.props
+		if (
+			(categoryId !== nextCategoryId && nextCategoryId)
+		|| (successAddOrEditArticleId !== nextSuccessAddOrEditArticleId && nextSuccessAddOrEditArticleId)) {
+			this.fetching()
+			userArticlePaging({ categoryId: nextCategoryId })
 				.then((res) => {
-					const currentArticleId = res && res.datas.length && res.datas[0].article.id
-					const state = {
+					// 加载完类目下的所有文章后，默认第一篇文章或者添加成功后的文章
+					this.onChangeArticle(nextSuccessAddOrEditArticleId || (res && res.datas.length && res.datas[0].article.id))
+					this.setState({
 						articleList: res.datas,
 						isFetching: false,
-					}
-					if (currentArticleId) {
-						this._onChangeArticle(currentArticleId)
-					}
-					this.setState(state)
+					})
 				})
 		}
 	}
-  
-	_onAddArticle() {
 
+	fetching() {
+		this.setState({
+			isFetching: true
+		})
 	}
-
-	_onChangeArticle(articleId) {
+  
+	onChangeArticle(articleId = null) {
 		this.setState({
 			currentArticleId: articleId,
 		})
 		this.props.onChangeArticle && this.props.onChangeArticle(articleId)
+	}
+
+	_onDeleteArticle(evt, articleId) {
+		evt.stopPropagation()
+		userDeleteArticle(articleId)
+			.then(() => {
+				let { articleList } = this.state
+				articleList = reject(articleList, article => article.article.id === articleId)
+				this.setState({
+					articleList,
+				})
+				this.props.onChangeArticle(last(articleId) && last(articleList).article.id)
+			})
 	}
 
 	render() {
@@ -52,13 +66,16 @@ export default class extends React.Component {
 			<div className='article-add-child-article'>
 				<Spin isFetching={this.state.isFetching}>
 					<ul className='article-ul'>
-						<li onClick={this._onAddArticle}> <strong>+</strong> 新建文章</li>
+						<li onClick={() => this.onChangeArticle()}> <strong>+</strong> 新建文章</li>
 						{
 							articleList && articleList.map(({ article }, index) => {
 								return (
-									<li key={index} className={this.state.currentArticleId === article.id ? 'active' : ''}>
+									<li key={index} className={this.state.currentArticleId === article.id ? 'active' : ''} onClick={() => this.onChangeArticle(article.id)}>
 										<p>{formatDate(article.publishAt)}</p>
 										<span>{article.title}</span>
+										<span className='i-wrap' onClick={(evt) => this._onDeleteArticle(evt, article.id)}>
+											<i className='iconfont icon-trash'></i>
+										</span>
 									</li>
 								)
 							})

@@ -78,6 +78,9 @@ class Editor extends React.Component {
 	// }
 	setValue(htmlContent) {
 		this.editorInstance.setContent(htmlContent)
+		this.setState({
+			value: htmlContent
+		})
 	}
  
 	render() {

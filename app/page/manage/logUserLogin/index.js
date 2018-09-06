@@ -33,16 +33,16 @@ export default class extends React.Component {
 			title: '邮箱',
 			key: 'email'
 		}, {
-			title: '创建时间',
-			key: 'createdAt', 
-			render: (createdAt) => {
-				return formatDate(createdAt)
+			title: '登录时间',
+			key: 'loginAt', 
+			render: (loginAt) => {
+				return formatDate(loginAt)
 			}
 		}, {
-			title: '更新时间',
-			key: 'updatedAt',
-			render: (updatedAt) => {
-				return formatDate(updatedAt)
+			title: '登出时间',
+			key: 'logoutAt',
+			render: (logoutAt) => {
+				return logoutAt ? formatDate(logoutAt) : ''
 			}
 		}]
 	}

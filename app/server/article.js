@@ -39,18 +39,33 @@ export const fetchAdminArticlePaging = (params) => {
 }
 
 /**
- * 创建文章
+ * 用户文章雷彪
+ * @param { 查询参数 } params 
  */
-export const createArticle = (params) => {
-	return flyUtil({ url: '/api/admin/article', params, method: 'post' })
+export const userArticlePaging = (params) => {
+	return flyUtil({ url: '/api/bloger/article/paging', params })
+}
+/**
+ * 用户创建文章
+ */
+export const userCreateArticle = (params) => {
+	return flyUtil({ url: '/api/bloger/article', params, method: 'post' })
 }
 
 /**
- * 编辑文章
+ * 用户编辑文章
  * @param {文章信息} params 
  */
-export const editArticle = (params) => {
-	return flyUtil({ url: '/api/admin/article', params, method: 'put' })
+export const userEditArticle = (params) => {
+	return flyUtil({ url: '/api/bloger/article', params, method: 'put' })
+}
+
+/**
+ * 用户删除文章
+ * @param { 文章ID } id 
+ */
+export const userDeleteArticle = (id) => {
+	return flyUtil({ url: `/api/bloger/article?id=${id}`, method: 'delete' })
 }
 
 /**

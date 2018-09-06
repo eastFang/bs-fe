@@ -15,7 +15,16 @@ class ArticleList extends React.Component {
 	}
 
 	componentDidMount() {
-		const params = queryStrToObj(this.props.location.search)
+		this.getArticleSearchResult(this.props.location.search)
+	}
+
+	componentWillReceiveProps(nextProps) {
+		window.scrollTo({ top: 0 })
+		this.getArticleSearchResult(nextProps.location.search)
+	}
+
+	getArticleSearchResult(search) {
+		const params = queryStrToObj(search)
 		fetchArticleSearch(params)
 			.then((res) => {
 				this.setState({

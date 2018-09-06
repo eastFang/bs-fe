@@ -21,3 +21,10 @@ export const fetchCategoryPaging = () => {
 export const userCreateCategory = (category) => {
 	return flyUtil({ url: '/api/bloger/category', params: category, method: 'post' })
 }
+
+/**
+ * 用户 - 编辑类目
+ */
+export const userEditCategory = ({ id, name }) => {
+	return flyUtil({ url: `/api/bloger/category?id=${id}&name=${name}`, method: 'put' })
+}

@@ -6,6 +6,7 @@
     color: $color-text3;
 
     li {
+      position: relative;
       padding: 10px 20px;
       border-bottom: 1px solid $color-border;
       cursor: pointer;
@@ -14,8 +15,30 @@
         background-color: $color-border;
       }
 
+      &:hover {
+        .i-wrap {
+          display: block;
+        }
+      }
+
       p {
         margin: 10px 0;
+      }
+
+      .i-wrap {
+        position: absolute;
+        display: none;
+        width: 32px;
+        height: 32px;
+        top: 50%;
+        margin-top: -16px;
+        right: 20px;
+        line-height: 32px;
+        text-align: center;
+
+        i {
+          font-size: 24px;
+        }
       }
     }
   }

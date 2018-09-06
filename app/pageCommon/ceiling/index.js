@@ -28,7 +28,7 @@ class Ceiling extends React.Component {
 	}
 
 	_onRouteAddArticle() {
-		this.props.history.push('/article/add')
+		this.props.history.push('/article/write')
 	}
 
 	_onSearch() {

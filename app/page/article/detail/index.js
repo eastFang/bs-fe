@@ -74,9 +74,9 @@ class ArticleDetail extends React.Component {
 					<a className={likeClassName} onClick={this._onLikeOrCancelLike}>
 						<i className='iconfont icon-likes'></i>
 					</a>
-					<a className='icon-wrap'>
+					{/**<a className='icon-wrap'>
 						<i className='iconfont icon-comments'></i>
-					</a>
+		</a>**/}
 				</div>
 				<div className='page-article-detail-body'>
 					<p className='title'>{title}</p>

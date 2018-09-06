@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Editor, Button, Input, Message, Row, Col } from 'aliasComponent'
-import { createArticle, fetchArticleDetail } from 'aliasServer/article'
+import { userCreateArticle, fetchArticleDetail, userEditArticle } from 'aliasServer/article'
 import Category from './category'
-import Article from './article/connect'
+import Article from './article'
 import './index.scss'
 
 class ArticleAdd extends React.Component {
@@ -12,6 +12,7 @@ class ArticleAdd extends React.Component {
 		this.state = {
 			categoryId: null,
 			articleDetail: {},
+			successAddOrEditArticleId: null,
 		}
 		this._onSubmitArticle = this._onSubmitArticle.bind(this)
 		this._onChangeArticle = this._onChangeArticle.bind(this)
@@ -24,6 +25,7 @@ class ArticleAdd extends React.Component {
 		const categoryId = this.refs.category.state.currentCategoryId
 		const title = this.refs.title.state.value
 		const content = this.refs.editor.state.value
+		const articleId = this.refs.article.state.currentArticleId
 		if (!categoryId) {
 			Message.info('请选择类目')
 			return
@@ -37,25 +39,44 @@ class ArticleAdd extends React.Component {
 			Message.info('请输入文章内容')
 			return
 		}
-		const params = {
+		let params = {
 			article: { title, categoryId, visible: false },
 			detail: { content, isMarkdown: false }
 		}
-		createArticle(params)
-			.then(() => {
-				Message.success('创建成功，耐心待运营审核！')
+		let submitFunc = userCreateArticle
+		if (articleId) {
+			params.article = { ...this.state.articleDetail.article, ...params.article}
+			params.detail = { ...this.state.articleDetail.detail, ...params.detail }
+			submitFunc = userEditArticle
+		}
+
+		submitFunc(params)
+			.then((res) => {
+				const successAddOrEditArticleId = Number.isInteger(res) ? res : articleId
+				this.setState({
+					successAddOrEditArticleId
+				})
+				Message.success('发布成功，耐心待运营审核！')
 			})
 	}
 
 	_onChangeArticle(articleId) {
+		if (!articleId) {
+			this.setArticleEditAreaValue({})
+			return
+		}
 		fetchArticleDetail(articleId)
 			.then((res) => {
-				this.setState({
-					articleDetail: res,
-				})
-				this.refs.title.setValue(res.article.title)
-				this.refs.editor.setValue(res.detail.content)
+				this.setArticleEditAreaValue(res)
 			})
+	}
+
+	setArticleEditAreaValue(articleDetail) {
+		this.setState({
+			articleDetail,
+		})
+		this.refs.title.setValue(articleDetail.article ? articleDetail.article.title : '')
+		this.refs.editor.setValue(articleDetail.detail ? articleDetail.detail.content : '')
 	}
 
 	render() {
@@ -66,7 +87,7 @@ class ArticleAdd extends React.Component {
 						<Category ref='category' onChangeCategory={categoryId => this.setState({ categoryId })}/>
 					</Col>
 					<Col span={6} va='top'>
-						<Article categoryId={this.state.categoryId} onChangeArticle={this._onChangeArticle} />
+						<Article ref='article' categoryId={this.state.categoryId} successAddOrEditArticleId={this.state.successAddOrEditArticleId} onChangeArticle={this._onChangeArticle} />
 					</Col>
 					<Col span={14} va='top'>
 						<div className='input-wrap'>

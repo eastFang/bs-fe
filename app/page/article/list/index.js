@@ -10,10 +10,10 @@ class ArticleSearch extends React.Component {
 		return (
 			<div className='page-article-list-body'>
 				<Row width={1000} center='true'>
-					<Col span={8} pr={100} va='top'>
+					{/**<Col span={8} pr={100} va='top'>
 						<CategoryList />
-					</Col>
-					<Col span={16}>
+					</Col>**/}
+					<Col span={24}>
 						<ArticleList />
 					</Col>
 				</Row>

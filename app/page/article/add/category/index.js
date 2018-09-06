@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Modal, Form, Input, Spin } from 'aliasComponent'
-import { fetchUserCategoryList, userCreateCategory } from 'aliasServer/category'
+import { fetchUserCategoryList, userCreateCategory, userEditCategory } from 'aliasServer/category'
 import './index.scss'
 
 export default class extends React.Component {
@@ -10,6 +10,7 @@ export default class extends React.Component {
 		this.state = {
 			categoryList: null,
 			currentCategoryId: null,
+			currentEditCategory: {},
 			isFetching: true,
 		}
 		this._onAddCategory = this._onAddCategory.bind(this)
@@ -28,12 +29,27 @@ export default class extends React.Component {
 	}
 
 	_onAddCategory() {
+		this.setState({
+			currentEditCategory: {}
+		})
+		this.refs.addCategory.show()
+	}
+
+	onEditCategory(evt, category) {
+		evt.stopPropagation()
+		const { id, name } = category
+		this.setState({
+			currentEditCategory: { id, name }
+		})
 		this.refs.addCategory.show()
 	}
 
 	_onSubmitAddCategory(evt, data) {
 		evt.preventDefault()
-		userCreateCategory(data)
+		const { currentEditCategory } = this.state
+		const  submitFunc = currentEditCategory.id ? userEditCategory: userCreateCategory
+
+		submitFunc({ ...currentEditCategory, ...data })
 			.then(() => {
 				this.refs.addCategory.close()
 				this.fetchCategory()
@@ -53,7 +69,7 @@ export default class extends React.Component {
 	}
   
 	render() {
-		const { categoryList } = this.state
+		const { categoryList, currentCategoryId, isFetching, currentEditCategory } = this.state
 		return (
 			<div className='article-add-child-category'>
 				<p className='wrap-btn'>
@@ -61,24 +77,28 @@ export default class extends React.Component {
 						<Button title='回到首页' />
 					</Link>
 				</p>
-				<Spin isFetching={this.state.isFetching}>
+				<Spin isFetching={isFetching}>
 					<ul className='category-ul'>
 						<li onClick={this._onAddCategory}> <strong>+</strong> 新建类目</li>
 						{
 							categoryList && categoryList.map((category, index) => {
+								const isCurrentActiveCategory = category.id === currentCategoryId
 								return (
-									<li className={category.id === this.state.currentCategoryId ? 'active' : ''} key={index}
+									<li className={isCurrentActiveCategory ? 'active' : ''} key={index}
 										onClick={() => this.onChangeCategory(category.id)}
-									>{category.name}</li>
-								)
+									>
+										<span>{category.name}</span>
+										{ isCurrentActiveCategory ? <i className='iconfont icon-edit' onClick={evt => this.onEditCategory(evt, category)}></i> : null}
+									</li>
+								) 
 							})
 						}
 					</ul>
 				</Spin>
-				<Modal title='新建类目' ref='addCategory' onOK={(...args) => this.refs.form._onSubmit(...args)}>
+				<Modal title={currentEditCategory.id ? '编辑类目' : '新建类目'} ref='addCategory' onOK={(...args) => this.refs.form._onSubmit(...args)}>
 					<Form onSubmit={this._onSubmitAddCategory} ref='form'>
 						<Form.Field label='名称' name='name' required>
-							<Input placeholder='类目名称' />
+							<Input placeholder='类目名称' value={currentEditCategory.name}/>
 						</Form.Field>
 					</Form>
 				</Modal>
