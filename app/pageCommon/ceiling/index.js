@@ -110,7 +110,7 @@ class Ceiling extends React.Component {
 							placeholder='请输入关键字'
 							name='keyword'
 							size='large'
-							value={decodeURI(keyword)}
+							value={decodeURI(keyword || '')}
 							ref='input'
 							onFocus={this._onFocusSearchInput}
 							onBlur={this._onBlurSearchInput}/>
