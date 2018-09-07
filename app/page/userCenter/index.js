@@ -182,7 +182,6 @@ class UserCenter extends React.Component {
 		
 		return (
 			<div className='center-wrap'>
-				<Space height={40} />
 				<div className='left-area'>
 					<ul>
 						{
