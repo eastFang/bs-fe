@@ -29,10 +29,7 @@ export default class extends React.Component {
 		}, {
 			title: 'ip',
 			key: 'ip'
-		}, {
-			title: '邮箱',
-			key: 'email'
-		}, {
+		},{
 			title: '登录时间',
 			key: 'loginAt', 
 			render: (loginAt) => {
