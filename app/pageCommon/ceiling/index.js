@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import { Link, withRouter } from 'react-router-dom'
 import { Input, Button, Img } from 'aliasComponent'
 import WhiteLogo from 'aliasImage/white-logo.png'
-import { flyUtil } from 'aliasUtil'
 import { queryStrToObj } from 'aliasUtil'
+import { logout } from 'aliasServer/user'
 import './index.scss'
 
 class Ceiling extends React.Component {
@@ -21,7 +21,7 @@ class Ceiling extends React.Component {
 	}
 
 	_onLogout() {
-		flyUtil({ url: '/api/user/logout', method: 'post' })
+		logout()
 			.then(() => {
 				location.href = '/'
 			})

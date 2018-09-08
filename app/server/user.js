@@ -40,6 +40,13 @@ export const login = ({ name, password }) => {
 }
 
 /**
+ * 用户登出
+ */
+export const logout = () => {
+	return flyUtil({ url: '/api/user/logout', method: 'post' })
+}
+
+/**
  * 获取用户详情
  * @param { 用户id } id 
  */

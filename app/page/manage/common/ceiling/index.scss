@@ -13,4 +13,60 @@
     width: 200px;
     height: 60px;
   }
+
+  .user-info {
+    position: relative;
+    float: right;
+    display: block;
+    padding: 10px 30px;
+    color: $color-text6;
+    height: 60px;
+    box-sizing: border-box;
+    
+    &:hover {
+      background-color: $smoke;
+      .operation-list {
+        max-height: 200px; // height: auto transition失效;通过max-height；绕过
+      }
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      margin-right: 20px;
+    }
+
+    .name {
+      line-height: 40px;
+      float: right;
+    }
+
+    .operation-list {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid $color-border;
+      background-color: white;
+      transition: all linear .2s;
+
+      li {
+
+        &:hover {
+          background-color: $smoke;
+        }
+
+        a {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          line-height: 40px;
+        }
+      }
+    }
+  }
 }
