@@ -1,8 +1,6 @@
 import React from 'react'
-import { Img } from 'aliasComponent'
 import { Link } from 'react-router-dom'
 import menuList from './data'
-import Logo from 'aliasImage/white-logo.png'
 import './index.scss'
 
 export default class extends React.Component {
@@ -11,11 +9,12 @@ export default class extends React.Component {
 			<ul className='manage-menu-ul'>
 				{
 					menuList && menuList.map((menu, index) => {
-						const { url, value } = menu
+						const { url, value, icon } = menu
 						return (
-							<li key={index}>
+							<li key={index} className={url === location.pathname ? 'active' : ''}>
 								<Link to={url}>
-									<span className={url === location.pathname ? 'active' : ''}>{value}</span>
+									<i className={`iconfont icon-${icon}`}></i>
+									<span>{value}</span>
 								</Link>
 							</li>
 						)
