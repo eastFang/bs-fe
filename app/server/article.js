@@ -39,7 +39,7 @@ export const fetchAdminArticlePaging = (params) => {
 }
 
 /**
- * 用户文章雷彪
+ * 用户文章列表
  * @param { 查询参数 } params 
  */
 export const userArticlePaging = (params) => {

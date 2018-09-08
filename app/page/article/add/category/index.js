@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Modal, Form, Input, Spin } from 'aliasComponent'
-import { fetchUserCategoryList, userCreateCategory, userEditCategory } from 'aliasServer/category'
+import { fetchUserCategoryList, userCreateCategory, userEditCategory, userDeleteArticle } from 'aliasServer/category'
 import './index.scss'
 
 export default class extends React.Component {
@@ -44,6 +44,25 @@ export default class extends React.Component {
 		this.refs.addCategory.show()
 	}
 
+	// onDelCategory(evt, category) {
+	// 	evt.stopPropagation()
+	// 	this.setState({
+	// 		isFetching: true
+	// 	})
+	// 	const { id } = category
+	// 	userDeleteArticle(id)
+	// 		.then(() => {
+	// 			const { categoryList } = this.state
+	// 			const lasCat = categoryList.pop()
+	// 			const lastCatId = lasCat ? lasCat.id : null
+	// 			this.setState({
+	// 				currentCategoryId: lastCatId,
+	// 				categoryList,
+	// 				isFetching: false,
+	// 			})
+	// 		})
+	// }
+
 	_onSubmitAddCategory(evt, data) {
 		evt.preventDefault()
 		const { currentEditCategory } = this.state
@@ -67,6 +86,18 @@ export default class extends React.Component {
 				this.setState(state)
 			})
 	}
+
+	renderOperation(category) {
+		return (
+			<span className='category-operation-wrap'>
+				<i className='iconfont icon-setting'></i>
+				<div className='category-operation'>
+					<em></em>
+					<a onClick={evt => this.onEditCategory(evt, category)}>修改</a>
+				</div>
+			</span>
+		)
+	}
   
 	render() {
 		const { categoryList, currentCategoryId, isFetching, currentEditCategory } = this.state
@@ -88,7 +119,7 @@ export default class extends React.Component {
 										onClick={() => this.onChangeCategory(category.id)}
 									>
 										<span>{category.name}</span>
-										{ isCurrentActiveCategory ? <i className='iconfont icon-edit' onClick={evt => this.onEditCategory(evt, category)}></i> : null}
+										{ isCurrentActiveCategory ? this.renderOperation(category) : null}
 									</li>
 								) 
 							})

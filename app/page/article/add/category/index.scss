@@ -26,10 +26,63 @@
         background-color: $color-text9;
         border-left: 3px solid $color-primary;
       }
-
-      i {
+      
+      .category-operation-wrap {
+        position: relative;
         float: right;
-        padding: 0 10px;
+
+        i {
+          float: right;
+          padding: 0 10px;
+        }
+
+        &:hover {
+          .category-operation {
+            display: block;
+          }
+        }
+
+        .category-operation {
+          display: none;
+          position: absolute;
+          width: 100px;
+          top: 36px;
+          left: -32px;
+          background-color: white;
+          color: white;
+          border: 1px solid $color-border;
+          border-radius: 4px;
+
+          a {
+            display: block;
+            line-height: 28px;
+            text-align: center;
+            border-bottom: 1px solid $color-border;
+
+            &:hover {
+              background-color: $smoke;
+            }
+
+            &:last-child {
+              border-bottom: 0;
+            }
+          }
+
+          em {
+            position: absolute;
+            display: block;
+            width: 10px;
+            height: 10px;
+            transform: rotate(45deg);
+            left: 50%;
+            margin-left: -5px;
+            margin-top: -5px;
+            background-color: white;
+            border-width: 1px 0 0 1px;
+            border-style: solid;
+            border-color: $color-border;
+          }
+        }
       }
     }
   }
