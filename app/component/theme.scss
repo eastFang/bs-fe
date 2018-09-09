@@ -5,11 +5,20 @@ $color-primary-light2: #46A6FF;
 $color-primary-light4: #D0E8FF;
 $color-danger: #f5222d;
 
+// 文字颜色
 $color-text3: #333333;
 $color-text6: #666666;
 $color-text9: #999999;
 $color-textb: #bbbbbb;
 
+// 边框色
 $color-border: #d9d9d9;
+
+// 背景主色
 $color-mask: rgba(0, 0, 0, .65);
-$color-link: #1890ff;
+
+// a 链接色
+$color-link: $color-primary;
+
+// z-index
+$message-z-index: 999;
