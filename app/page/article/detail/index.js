@@ -35,13 +35,15 @@ class ArticleDetail extends React.Component {
 	 * 点赞/取消点赞
 	 */
 	_onLikeOrCancelLike() {
-		const liked = this.state.liked
+		const { liked, articleFullInfo } = this.state
 		const articleFunc = liked ? cancelLikeArticle : likeArticle
+		const change = liked ? -1 : 1
+		articleFullInfo.summary.like += change
 		articleFunc({ aimId: this.params.articleId, type: 1 })
 			.then(() => {
-				
 				this.setState({
 					liked: !liked,
+					articleFullInfo
 				}, () => {
 					Message.success(liked ? '取消点赞成功' : '点赞成功')
 				})

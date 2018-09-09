@@ -9,6 +9,14 @@ class Badge extends React.Component {
 		}
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (this.props.count !== nextProps.count) {
+			this.setState({
+				count: nextProps.count
+			})
+		}
+	}
+
 	render() {
 		return (
 			<span className='bs-badge'>
