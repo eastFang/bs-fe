@@ -73,6 +73,7 @@ class ArticleDetail extends React.Component {
 				<div className='left-heat'>
 					<a className={likeClassName} onClick={this._onLikeOrCancelLike}>
 						<i className='iconfont icon-likes'></i>
+						<em className='corner'>{like}</em>
 					</a>
 					{/**<a className='icon-wrap'>
 						<i className='iconfont icon-comments'></i>
