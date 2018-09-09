@@ -5,6 +5,7 @@ import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
 import { fetchAdminArticlePaging, editArticle, fetchArticleDetail } from 'aliasServer/article'
 import filterConfig from './tableFilterConfig'
+import { ArticleEnum } from '../enum'
 
 export default class extends React.Component {
 	constructor(props) {
@@ -46,11 +47,9 @@ export default class extends React.Component {
 			}
 		}, {
 			title: '状态',
-			key: 'article[visible]',
+			key: 'article[status]',
 			width: 40,
-			render: (visible) => {
-				return visible ? '已发布' : '已停用'
-			}
+			render: (status) => ArticleEnum.DisplayText[status]
 		}, {
 			title: '操作',
 			width: 60,
