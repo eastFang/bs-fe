@@ -1,5 +1,5 @@
 import React from 'react'
-import { Spin, Message } from 'aliasComponent'
+import { Spin, Message, Badge } from 'aliasComponent'
 import { withCeiling } from 'aliasPageCommon'
 import { fetchArticleDetail, likeArticle, cancelLikeArticle } from 'aliasServer/article'
 import { formatDate } from 'aliasUtil'
@@ -71,10 +71,11 @@ class ArticleDetail extends React.Component {
 		return (
 			<Spin isFetching={isFetching}>
 				<div className='left-heat'>
-					<a className={likeClassName} onClick={this._onLikeOrCancelLike}>
-						<i className='iconfont icon-likes'></i>
-						<em className='corner'>{like}</em>
-					</a>
+					<Badge count={like}>
+						<a className={likeClassName} onClick={this._onLikeOrCancelLike}>
+							<i className='iconfont icon-likes'></i>
+						</a>
+					</Badge>
 					{/**<a className='icon-wrap'>
 						<i className='iconfont icon-comments'></i>
 		</a>**/}

@@ -1,0 +1,20 @@
+@import 'aliasComponent/theme.scss';
+
+.bs-badge {
+  position: relative;
+  display: inline-block;
+
+  .corner {
+    display: block;
+    position: absolute;
+    background-color: $color-textb;
+    left: 75%;
+    top: 0;
+    color: white;
+    border-radius: 2px;
+    padding: 1px 2px;
+    line-height: 12px;
+    font-style: normal;
+    top: -7px;
+  }
+}

@@ -15,6 +15,7 @@ import Radio from './radio'
 import Cascader from './cascader'
 import Spin from './spin'
 import Row from './row'
+import Badge from './badge'
 import './index.scss'
 
 export default class extends React.Component {
@@ -38,6 +39,7 @@ export default class extends React.Component {
 				<div id='cascader'><Cascader /></div>
 				<div id='spin'><Spin /></div>
 				<div id='row'><Row /></div>
+				<div id='badge'><Badge /></div>
 			</div>
 		)
 	}

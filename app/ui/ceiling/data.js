@@ -73,6 +73,11 @@ const data = [
 		id: 'row',
 		title: '行',
 		text: 'Row'
+	},
+	{
+		id: 'badge',
+		title: '角标',
+		text: 'Badge'
 	}
 ]
 

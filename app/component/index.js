@@ -17,6 +17,7 @@ import Spin from './spin'
 import Img from './img'
 import Row from './row'
 import Col from './row/col'
+import Badge from './badge'
 
 module.exports = {
 	Button,
@@ -38,4 +39,5 @@ module.exports = {
 	Img,
 	Row,
 	Col,
+	Badge,
 }
