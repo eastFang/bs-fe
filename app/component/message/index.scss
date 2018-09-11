@@ -5,44 +5,61 @@ $color-info: #1890ff;
 $color-success: #52c41a;
 $color-error: #f5222d;
 
-.bs-message {
+@keyframes enter-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bs-message-wrap {
   position: fixed;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: $white;
-  box-shadow: 0 0 2px 2px $color-border;
-  padding: 5px 10px;
-  color: $color-text3;
-  font-size: 14px;
-  border-radius: 4px;
-  transition: all ease .2s;
   z-index: $message-z-index;
 
-  i {
-    vertical-align: top;
-    margin-right: 8px;
-
-    &.icon-success {
-      color: $color-success;
+  .bs-message {
+    background-color: $white;
+    box-shadow: 0 0 2px 2px $color-border;
+    padding: 5px 10px;
+    color: $color-text3;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    transition: all linear .5s;
+  
+    i {
+      vertical-align: top;
+      margin-right: 8px;
+  
+      &.icon-success {
+        color: $color-success;
+      }
+  
+      &.icon-error {
+        color: $color-error;
+      }
+  
+      &.icon-warning {
+        color: $color-warning;
+      }
+  
+      &.icon-info {
+        color: $color-info;
+      }
     }
-
-    &.icon-error {
-      color: $color-error;
-    }
-
-    &.icon-warning {
-      color: $color-warning;
-    }
-
-    &.icon-info {
-      color: $color-info;
+  
+    .content {
+      display: inline-block;
+      vertical-align: top;
+      max-width: 150px;
     }
   }
 
-  .content {
-    display: inline-block;
-    vertical-align: top;
-    max-width: 150px;
+  .bs-message-enter {
+    animation: enter-fade .2s;
   }
 }
