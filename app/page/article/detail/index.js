@@ -18,6 +18,7 @@ class ArticleDetail extends React.Component {
 			articleId: this.props.match.params.id
 		}
 		this._onLikeOrCancelLike = this._onLikeOrCancelLike.bind(this)
+		this._onJumpComment = this._onJumpComment.bind(this)
 	}
 
 	componentDidMount() {
@@ -53,6 +54,13 @@ class ArticleDetail extends React.Component {
 			})
 	}
 
+	/**
+	 * 跳向评论区
+	 */
+	_onJumpComment() {
+		alert('TODO 跳向评论')
+	}
+
 	render() {
 		const { articleFullInfo, isFetching } = this.state
 		if (!articleFullInfo) {
@@ -78,16 +86,17 @@ class ArticleDetail extends React.Component {
 							<i className='iconfont icon-likes'></i>
 						</a>
 					</Badge>
-					{/**<a className='icon-wrap'>
-						<i className='iconfont icon-comments'></i>
-		</a>**/}
+					<Badge count={comments}>
+						<a className='icon-wrap' onClick={this._onJumpComment}>
+							<i className='iconfont icon-comments'></i>
+						</a>
+					</Badge>
 				</div>
 				<div className='page-article-detail-body'>
 					<p className='title'>{title}</p>
 					<div className='summary'>
 						<span className='date'>By {author} At {formatDate(publishAt)}</span>
 						<span className='i-wrap'>浏览量 {popular}</span>
-						<span className='i-wrap'>喜欢 {like}</span>
 						<span className='i-wrap'>评论 {comments}</span>
 					</div>
 					<div dangerouslySetInnerHTML={{ __html: content }}/>

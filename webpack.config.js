@@ -9,6 +9,7 @@ module.exports = {
 		contentBase: './public',
 		port: '20000',
 		hot: false,
+		inline: false,
 		historyApiFallback: true,
 		before: (app) => {
 			apiMocker(app, path.resolve(__dirname, 'mock/api.js'))
