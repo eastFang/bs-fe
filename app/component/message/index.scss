@@ -20,6 +20,7 @@ $color-error: #f5222d;
   left: 50%;
   transform: translateX(-50%);
   z-index: $message-z-index;
+  transition: height ease .2s;
 
   .bs-message {
     background-color: $white;
@@ -29,7 +30,7 @@ $color-error: #f5222d;
     font-size: 14px;
     border-radius: 4px;
     margin-bottom: 15px;
-    transition: all linear .5s;
+    animation: enter-fade ease-in .2s;
   
     i {
       vertical-align: top;
@@ -57,9 +58,5 @@ $color-error: #f5222d;
       vertical-align: top;
       max-width: 150px;
     }
-  }
-
-  .bs-message-enter {
-    animation: enter-fade .2s;
   }
 }

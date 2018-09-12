@@ -56,12 +56,9 @@ class Message extends Component {
 		}, 2000)
 	}
 
-	renderMessageItem(type, content, index, isEnter) {
+	renderMessageItem(type, content, index) {
 		const className = classnames(
 			'bs-message',
-			{
-				'bs-message-enter': isEnter
-			}
 		)
 		return (
 			<div className={className} key={index}>
@@ -72,13 +69,11 @@ class Message extends Component {
 	}
 
 	render() {
-		const length = this.state.messageList.length
 		return (
 			<div className='bs-message-wrap'>
 				{
 					this.state.messageList.map((item, index) => {
-						const isEnter = index === length - 1
-						return this.renderMessageItem(item.type, item.content, index, isEnter)
+						return this.renderMessageItem(item.type, item.content, index)
 					})
 				}
 			</div>

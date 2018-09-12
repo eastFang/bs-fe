@@ -4,6 +4,7 @@ import { withCeiling } from 'aliasPageCommon'
 import { fetchArticleDetail, likeArticle, cancelLikeArticle } from 'aliasServer/article'
 import { formatDate } from 'aliasUtil'
 import classnames from 'classnames'
+import Comment from './comment'
 import './index.scss'
 
 class ArticleDetail extends React.Component {
@@ -58,7 +59,7 @@ class ArticleDetail extends React.Component {
 	 * 跳向评论区
 	 */
 	_onJumpComment() {
-		alert('TODO 跳向评论')
+		window.location.href = '#comment'
 	}
 
 	render() {
@@ -100,6 +101,7 @@ class ArticleDetail extends React.Component {
 						<span className='i-wrap'>评论 {comments}</span>
 					</div>
 					<div dangerouslySetInnerHTML={{ __html: content }}/>
+					<Comment />
 				</div>
 			</Spin>
 		)

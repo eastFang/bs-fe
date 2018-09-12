@@ -1,0 +1,32 @@
+@import "aliasComponent/theme.scss";
+
+#comment {
+  h3 {
+    text-align: center;
+    color: $color-text9;
+  }
+
+  .operation {
+    padding: 10px 20px;
+    background-color: $smoke;
+    text-align: center;
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      vertical-align: top;
+      margin-right: 20px;
+    }
+
+    textarea {
+      width: 580px;
+      height: 50px;
+    }
+
+    .comment-area {
+      text-align: right;
+      margin-bottom: 0;
+    }
+  }
+}
