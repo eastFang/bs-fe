@@ -100,7 +100,7 @@ class ArticleDetail extends React.Component {
 						<span className='i-wrap'>浏览量 {popular}</span>
 						<span className='i-wrap'>评论 {comments}</span>
 					</div>
-					<div dangerouslySetInnerHTML={{ __html: content }}/>
+					<div className='content-wrap' dangerouslySetInnerHTML={{ __html: content }}/>
 					<Comment />
 				</div>
 			</Spin>
