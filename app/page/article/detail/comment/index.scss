@@ -7,7 +7,7 @@
   }
 
   .operation {
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: $smoke;
     text-align: center;
 
@@ -27,6 +27,67 @@
     .comment-area {
       text-align: right;
       margin-bottom: 0;
+    }
+  }
+
+  .comment-ul {
+    .comment-li {
+      color: $color-text3;
+
+      .avatar {
+        float: left;
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        background-color: $smoke;
+        border: 1px solid $smoke;
+        line-height: 32px;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .detail {
+        margin-left: 40px;
+        padding: 5px 10px;
+
+        .name,
+        .content {
+          line-height: 24px;
+        }
+
+        .count {
+          margin-top: 10px;
+
+          i {
+            color: $color-text6;
+            margin-right: 10px;
+          }
+        }
+
+        .reply-wrap {
+          position: relative;
+          padding: 10px;
+          border: 1px solid $color-border;
+          border-radius: 4px;
+
+          &.hide {
+            display: none;
+          }
+
+          .attach {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            transform: rotate(45deg);
+            left: 40px;
+            top: -5px;
+            border-width: 1px 0 0 1px;
+            border-style: solid;
+            border-color: $color-border;
+            margin-top: 10px;
+          }
+        }
+      }
     }
   }
 }

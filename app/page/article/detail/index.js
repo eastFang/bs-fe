@@ -101,7 +101,7 @@ class ArticleDetail extends React.Component {
 						<span className='i-wrap'>评论 {comments}</span>
 					</div>
 					<div className='content-wrap' dangerouslySetInnerHTML={{ __html: content }}/>
-					<Comment />
+					<Comment articleId={this.params.articleId} />
 				</div>
 			</Spin>
 		)

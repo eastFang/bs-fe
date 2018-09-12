@@ -96,6 +96,10 @@ const randomStr = (len) => {
 	return str
 }
 
+const ENUM_TYPE = {
+	ARTICLE: 1,
+}
+
 export {
 	convert2ElemArray,
 	getOffsetDateFullInfo,
@@ -104,4 +108,5 @@ export {
 	queryStrToObj,
 	replaceQueryParamInSearch,
 	randomStr,
+	ENUM_TYPE,
 }
