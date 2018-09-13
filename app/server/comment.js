@@ -31,3 +31,11 @@ export const adminCommentList = (params) => {
 export const adminDelComment = (id) => {
 	return flyUtil({ url: `/api/admin/comment/${id}/delete`, method: 'put' })
 }
+
+/**
+ * 运营后台查看评价详情
+ * @param { number } id 评价ID
+ */
+export const adminCommentDetail = (id) => {
+	return flyUtil({ url: `/api/admin/comment/${id}/detail` })
+}
