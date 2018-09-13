@@ -72,12 +72,12 @@ export const userDeleteArticle = (id) => {
  * 点赞文章
  */
 export const likeArticle = (params) => {
-	return flyUtil({ url: '/api/like-log', params, method: 'post' })
+	return flyUtil({ url: '/api/bloger/like-log', params, method: 'post' })
 }
 
 /**
  * 取消点赞
  */
 export const cancelLikeArticle = (params) => {
-	return flyUtil({ url: '/api/like-log', params, method: 'delete' })
+	return flyUtil({ url: '/api/bloger/like-log', params, method: 'delete' })
 }
