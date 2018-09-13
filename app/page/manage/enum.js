@@ -1,18 +1,44 @@
-const STATUS = {
-	private: 0,
-	public: 1,
-	mask: -1,
-	delete: -99,
-}
-
-const DisplayText = {
-	0: '私有',
-	1: '公开',
-	'-1': '撤下',
-	'-99': '删除'
-}
-
 export const ArticleEnum = {
-	STATUS,
-	DisplayText
+	STATUS: {
+		private: 0,
+		public: 1,
+		mask: -1,
+		delete: -99,
+	},
+	DisplayText: {
+		0: '私有',
+		1: '公开',
+		'-1': '撤下',
+		'-99': '删除'
+	}
+}
+
+export const CommentEnum = {
+	DisplayText: {
+		0: '隐藏中',
+		1: '显示中',
+		'-1': '已删除'
+	},
+	Operation: {
+		0: [
+			// {
+			// 	text: '显示',
+			// 	value: 1,
+			// },
+			{
+				text: '删除',
+				value: '-1'
+			}
+		],
+		1: [
+			// {
+			// 	text: '隐藏',
+			// 	value: 0
+			// },
+			{
+				text: '删除',
+				value: '-1'
+			}
+		]
+	}
 }

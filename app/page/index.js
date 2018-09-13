@@ -6,6 +6,7 @@ const MyLoadingComponent = ({ isLoading, error}) => {
 	if (isLoading) {
 		return <Loading />
 	} else if (error) {
+		console.log(error)
 		return <div>sorry</div>
 	} else {
 		return null
@@ -60,6 +61,10 @@ const AsyncFriendLinkList = Loadable({
 	loader: () => import(/* webpackChunkName: "friendLink" */ './manage/friendLink'),
 	loading: MyLoadingComponent
 })
+const AsyncManageComment = Loadable({
+	loader: () => import(/* webpackChunkName: "manageComment" */ './manage/comment'),
+	loading: MyLoadingComponent
+})
 
 module.exports = {
 	Home: AsyncHome,
@@ -72,7 +77,8 @@ module.exports = {
 			List: AsyncManageArticle,
 		},
 		User: AsyncUserList,
-		UserLoginLog: AsyncUserLoginLog
+		UserLoginLog: AsyncUserLoginLog,
+		Comment: AsyncManageComment,
 	},
 	Article: {
 		List: AsyncArticleList,

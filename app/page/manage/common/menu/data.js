@@ -21,6 +21,11 @@ const list = [
 		value: '友情链接',
 		url: '/manage/friendLink',
 		icon: 'link-manage'
+	},
+	{
+		value: '评价管理',
+		url: '/manage/comment',
+		icon: 'manage-comment'
 	}
 ]
 

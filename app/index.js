@@ -37,6 +37,7 @@ const App = () => {
 						<Route path='/search' component={VerifyUser(Article.List)}></Route>
 						<Route path='/article/:id' component={VerifyUser(Article.Detail)}></Route>
 						<Route path='/manage/friendLink' component={VerifyUser(FriendLink.List)}></Route>
+						<Route path='/manage/comment' component={VerifyUser(Manage.Comment)}></Route>
 						<Route path='*' component={ErrorPage}></Route>
 					</Switch>
 					<ReturnTop />
