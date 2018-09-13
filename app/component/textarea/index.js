@@ -24,6 +24,12 @@ class Textarea extends React.Component {
 		})
 	}
 
+	setValue(value) {
+		this.setState({
+			value,
+		})
+	}
+
 	render() {
 		const className = classnames(
 			'bs-textarea',

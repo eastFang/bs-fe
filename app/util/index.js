@@ -100,6 +100,37 @@ const ENUM_TYPE = {
 	ARTICLE: 1,
 }
 
+/**
+ * 展示time距离当前时间多久: XX天前，XX小时前，XX分钟前，刚刚
+ * @param { number } time 时间毫秒值
+ */
+const timeAgoText = (time) => {
+	const current = Date.now()
+	let distance = Math.abs(current - time)
+	const day2MS = 24 * 60 * 60 * 1000
+	const day = Math.floor(distance / day2MS)
+	distance = distance % day2MS
+
+	const hour2MS = 60 * 60 * 1000
+	const hour = Math.floor(distance / hour2MS)
+	distance = distance % hour2MS
+
+	const minute2MS = 60 * 1000
+	const minute = Math.floor(distance / minute2MS)
+	distance = distance % minute2MS
+
+	switch(true) {
+	case day > 0:
+		return `${day}天前`
+	case hour > 0:
+		return `${hour}小时前`
+	case minute > 0:
+		return `${minute}分钟前`
+	default:
+		return '刚刚'
+	}
+}
+
 export {
 	convert2ElemArray,
 	getOffsetDateFullInfo,
@@ -109,4 +140,5 @@ export {
 	replaceQueryParamInSearch,
 	randomStr,
 	ENUM_TYPE,
+	timeAgoText
 }

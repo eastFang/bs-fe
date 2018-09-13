@@ -4,6 +4,7 @@ import { Img, Textarea, Button, Message, Space } from 'aliasComponent'
 import { connect } from 'react-redux'
 import { articleCommentList, userComment } from 'aliasServer/comment'
 import { ENUM_TYPE } from 'aliasUtil'
+import Children from './children'
 import './index.scss'
 
 class Comment extends React.Component {
@@ -25,7 +26,7 @@ class Comment extends React.Component {
 		if (!this.params.articleId) {
 			return
 		}
-		articleCommentList(this.params.articleId)
+		return articleCommentList(this.params.articleId)
 			.then((res) => {
 				this.setState({
 					commentList: res
@@ -48,15 +49,17 @@ class Comment extends React.Component {
 		})
 	}
 
-	_onSubmitComment(evt, pid = 0) {
+	_onSubmitComment() {
 		userComment({
 			aimId: this.params.articleId,
 			content: this.refs.content.state.value,
 			type: ENUM_TYPE.ARTICLE,
 			replier: this.props.userInfo.id,
-			// pid,
 		}).then(() => {
 			Message.success('评论成功')
+			this.componentDidMount().then(() => {
+				this.refs.content.setValue('')
+			})
 		})
 	}
 
@@ -93,20 +96,6 @@ class Comment extends React.Component {
 		)
 	}
 
-	rolloutChildren(commentItem) {
-		let flatChildren = []
-		const recursionChildren = (children) => {
-			if (children) {
-				flatChildren = flatChildren.concat(children)
-				children.forEach((child) => {
-					recursionChildren(child.children)
-				})
-			}
-		}
-		recursionChildren(commentItem.children)
-		return flatChildren
-	}
-
 	renderCommentList() {
 		if (!this.state.commentList) {
 			return null
@@ -116,20 +105,27 @@ class Comment extends React.Component {
 			<ul className='comment-ul'>
 				{
 					this.state.commentList.map((commentItem, index) => {
-						const { replierName, replierAvatar, content } = commentItem.comment
+						const { 
+							comment: {
+								replierName,
+								replierAvatar,
+								content,
+								id,
+								createdAt
+							}, children } = commentItem
 						return (
 							<li className='comment-li' key={index}>
 								{replierAvatar ? <Img className='avatar' src={replierAvatar} /> : <span className='avatar'>{replierName.substring(0, 1)}</span>}
 								<div className='detail'>
 									<div className='name'>{replierName}</div>
 									<div className='content'>{content}</div>
-									<div className='count'>
-										<i className='iconfont icon-pinglun'></i>
-										<a>{this.rolloutChildren(commentItem).length}条评论</a>
-									</div>
-									<div className='reply-wrap hide'>
-										<em className='attach'></em>
-									</div>
+									<Children data={children}
+										aimId={this.params.articleId}
+										pid={id}
+										type={ENUM_TYPE.ARTICLE}
+										createdAt={createdAt}
+										refresh={this.componentDidMount.bind(this)}
+									/>
 								</div>
 							</li>
 						)

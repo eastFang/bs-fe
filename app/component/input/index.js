@@ -14,7 +14,7 @@ class Input extends React.Component {
 
 	_onChange(event) {
 		this.setValue(event.target.value)
-		this.props.onChange && this.props.onChange()
+		this.props.onChange && this.props.onChange(event, event.target.value)
 	}
 
 	/**
