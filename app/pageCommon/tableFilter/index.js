@@ -6,6 +6,15 @@ import { queryStrToObj } from 'aliasUtil'
 import './index.scss'
 
 class TableFilter extends React.Component {
+	constructor(props) {
+		super(props)
+		this._onReset = this._onReset.bind(this)
+	}
+
+	_onReset() {
+		this.props.history.push(this.props.location.pathname)
+	}
+
 	render() {
 		const query = queryStrToObj(this.props.location.search)
 		const { fields = [] } = this.props
@@ -24,6 +33,7 @@ class TableFilter extends React.Component {
 					}
 					<Form.Field className='table-filter-button'>
 						<Button title='搜索' type='primary' />
+						<Button title='重置' onClick={this._onReset} />
 					</Form.Field>
 				</Form>
 			</div>
