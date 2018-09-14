@@ -23,3 +23,13 @@ https://zhuanlan.zhihu.com/p/26710831<br>
 # 启动
 - npm i
 - npm run start（如果无法启动成功，恭喜你，你入坑了，请找eastFang）
+
+# TODO
+- component
+  - cascader完善
+  - datepicker完善
+  - Modal完善
+  - Pagination完善
+  - form 完善
+  - 引入dva
+  

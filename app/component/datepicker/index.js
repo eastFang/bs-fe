@@ -185,6 +185,9 @@ export default class extends Component {
 	}
 
 	render() {
-		return this.state.showDateListBox ? this.renderDateList() : this.renderTimeDisplay()
+		if (this.state.showDateListBox) {
+			return this.renderDateList()
+		}
+		return this.renderTimeDisplay()
 	}
 }
