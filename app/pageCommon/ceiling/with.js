@@ -7,7 +7,7 @@ export default (wrapClass, noSpace) => Comp => class extends React.Component {
 		return (
 			<div className={wrapClass}>
 				<Index />
-				{noSpace ? null : <Space height={40}/>}
+				{noSpace ? null : <Space height={90}/>}
 				<Comp {...this.props}/>
 			</div>
 		)
