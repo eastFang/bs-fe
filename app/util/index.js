@@ -53,7 +53,7 @@ const flyUtil = ({ url, params, method, ...others }) => {
 	})
 }
 
-const formatDate = (timestamp) => {
+const formatDate = (timestamp, type) => {
 	const dateO = new Date(timestamp)
 	const year = dateO.getFullYear()
 	const month = dateO.getMonth() + 1
@@ -62,7 +62,12 @@ const formatDate = (timestamp) => {
 	const minute = dateO.getMinutes()
 	const second = dateO.getSeconds()
 	const withPrefix = value => value < 10 ? `0${value}` : value
-	return `${year}-${withPrefix(month)}-${withPrefix(date)} ${withPrefix(hour)}:${withPrefix(minute)}:${withPrefix(second)}`
+	switch (type) {
+	case 'yyyy-mm-dd':
+		return `${year}-${withPrefix(month)}-${withPrefix(date)}`
+	default:
+		return `${year}-${withPrefix(month)}-${withPrefix(date)} ${withPrefix(hour)}:${withPrefix(minute)}:${withPrefix(second)}`
+	}
 }
 
 const queryStrToObj = (str) => {

@@ -29,6 +29,10 @@ a {
   cursor: pointer;
   color: $color-text6;
   text-decoration: none;
+
+  &[href] {
+    color: $color-link;
+  }
 }
 
 .pull-left {

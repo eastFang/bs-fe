@@ -24,6 +24,20 @@ class Ceiling extends React.Component {
 				<Link to='/'>
 					<Img className='logo' src={Logo} />
 				</Link>
+				<ul className='breadcrumb'>
+					{
+						this.props.breadbrumbList && this.props.breadbrumbList.map((breadbrumb, index) => {
+							const { link , text } = breadbrumb
+							if (!text) {
+								return null
+							} else if (!link) {
+								return <li key={index}>{text}</li>
+							}
+
+							return <li key={index}><Link to={link}>{text}</Link></li>
+						})
+					}
+				</ul>
 				<span className='user-info'>
 					<Img className='avatar' src={avatar}/>
 					<span className='name'>{name}</span>

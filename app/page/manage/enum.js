@@ -21,24 +21,27 @@ export const CommentEnum = {
 	},
 	Operation: {
 		0: [
-			// {
-			// 	text: '显示',
-			// 	value: 1,
-			// },
+			{
+				text: '查看详情',
+			},
 			{
 				text: '删除',
 				value: '-1'
-			}
+			},
 		],
 		1: [
-			// {
-			// 	text: '隐藏',
-			// 	value: 0
-			// },
+			{
+				text: '查看详情',
+			},
 			{
 				text: '删除',
 				value: '-1'
-			}
+			},
 		]
+	},
+	className: {
+		0: 'status-hide',
+		1: 'status-success',
+		'-1': 'status-deleted'
 	}
 }

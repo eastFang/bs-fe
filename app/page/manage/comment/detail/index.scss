@@ -1,0 +1,57 @@
+@import 'aliasComponent/theme.scss';
+
+.comment-detial-ul {
+  .comment-detial-li {
+    margin-bottom: 30px;
+    
+    label {
+      float: left;
+      width: 100px;
+      text-align: right;
+    }
+
+    .right-show {
+      display: block;
+      margin-left: 110px;
+      color: $color-text3;
+      border: 1px solid $color-border;
+      padding: 5px 10px;
+      border-radius: 4px;
+
+      .content {
+        margin-bottom: 10px;
+      }
+
+      .date {
+        color: $color-text9;
+        margin-bottom: 10px;
+      }
+
+      .status {
+        .status-success {
+          color: $color-success;
+        }
+
+        .status-deleted {
+          color: $color-danger;
+        }
+
+        .status-hide {
+          color: $color-textb;
+        }
+
+        .i-wrap {
+          margin-left: 10px;
+          color: $color-textb;
+
+          i {
+            cursor: pointer;
+            &:hover {
+              color: $color-text3;
+            }
+          }
+        }
+      }
+    }
+  }
+}

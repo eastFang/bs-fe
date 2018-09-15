@@ -38,7 +38,7 @@ export default class extends React.Component {
 									<li key={index}>
 										<Link to={`/article/${article.id}`}>
 											<p className='title'>{article.title}</p>
-											<p className='date'>{formatDate(article.publishAt)}</p>
+											<p className='date'>{formatDate(article.publishAt, 'yyyy-mm-dd')}</p>
 										</Link>
 									</li>
 								)

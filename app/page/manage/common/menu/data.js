@@ -24,7 +24,7 @@ const list = [
 	},
 	{
 		value: '评价管理',
-		url: '/manage/comment',
+		url: '/manage/comment/list',
 		icon: 'manage-comment'
 	}
 ]

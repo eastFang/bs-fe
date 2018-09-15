@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Table, Space, Spin, Message } from 'aliasComponent'
 import { TableFilter } from 'aliasPageCommon'
 import ManageCommonPage from '../common/page'
@@ -78,6 +79,9 @@ export default class extends React.Component {
 			<React.Fragment>
 				{
 					operationList && operationList.map(({ value, text }, index) => {
+						if (!value) {
+							return <div key='detail'><Link to={`/manage/comment/${id}`}>查看详情</Link></div>
+						}
 						return <div key={index}><a onClick={() => this.onOperationComment(id, value)}>{text}</a></div>
 					})
 				}

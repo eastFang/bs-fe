@@ -65,6 +65,10 @@ const AsyncManageComment = Loadable({
 	loader: () => import(/* webpackChunkName: "manageComment" */ './manage/comment'),
 	loading: MyLoadingComponent
 })
+const AsyncManageCommentDetail = Loadable({
+	loader: () => import(/* webpackChunkName: "manageCommentDetail" */ './manage/comment/detail'),
+	loading: MyLoadingComponent
+})
 
 module.exports = {
 	Home: AsyncHome,
@@ -78,7 +82,10 @@ module.exports = {
 		},
 		User: AsyncUserList,
 		UserLoginLog: AsyncUserLoginLog,
-		Comment: AsyncManageComment,
+		Comment: {
+			List: AsyncManageComment,
+			Detail: AsyncManageCommentDetail,
+		}
 	},
 	Article: {
 		List: AsyncArticleList,

@@ -16,7 +16,7 @@ export default class extends React.Component {
 			.then(() => {
 				// TODO: 优化
 				// 登陆成功后Wrap无法重新调起获取用户登录信息
-				location.href = '/'
+				this.props.history.go(-1)
 			}).catch((error) => {
 				Message.error(error)
 			})

@@ -7,7 +7,7 @@ export default class extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Ceiling />
+				<Ceiling {...this.props} />
 				<div className='manage-left-menu'>
 					<Menu />
 				</div>
