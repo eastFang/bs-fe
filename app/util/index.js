@@ -1,5 +1,6 @@
 import fly from 'flyio'
 
+const withPrefixDate = value => value < 10 ? `0${value}` : value
 /**
  * 
  * @param {一维数组} originArray 
@@ -33,10 +34,12 @@ const getOffsetDateFullInfo = (year, month, offsetDate) => {
 		year += 1
 		month = 1
 	}
-	const date = new Date(year, month, offsetDate).getDate()
-	const fullYear = new Date(year, month, offsetDate).getFullYear()
-	const fullMonth = new Date(year, month, offsetDate).getMonth()
-	return { date, year: fullYear, month: fullMonth + 1 }
+	const dateInstance = new Date(year, month, offsetDate)
+	const date = dateInstance.getDate()
+	const fullMonth = dateInstance.getMonth()
+	const fullYear = dateInstance.getFullYear()
+	const day = dateInstance.getDay()
+	return { date: withPrefixDate(date), year: fullYear, month: withPrefixDate(fullMonth + 1), day }
 }
 
 const flyUtil = ({ url, params, method, ...others }) => {
@@ -61,12 +64,11 @@ const formatDate = (timestamp, type) => {
 	const hour = dateO.getHours()
 	const minute = dateO.getMinutes()
 	const second = dateO.getSeconds()
-	const withPrefix = value => value < 10 ? `0${value}` : value
 	switch (type) {
 	case 'yyyy-mm-dd':
-		return `${year}-${withPrefix(month)}-${withPrefix(date)}`
+		return `${year}-${withPrefixDate(month)}-${withPrefixDate(date)}`
 	default:
-		return `${year}-${withPrefix(month)}-${withPrefix(date)} ${withPrefix(hour)}:${withPrefix(minute)}:${withPrefix(second)}`
+		return `${year}-${withPrefixDate(month)}-${withPrefixDate(date)} ${withPrefixDate(hour)}:${withPrefixDate(minute)}:${withPrefixDate(second)}`
 	}
 }
 
@@ -145,5 +147,6 @@ export {
 	replaceQueryParamInSearch,
 	randomStr,
 	ENUM_TYPE,
-	timeAgoText
+	timeAgoText,
+	withPrefixDate,
 }
