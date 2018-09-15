@@ -1,9 +1,12 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { flyUtil } from 'aliasUtil'
 import { cloneDeep } from 'lodash'
 import './index.scss'
+
+const cascaderRoot = document.getElementById('cascader')
 
 class Cascader extends React.Component {
 	constructor(props) {
@@ -16,13 +19,21 @@ class Cascader extends React.Component {
 		this.state = {
 			isOpen: false, // optionlist是否打开
 			fullList: initFullList,
-			value: props.value || null,
+			value: props.value || [],
 		}
 		this.tempValue = []
 		this._onToggleOptionList = this._onToggleOptionList.bind(this)
+		this.showAreaRef = React.createRef()
 	}
 
 	componentDidMount() {
+		const rect = ReactDOM.findDOMNode(this.showAreaRef.current).getBoundingClientRect()
+		const { top, left, height } = rect
+		const { scrollTop } = document.documentElement
+		this.showAreaDomStyle = {
+			top: `${scrollTop + top + height + 5}px`,
+			left: `${left}px`,
+		}
 		if (this.props.name && this.context.formList) {
 			this.context.formList[this.props.name] = this
 		}
@@ -37,7 +48,7 @@ class Cascader extends React.Component {
 		})
 	}
 
-	_onClickOptionItem(item) {
+	onClickOptionItem(item) {
 		const { id, level } = item
 		const levelList = this.state.fullList[level]
 		for(let i = 0; i < levelList.length; i++) {
@@ -94,7 +105,7 @@ class Cascader extends React.Component {
 		)
 		
 		return (
-			<div className='bs-cascader-showarea' onClick={this._onToggleOptionList}>
+			<div className='bs-cascader-showarea' onClick={this._onToggleOptionList} ref={this.showAreaRef}>
 				{this.renderShowAreaText()}
 				<i className={iconClassName} />
 			</div>
@@ -114,15 +125,15 @@ class Cascader extends React.Component {
 		}
 		const optionItemClassName = id => classnames({ selected: this.tempValue.some(item => item.id === id) })
 
-		return (
-			<div className='bs-cascader-optionlist'>
+		const optionList = (
+			<div className='bs-cascader-optionlist' style={this.showAreaDomStyle}>
 				{
 					this.state.fullList.map((list, index) => {
 						return (
 							<ul key={index}>
 								{
 									list.map((item, index) => {
-										return <li className={optionItemClassName(item.id)} key={index} onClick={() => this._onClickOptionItem(item)}>{item.name}</li>
+										return <li className={optionItemClassName(item.id)} key={index} onClick={() => this.onClickOptionItem(item)}>{item.name}</li>
 									})
 								}
 							</ul>
@@ -131,6 +142,7 @@ class Cascader extends React.Component {
 				}
 			</div>
 		)
+		return ReactDOM.createPortal(optionList, cascaderRoot)
 	}
 
 	render() {

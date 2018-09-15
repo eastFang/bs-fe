@@ -17,31 +17,31 @@
       color: $color-text9;
     }
   }
+}
 
-  .bs-cascader-optionlist {
-    position: absolute;
-    white-space: nowrap;
-    border-radius: 4px;
-    box-shadow: 0 0 2px 2px $color-border;
-    margin-top: 4px;
-    background-color: white;
-    
-    ul {
-      height: 200px;
-      width: 150px;
-      overflow-y: auto;
-      display: inline-block;
+.bs-cascader-optionlist {
+  position: absolute;
+  white-space: nowrap;
+  border-radius: 4px;
+  box-shadow: 0 0 2px 2px $color-border;
+  margin-top: 4px;
+  background-color: white;
+  
+  ul {
+    height: 200px;
+    width: 150px;
+    overflow-y: auto;
+    display: inline-block;
 
-      li {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        cursor: pointer;
-        line-height: 28px;
-        padding: 0 5px;
+    li {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      line-height: 28px;
+      padding: 0 5px;
 
-        &.selected {
-          background-color: $smoke;
-        }
+      &.selected {
+        background-color: $smoke;
       }
     }
   }

@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import Option from './option'
 import './index.scss'
 
-const portalRoot = document.getElementById('portal')
+const selectRoot = document.getElementById('select')
 
 class Select extends React.Component {
 	constructor(props) {
@@ -85,7 +85,7 @@ class Select extends React.Component {
 				}
 			</ul>
 		)
-		return ReactDOM.createPortal(optionsList, portalRoot)
+		return ReactDOM.createPortal(optionsList, selectRoot)
 	}
 
 	render() {
