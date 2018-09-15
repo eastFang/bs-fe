@@ -15,4 +15,9 @@ module.exports = [
 		searchName: 'articleId',
 		labelName: '文章ID',
 	},
+	{
+		searchName: 'publishAtStart',
+		labelName: '发布开始时间',
+		type: 'datepicker'
+	}
 ]

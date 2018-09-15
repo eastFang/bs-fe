@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import ReactDOM, { findDOMNode } from 'react-dom'
 import classnames from 'classnames'
+import PropTypes from 'prop-types'
 import { formatDate, getOffsetDateFullInfo, convert2ElemArray, withPrefixDate } from 'aliasUtil'
 import './index.scss'
 
 const datepickerRoot = document.getElementById('datepicker')
-export default class extends Component {
+class DatePicker extends Component {
 	constructor(props) {
 		super(props)
 		this.params = {
 			today: formatDate(Date.now(), 'yyyy-mm-dd')
 		}
 		this.state = {
-			value: this.params.today, // 已选中日期
+			value: '', // 已选中日期
 			guideValue: this.params.today, // 日期选择面板当前选中日期
 			isOpen: false,
 		}
@@ -26,6 +27,9 @@ export default class extends Component {
 			position: 'absolute',
 			top: `${scrollTop + top + height + 5}px`,
 			left: `${left}px`,
+		}
+		if (this.props.name && this.context.formList) {
+			this.context.formList[this.props.name] = this
 		}
 	}
 
@@ -153,7 +157,7 @@ export default class extends Component {
 
 	render() {
 		return (
-			<React.Fragment>
+			<span>
 				<span className='bs-datepicker-input-wrapper' ref={this.showAreaRef} onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
 					<input className='bs-datepicker-input' placeholder='请选择时间' value={this.state.value} readOnly/>
 					<i className='iconfont icon-calendar'></i>
@@ -161,7 +165,13 @@ export default class extends Component {
 				{this.state.isOpen
 					? ReactDOM.createPortal(this.renderDateList(), datepickerRoot)
 					: null}
-			</React.Fragment>
+			</span>
 		)
 	}
 }
+
+DatePicker.contextTypes = {
+	formList: PropTypes.object
+}
+
+export default DatePicker
