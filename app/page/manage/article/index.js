@@ -3,7 +3,7 @@ import { Table, Space, Spin, Message } from 'aliasComponent'
 import { TableFilter } from 'aliasPageCommon'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
-import { fetchAdminArticlePaging, editArticle, fetchArticleDetail } from 'aliasServer/article'
+import { fetchAdminArticlePaging, adminFrozenArticle, adminUnFrozenArticle } from 'aliasServer/article'
 import filterConfig from './tableFilterConfig'
 import { ArticleEnum } from '../enum'
 
@@ -66,31 +66,38 @@ export default class extends React.Component {
 		this.getArticleList(nextProps.location.search)
 	}
 
-	toggleArticle(articleId, visible) {
+	toggleArticle(articleId, status) {
 		const { dataSource } = this.state
-		fetchArticleDetail(articleId)
-			.then((res) => {
-				Object.assign(res.article, { id: articleId, visible })
-				editArticle(res)
-					.then(() => {
-						for(let item of dataSource) {
-							if (item.article.id === articleId) {
-								item.article.visible = visible
-								break
-							}
-						}
-						this.setState({
-							dataSource
-						}, () => Message.success('操作成功'))
-					})
+		const adminFrozenOrUnFrozenArticleUrlMap = {
+			1: adminUnFrozenArticle,
+			'-1': adminFrozenArticle,
+		}
+		adminFrozenOrUnFrozenArticleUrlMap[status](articleId)
+			.then(() => {
+				for(let item of dataSource) {
+					if (item.article.id === articleId) {
+						item.article.status = status
+						break
+					}
+				}
+				this.setState({
+					dataSource
+				}, () => Message.success('操作成功'))
 			})
 	}
 
 	renderOperation(record) {
-		const { article: { visible, id } } = record
+		const { article: { status, id } } = record
+		const operationList = ArticleEnum.Operation[status]
+		
+		if (!operationList || !operationList.length) {
+			return null
+		}
 		return (
 			<React.Fragment>
-				{ visible ? <a onClick={() => this.toggleArticle(id, false)}>停用</a> : <a onClick={() => this.toggleArticle(id, true)}>发布</a>}<br />
+				{
+					operationList.map(({ value, text }, index) => <a key={index} onClick={() => this.toggleArticle(id, value)}>{text}</a>)
+				}
 			</React.Fragment>
 		)
 	}

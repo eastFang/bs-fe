@@ -11,7 +11,7 @@ class Table extends React.Component {
 	getItemTdList(itemData) {
 		return this.props.columns.map(({ key, render }, index) => {
 			if (!key) {
-				return <td key={`operation${index}`}>{render(itemData)}</td>
+				return <td className='td-operation' key={`operation${index}`}>{render(itemData)}</td>
 			}
 
 			let tdVal = ''

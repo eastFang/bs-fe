@@ -18,6 +18,7 @@ class DatePicker extends Component {
 			isOpen: false,
 		}
 		this.showAreaRef = React.createRef()
+		this._onSelectToday = this._onSelectToday.bind(this)
 	}
 
 	componentDidMount() {
@@ -33,6 +34,14 @@ class DatePicker extends Component {
 		}
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (this.props.value !== nextProps.value) {
+			this.setState({
+				value: nextProps.value || ''
+			})
+		}
+	}
+
 	onSelectDate(dateItem) {
 		this.setState({
 			value: dateItem,
@@ -42,7 +51,8 @@ class DatePicker extends Component {
 
 	_onSelectToday() {
 		this.setState({
-			value: this.params.today
+			value: this.params.today,
+			isOpen: false,
 		})
 	}
 
@@ -159,7 +169,7 @@ class DatePicker extends Component {
 		return (
 			<span>
 				<span className='bs-datepicker-input-wrapper' ref={this.showAreaRef} onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
-					<input className='bs-datepicker-input' placeholder='请选择时间' value={this.state.value} readOnly/>
+					<input className='bs-datepicker-input' placeholder={this.props.placeholder} value={this.state.value} readOnly/>
 					<i className='iconfont icon-calendar'></i>
 				</span>
 				{this.state.isOpen
@@ -168,6 +178,16 @@ class DatePicker extends Component {
 			</span>
 		)
 	}
+}
+
+DatePicker.defaultProps = {
+	value: '',
+	placeholder: '请选择时间'
+}
+
+DatePicker.propTypes = {
+	value: PropTypes.string,
+	placeholder: PropTypes.string,
 }
 
 DatePicker.contextTypes = {

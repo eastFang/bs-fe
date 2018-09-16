@@ -107,8 +107,8 @@ export default class extends React.Component {
 	}
 
 	getUserLoginLogPaging(search) {
-		const { pageNo = 1, pageSize = 10 } = queryStrToObj(search)
-		fetchAdminFriendLinkList({ pageNo, pageSize })
+		const params = { ...{ pageNo: 1, pageSize: 10 }, ...queryStrToObj(search)}
+		fetchAdminFriendLinkList(params)
 			.then((res) => {
 				this.setState({
 					dataSource: res.datas,

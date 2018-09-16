@@ -10,6 +10,7 @@ $height-ceiling: 60px;
   width: 100%;
   background-color: white;
   box-shadow: 0 0 2px 2px $color-border;
+  z-index: 998;
 
   .logo {
     width: 200px;

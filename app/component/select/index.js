@@ -12,12 +12,18 @@ class Select extends React.Component {
 		super(props)
 		const valueList = []
 		const optionalList = []
+		const defaultValue = props.value
 		React.Children.forEach(this.props.children, (child) => {
 			optionalList.push(child.props.children)
-			valueList.push(child.props.value)
+			valueList.push(child.props.value.toString())
 		})
-		const selected = optionalList ? optionalList[0] : '请选择'
-		const value = valueList ? valueList[0] : null
+		let selected = optionalList[0] || '请选择'
+		let value = valueList[0] || null
+		// 初始化
+		if (defaultValue) {
+			value = defaultValue
+			selected = optionalList[valueList.indexOf(defaultValue)]
+		}
 		this.state = {
 			isOpen: false, // optionlist 是否打开,
 			selected,

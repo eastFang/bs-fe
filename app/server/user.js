@@ -69,3 +69,19 @@ export const fetchUserPaging = (params) => {
 export const userChangePassword = ({ oldPassword, newPassword}) => {
 	return flyUtil({ url: `/api/user/change-password?oldPassword=${oldPassword}&newPassword=${newPassword}`, method: 'put' })
 }
+
+/**
+ * 管理端 冻结用户
+ * @param { number } userId 用户ID
+ */
+export const adminFrozenUser = (userId) => {
+	return flyUtil({ url: `/api/admin/user/${userId}/frozen`, method: 'put' })
+}
+
+/**
+ * 管理端 解冻用户
+ * @param { number } userId 用户ID
+ */
+export const adminUnFrozenUser = (userId) => {
+	return flyUtil({ url: `/api/admin/user/${userId}/unfrozen`, method: 'put' })
+}

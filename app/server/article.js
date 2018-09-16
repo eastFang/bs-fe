@@ -81,3 +81,19 @@ export const likeArticle = (params) => {
 export const cancelLikeArticle = (params) => {
 	return flyUtil({ url: '/api/bloger/like-log', params, method: 'delete' })
 }
+
+/**
+ * 运营撤下文章
+ * @param { number } articleId 文章ID
+ */
+export const adminFrozenArticle = (articleId) => {
+	return flyUtil({ url: `/api/admin/article/${articleId}/frozen`, method: 'put' })
+}
+
+/**
+ * 运营恢复文章
+ * @param { number } articleId 文章ID
+ */
+export const adminUnFrozenArticle = (articleId) => {
+	return flyUtil({ url: `/api/admin/article/${articleId}/unfrozen`, method: 'put' })
+}

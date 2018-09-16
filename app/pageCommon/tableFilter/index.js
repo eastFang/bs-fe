@@ -1,7 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { withRouter } from 'react-router-dom'
-import { Form, Input, Button, DatePicker } from 'aliasComponent'
+import { Form, Input, Button, DatePicker, Select } from 'aliasComponent'
 import { queryStrToObj } from 'aliasUtil'
 import './index.scss'
 
@@ -19,16 +18,28 @@ class TableFilter extends React.Component {
 	_onSubmit(evt, data) {
 		let search = '?'
 		for(let item in data) {
-			search += `${item}=${data[item]}&`
+			if (data[item] !== null && data[item] !== undefined && data[item] !== '') {
+				search += `${item}=${data[item]}&`
+			}
 		}
-		this.props.history.push(this.props.location.pathname + search)
+		this.props.history.push(this.props.location.pathname + search.replace(/&$/, ''))
 	}
 
-	renderSearchField(type, value, placeholder) {
-		if (type === 'datepicker') {
-			return <DatePicker />
+	renderSearchField(type, value, placeholder, others) {
+		switch (type) {
+		case 'datepicker':
+			return <DatePicker value={value} placeholder={placeholder} />
+		case 'select':
+			return (
+				<Select value={value}>
+					{
+						others.options.map((option, index) => <Select.Option key={index} value={option.value}>{option.text}</Select.Option>)
+					}
+				</Select>
+			)
+		default:
+			return <Input placeholder={placeholder} value={value}/>
 		}
-		return <Input placeholder={placeholder} value={value}/>
 	}
 
 	render() {
@@ -39,10 +50,10 @@ class TableFilter extends React.Component {
 				<Form onSubmit={this._onSubmit}>
 					{
 						fields.map((field, index) => {
-							const { searchName, labelName, placeholder = labelName, type } = field
+							const { searchName, labelName, placeholder = labelName, type, ...others } = field
 							return (
 								<Form.Field className='table-filter-field' label={labelName} name={searchName} key={index}>
-									{this.renderSearchField(type, query[searchName], placeholder)}
+									{this.renderSearchField(type, query[searchName], placeholder, others)}
 								</Form.Field>
 							)
 						})

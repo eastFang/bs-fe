@@ -1,15 +1,23 @@
 export const ArticleEnum = {
-	STATUS: {
-		private: 0,
-		public: 1,
-		mask: -1,
-		delete: -99,
-	},
 	DisplayText: {
 		0: '私有',
 		1: '公开',
 		'-1': '撤下',
 		'-99': '删除'
+	},
+	Operation: {
+		1: [
+			{
+				text: '撤下',
+				value: '-1'
+			}
+		],
+		'-1': [
+			{
+				text: '公开',
+				value: '1'
+			}
+		]
 	}
 }
 
@@ -43,5 +51,32 @@ export const CommentEnum = {
 		0: 'status-hide',
 		1: 'status-success',
 		'-1': 'status-deleted'
+	}
+}
+
+export const UserEnum = {
+	DisplayText: {
+		1: '正常',
+		'-1': '冻结'
+	},
+	Operation: {
+		1: [
+			{
+				text: '查看详情'
+			},
+			{
+				text: '冻结',
+				value: '-1'
+			},
+		],
+		'-1': [
+			{
+				text: '查看详情'
+			},
+			{
+				text: '解冻',
+				value: '1'
+			}
+		]
 	}
 }

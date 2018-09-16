@@ -42,3 +42,9 @@ a {
 .pull-right {
   float: right;
 }
+
+.td-operation {
+  a {
+    color: $color-link;
+  }
+}
