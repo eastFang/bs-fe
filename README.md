@@ -1,4 +1,7 @@
-# 心路历程
+# 博客系统前端
+- 博客系统，样式仿照ant(ps: 个人喜好，感觉ant 样式蛮好看的；基础、业务组件都是自己写的，不喜勿喷~~~)
+
+# 栈
 - react、react-dom
 - webpack、webpack-cli
 - babel-loader、.babelrc
