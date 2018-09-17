@@ -45,7 +45,19 @@ class Cascader extends React.Component {
 		}
 		this.setState({
 			isOpen: !this.state.isOpen
+		}, () => {
+			if (this.state.isOpen) {
+				this.refs.optionList.focus()
+			}
 		})
+	}
+
+	onBlurCloseOptionList() {
+		this.setState({
+			isOpen: false
+		})
+		// 防止冒泡到click事件
+		return false
 	}
 
 	onClickOptionItem(item) {
@@ -126,7 +138,7 @@ class Cascader extends React.Component {
 		const optionItemClassName = id => classnames({ selected: this.tempValue.some(item => item.id === id) })
 
 		const optionList = (
-			<div className='bs-cascader-optionlist' style={this.showAreaDomStyle}>
+			<div className='bs-cascader-optionlist' ref='optionList' style={this.showAreaDomStyle} tabIndex='0' onBlur={() => this.onBlurCloseOptionList()}>
 				{
 					this.state.fullList.map((list, index) => {
 						return (

@@ -26,6 +26,10 @@
   box-shadow: 0 0 2px 2px $color-border;
   margin-top: 4px;
   background-color: white;
+
+  &:focus {
+    outline: 0;
+  }
   
   ul {
     height: 200px;
