@@ -3,6 +3,11 @@
 .page-article-add {
   width: 100%;
 
+  [class^="bs-col"] {
+    height: 100vh;
+    overflow: auto;
+  }
+
   .input-wrap {
     border-left: 1px solid $color-border;
     
@@ -17,9 +22,10 @@
 
     .pull-right {
       position: absolute;
-      right: 0;
+      right: 30px;
       top: 4px;
       width: 100px;
+      z-index: 2;
     }
   }
 
