@@ -19,6 +19,7 @@ class DatePicker extends Component {
 		}
 		this.showAreaRef = React.createRef()
 		this._onSelectToday = this._onSelectToday.bind(this)
+		this._onToggleOptionList = this._onToggleOptionList.bind(this)
 	}
 
 	componentDidMount() {
@@ -40,6 +41,20 @@ class DatePicker extends Component {
 				value: nextProps.value || ''
 			})
 		}
+	}
+
+	_onToggleOptionList() {
+		this.setState({ isOpen: !this.state.isOpen }, () => {
+			if (this.state.isOpen) {
+				this.refs.datepicker.focus()
+			}
+		})
+	}
+
+	onBlurCloseOptionList() {
+		this.setState({
+			isOpen: false,
+		})
 	}
 
 	onSelectDate(dateItem) {
@@ -114,7 +129,7 @@ class DatePicker extends Component {
 		const guideValue = this.state.guideValue.split('-')
 		const dateList = this.getDateList()
 		return (
-			<div className='bs-datepicker' style={this.showAreaDomStyle}>
+			<div className='bs-datepicker' style={this.showAreaDomStyle} ref='datepicker' tabIndex='0' onBlur={() => this.onBlurCloseOptionList()}>
 				<div className='header'>
 					<a className='left-area'>
 						<i className='iconfont icon-double-left' onClick={() => this.onChangeGuideValue('preYear')}></i>
@@ -168,7 +183,7 @@ class DatePicker extends Component {
 	render() {
 		return (
 			<span>
-				<span className='bs-datepicker-input-wrapper' ref={this.showAreaRef} onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
+				<span className='bs-datepicker-input-wrapper' ref={this.showAreaRef} onClick={this._onToggleOptionList} onMouseDown={evt => evt.preventDefault()}>
 					<input className='bs-datepicker-input' placeholder={this.props.placeholder} value={this.state.value} readOnly/>
 					<i className='iconfont icon-calendar'></i>
 				</span>
