@@ -29,10 +29,9 @@ https://zhuanlan.zhihu.com/p/26710831<br>
 
 # TODO
 - component
-  - cascader完善 done
-  - datepicker完善 done
-  - Modal完善
+  - select、datepicker、cascader onblur 关闭弹框选择 done
+  - Modal完善 - 增加二次确认弹框
   - Pagination完善
-  - form 完善
+  - form 完善 - 失焦校验
   - 引入dva
   
