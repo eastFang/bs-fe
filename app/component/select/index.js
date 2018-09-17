@@ -15,7 +15,9 @@ class Select extends React.Component {
 		const defaultValue = props.value
 		React.Children.forEach(this.props.children, (child) => {
 			optionalList.push(child.props.children)
-			valueList.push(child.props.value.toString())
+			if (child.props.value) {
+				valueList.push(child.props.value.toString())
+			}
 		})
 		let selected = optionalList[0] || '请选择'
 		let value = valueList[0] || null
@@ -50,7 +52,18 @@ class Select extends React.Component {
 	_onToggleOptionalList() {
 		this.setState({
 			isOpen: !this.state.isOpen
+		}, () => {
+			if (this.state.isOpen) {
+				this.refs.select.focus()
+			}
 		})
+	}
+
+	onBlurCloseOptionList() {
+		this.setState({
+			isOpen: false,
+		})
+		return false
 	}
 
 	providerChildrenProps() {
@@ -70,7 +83,7 @@ class Select extends React.Component {
 			isOpen ? 'icon-up': 'icon-down'
 		)
 		return (
-			<div className='bs-select-showarea' onClick={this._onToggleOptionalList} ref={this.showAreaRef}>
+			<div className='bs-select-showarea' onClick={this._onToggleOptionalList} ref={this.showAreaRef} onMouseDown={evt => evt.preventDefault()}>
 				{selected}
 				<i className={iconClass}></i>
 			</div>
@@ -83,7 +96,7 @@ class Select extends React.Component {
 		}
 		
 		const optionsList = (
-			<ul style={this.showAreaDomStyle} className='bs-select-optionallist'>
+			<ul style={this.showAreaDomStyle} className='bs-select-optionallist' ref='select' tabIndex='0' onBlur={() => this.onBlurCloseOptionList()}>
 				{
 					React.Children.map(this.props.children, (child) => {
 						return React.cloneElement(child, this.providerChildrenProps())

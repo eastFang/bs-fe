@@ -117,7 +117,7 @@ class Cascader extends React.Component {
 		)
 		
 		return (
-			<div className='bs-cascader-showarea' onClick={this._onToggleOptionList} ref={this.showAreaRef}>
+			<div className='bs-cascader-showarea' onClick={this._onToggleOptionList} ref={this.showAreaRef} onMouseDown={evt => evt.preventDefault()}>
 				{this.renderShowAreaText()}
 				<i className={iconClassName} />
 			</div>
