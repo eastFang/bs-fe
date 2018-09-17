@@ -22,6 +22,17 @@ class Pagination extends React.Component {
 		this._nextPage = this._nextPage.bind(this)
 	}
 
+	componentWillReceiveProps(nextProps) {
+		const thisPageNo = Number(queryStrToObj(this.props.location.search).pageNo || 1)
+		const nextPageNo = Number(queryStrToObj(nextProps.location.search).pageNo || 1)
+		if (thisPageNo !== nextPageNo) {
+			// 这里不调用this._onChange 因为_onChange 里面有history.push 的方法；会重复push
+			this.setState({
+				currentPageNo: nextPageNo
+			})
+		}
+	}
+
 	/**
 	 * 检验是否能切换页码
 	 */
@@ -64,7 +75,6 @@ class Pagination extends React.Component {
 		if (pageNo == this.state.currentPageNo) {
 			return
 		}
-
 		this.setState({
 			currentPageNo: pageNo
 		})

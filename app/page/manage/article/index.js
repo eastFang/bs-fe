@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Space, Spin, Message } from 'aliasComponent'
+import { Table, Space, Spin, Message, Modal } from 'aliasComponent'
 import { TableFilter } from 'aliasPageCommon'
 import ManageCommonPage from '../common/page'
 import { formatDate, queryStrToObj } from 'aliasUtil'
@@ -67,23 +67,26 @@ export default class extends React.Component {
 	}
 
 	toggleArticle(articleId, status) {
-		const { dataSource } = this.state
-		const adminFrozenOrUnFrozenArticleUrlMap = {
-			1: adminUnFrozenArticle,
-			'-1': adminFrozenArticle,
-		}
-		adminFrozenOrUnFrozenArticleUrlMap[status](articleId)
-			.then(() => {
-				for(let item of dataSource) {
-					if (item.article.id === articleId) {
-						item.article.status = status
-						break
+		const okFunc = () => {
+			const { dataSource } = this.state
+			const adminFrozenOrUnFrozenArticleUrlMap = {
+				1: adminUnFrozenArticle,
+				'-1': adminFrozenArticle,
+			}
+			adminFrozenOrUnFrozenArticleUrlMap[status](articleId)
+				.then(() => {
+					for(let item of dataSource) {
+						if (item.article.id === articleId) {
+							item.article.status = status
+							break
+						}
 					}
-				}
-				this.setState({
-					dataSource
-				}, () => Message.success('操作成功'))
-			})
+					this.setState({
+						dataSource
+					}, () => Message.success('操作成功'))
+				})
+		}
+		Modal.confirm({ title: '确认操作吗？', content: '确认继续吗？' }, okFunc)
 	}
 
 	renderOperation(record) {

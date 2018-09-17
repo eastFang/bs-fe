@@ -32,7 +32,8 @@
     padding: 0 10px;
     background-color: white;
 
-    &.selected {
+    &.selected,
+    &:hover {
       background-color: $smoke;
     }
   }

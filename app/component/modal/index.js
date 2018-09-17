@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Button from '../button'
 import './index.scss'
 
-const portalRoot = document.getElementById('portal')
+const modalPortal = document.getElementById('modal')
 
 class Modal extends React.Component {
 	constructor(props) {
@@ -66,7 +66,7 @@ class Modal extends React.Component {
 	render() {
 		if (!this.state.visible) return null
 		return (
-			ReactDOM.createPortal(this.renderModal(), portalRoot)
+			ReactDOM.createPortal(this.renderModal(), modalPortal)
 		)
 	}
 }
@@ -79,6 +79,61 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
 	title: '弹框标题',
+}
+
+Modal.dialog = (options = {}, okFunc) => {
+	const { title, content, type } = options
+	const onCloseModal = () => ReactDOM.render(null, modalPortal)
+	const onOkFunc = () => {
+		okFunc && okFunc()
+		onCloseModal()
+	}
+	const iconMap = {
+		confirm: 'info',
+		success: 'success',
+		error: 'error',
+	}
+	const renderModal = () => (
+		<div className='bs-modal' onClick={onCloseModal}>
+			<div className='wrap bs-dialog-wrap' onClick={evt => evt.stopPropagation()}>
+				<div className='bs-modal-dialog-body'>
+					<i className={`iconfont icon-${iconMap[type]}`}></i>
+					<div className='bs-modal-dialog-right'>
+						<div className='title'>{title}</div>
+						<div className='content'>{content}</div>
+					</div>
+				</div>
+				<div className='bs-modal-dialog-footer'>
+					<Button title='取消' onClick={onCloseModal}/>
+					{
+						okFunc ? <Button title='确认' type='primary' onClick={() => onOkFunc()}/> : null
+					}
+				</div>
+			</div>
+		</div>
+	)
+	ReactDOM.render(renderModal(), modalPortal)
+}
+
+Modal.confirm = (options, ...args) => {
+	options.type = 'confirm'
+	Modal.dialog(options, ...args)
+}
+
+Modal.success = (message) => {
+	const options = {}
+	options.title = '操作成功'
+	options.content = message
+	options.type = 'success'
+	Modal.dialog(options)
+}
+
+Modal.error = (message) => {
+	const options = {}
+	options.title = '操作失败'
+	options.content = message
+	options.type = 'error'
+	Modal.dialog(options)
 }
 
 export default Modal

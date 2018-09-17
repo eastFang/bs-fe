@@ -30,8 +30,5 @@ https://zhuanlan.zhihu.com/p/26710831<br>
 # TODO
 - component
   - select、datepicker、cascader onblur 关闭弹框选择 done
-  - Modal完善 - 增加二次确认弹框
-  - Pagination完善
-  - form 完善 - 失焦校验
-  - 引入dva
-  
+  - 增加二次确认弹框、成功提示、失败提示 done
+  - Pagination完善 表单筛选 当前页码正确显示 done

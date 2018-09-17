@@ -44,7 +44,8 @@
       line-height: 28px;
       padding: 0 5px;
 
-      &.selected {
+      &.selected,
+      &:hover {
         background-color: $smoke;
       }
     }

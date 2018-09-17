@@ -1,5 +1,10 @@
 @import "aliasComponent/theme.scss";
 
+$color-warning: #faad14;
+$color-info: #1890ff;
+$color-success: #52c41a;
+$color-error: #f5222d;
+
 .bs-modal {
   position: fixed;
   top: 0;
@@ -41,6 +46,51 @@
       border-top: 1px solid $color-border;
       padding: 10px 20px;
       text-align: center;
+    }
+
+    &.bs-dialog-wrap {
+      width: 320px;
+      color: $color-text3;
+      line-height: 14px;
+      font-size: 14px;
+
+      .bs-modal-dialog-body {
+        padding: 32px 32px 24px;
+
+        i {
+          float: left;
+          font-size: 20px;
+
+          &.icon-success {
+            color: $color-success;
+          }
+      
+          &.icon-error {
+            color: $color-error;
+          }
+      
+          &.icon-warning {
+            color: $color-warning;
+          }
+      
+          &.icon-info {
+            color: $color-info;
+          }
+        }
+
+        .bs-modal-dialog-right {
+          margin-left: 30px;
+
+          .title {
+            margin-bottom: 18px;
+          }
+        }
+      }
+
+      .bs-modal-dialog-footer {
+        text-align: right;
+        padding: 0 32px 15px;
+      }
     }
   }
 }
