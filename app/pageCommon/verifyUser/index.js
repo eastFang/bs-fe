@@ -45,7 +45,7 @@ export default Comp => connect(null, mapDispatchToProps)(
 		}
 		
 		/**
-		 * 跳回登陆页的条件
+		 * 跳回登录页的条件
 		 * 1. 非登录状态
 		 * 2. 当前非处于登录页
 		 * 3. 非白名单路径
@@ -55,7 +55,7 @@ export default Comp => connect(null, mapDispatchToProps)(
 			
 			if (userInfo === null) {
 				return null
-			} else if (userInfo === false // 获取用户接口返回未登陆状态
+			} else if (userInfo === false // 获取用户接口返回未登录状态
 				&& location.pathname !== '/login' // 非登录页
 				&& !WhiteList.some((urlReg) => urlReg.test(location.pathname)) // 非白名单之列
 			) {

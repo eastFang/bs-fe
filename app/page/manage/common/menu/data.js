@@ -13,7 +13,7 @@ const list = [
 		icon: 'user-manage'
 	},
 	{
-		value: '登陆日志',
+		value: '登录日志',
 		url: '/manage/userLoginLog',
 		icon: 'login-log'
 	},

@@ -15,7 +15,7 @@ export default class extends React.Component {
 		login(data) 
 			.then(() => {
 				// TODO: 优化
-				// 登陆成功后Wrap无法重新调起获取用户登录信息
+				// 登录成功后Wrap无法重新调起获取用户登录信息
 				this.props.history.go(-1)
 			}).catch((error) => {
 				Message.error(error)
