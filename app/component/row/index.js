@@ -17,7 +17,7 @@ class Row extends React.Component {
 	render() {
 		const childList = []
 		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type && child.type.name === 'Col') {
+			if (child && child.type) {
 				childList.push(child)
 			}
 		})
