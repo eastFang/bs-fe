@@ -16,7 +16,7 @@ module.exports = {
 		},
 		proxy: {
 			'/api/*': {
-				target: process.env.NODE_ENV === 'production' ? 'http://blog-api.yingchengpeng.com' : 'http://dev-api.yingchengpeng.com',
+				target: 'http://blog-api.yingchengpeng.com',
 				changeOrigin: true,
 			}
 		},
