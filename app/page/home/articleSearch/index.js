@@ -36,7 +36,7 @@ export default class extends React.Component {
 								<li key={index}>
 									<Link to={`/article/${article.id}`}>
 										<p className='title'>{article.title}</p>
-										<p className='synopsis'>{article.synopsis}</p>
+										<div className='synopsis' dangerouslySetInnerHTML={{ __html: article.synopsis }}/>
 										<p className='summary'>
 											<span>{article.author}</span>
 											<span className='i-wrap'><i className='iconfont icon-likes'></i>{summary.like}</span>
